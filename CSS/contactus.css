@@ -1,0 +1,10 @@
+
+.bg-darkk h2,h3,p{
+    background-color: rgb(33, 17, 55);
+    color: rgb(255, 255, 255);
+
+}
+p:hover{
+    transform: translate3D(0,-1px,0) scale(1.03);
+}
+
