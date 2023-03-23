@@ -1,42 +1,43 @@
 **************(make sure to use the last version!!)*************
-( some parts have been change including the nav.php,contactus and sign up form and ...)
 
 Iteration 1&2:
-
-1)shopingcart should be added automaticly for each user at sign up time
-
-2)Search and Filter on Items
-
-3)(Implementing Payment is for NEXT iteration) After the customer drag and drops items in "itemsInShoppingCart?" then they have to have an option to select the branch location, date and time for delivery.thier info after confirmation will be added to "order" table: 
-the branch ID,
- date and time and,receiptID(shoppingcart belonging to the user) ,totalPrice will be saved in the "order" table
+incomplete:
+#### Select (drag and drop) items into shapping cart => view every thing for confirmation and selecting a branch, date and time for the delivery => Payment page =>     Saveing every thing in the Order Table and sent a message to the customer with the truck ID assigned to thier order.
 
 
-4)website should work on at least 3 browsers
+1) shopingcart should be added automaticly for each user at sign up time
 
-5)need a system logo
+2) drag and drop the items into the shopping cart(database)
 
-6)Technical Report
+3) get the branch and user address, date and time for delivery and show it in the map page with the over view of items
 
-Issues:
+4) go to payment page(the form is ready) and add every thing with a truck ID to the order ID
 
-1) MaintainDB nav_admin => the admin looses the access after viewing aboutUs/contactUs/Home pages
+5) Select, Update pages (Sahar)
 
-2) MaintainDB nav_admin => check the address is should work from all pages
+6) The alrt message does not close (Sahar)
 
-3) we should make sure the username at the sign up time is unique
-****it does NOT save the user if the username is not unique. => insertForm.php
+7) The code for displaying  the tables skips the firs row (Sahar)
 
+8) The userNme at sign up and insert page should be unique 
 
-5) the dropdown menu in delete.php doesn't work for some reason. it works in other pages! => maybe put all the pages related to admin to one folder
+9) Search the order (Sahar)
 
-7)delete.php=> does not show the first users
+Iteration 3:
 
+1) SPA
 
-TO DO:
-- access to certain pages available only to logged in users (Sina) => DONE
-- different navs based on logged in user: customer vs admin (Sina) => DONE
-- logout (Sina) => DONE
-- alert boxes for login (Sina: will do by Sunday March 19)
-- create payment view (next it)
-- add payment to database - next it(Sina)
+2) User should be able to write a short review and rank Items and Services
+
+3) Impeliment a new Service for short amout of time
+
+4)Browser detecting : website should work on at least 3 browsers
+
+Iteration 4:
+
+1) Apply security on password, user balance, credit card number
+
+2) Need a system logo
+
+3) Technical Report
+
