@@ -5,13 +5,15 @@ incomplete:
 #### Select (drag and drop) items into shapping cart => view every thing for confirmation and selecting a branch, date and time for the delivery => Payment page =>     Saveing every thing in the Order Table and sent a message to the customer with the truck ID assigned to thier order.
 
 
-1) shopingcart should be added automaticly for each user at sign up time
+1) shopingcart should be added automaticly for each user at sign up time (Alex)
 
-2) drag and drop the items into the shopping cart(database)
+2) drag and drop the items into the shopping cart(database) (Alex, Done)
 
-3) get the branch and user address, date and time for delivery and show it in the map page with the over view of items
+3) get the branch and user address, date and time for delivery and show it in the map page with the over view of items (Parmida)
 
-4) go to payment page(the form is ready) and add every thing with a truck ID to the order ID
+4) go to payment page (the form is ready) (Parmida)
+
+4.2) add every thing with a truck ID to the order Table (Alex OR Parmida)
 
 5) Select, Update pages (Sahar)
 
