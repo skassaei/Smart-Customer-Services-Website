@@ -38,13 +38,16 @@ The new Changes (Parmida):
 
 Iteration 3:
 
-1) SPA
+1) SPA (Alex)
 
-2) User should be able to write a short review and rank Items and Services
+2) User should be able to write a short review and rank Items and Services (Sahar)
 
-3) Impeliment a new Service for short amout of time
+3) Impeliment a new Service for short amout of time (Parmida)
 
-4)Browser detecting : website should work on at least 3 browsers
+Deadine for Parmida & Sahar: Sunday Night
+Deadline for the whole thing: Monday Night
+
+4) Browser detecting : website should work on at least 3 browsers
 
 Iteration 4:
 
