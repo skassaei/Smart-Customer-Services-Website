@@ -44,7 +44,7 @@ require './DB_Operations/dbConnect.php';
     ?>
         <div class="grid-item">
           <div class="card" style="border:1px solid #333; background-color:#f1f1f1; border-radius:5px;  width: 17rem; cursor:move" align="center">
-            <img src="<?php echo $row["itemPic"]; ?>" data-id="<?php echo $row['itemID']; ?>" data-name="<?php echo $row['itemName']; ?>" data-price="<?php echo $row['price']; ?>" data-depCode="<?php echo $row['depCode']; ?>" class="img-responsive product_drag" />
+            <img src="<?php echo $row["itemPic"]; ?>" data-id="<?php echo $row['itemID']; ?>" data-name="<?php echo $row['itemName']; ?>" data-price="<?php echo $row['price']; ?>" data-depcode="<?php echo $row['depCode']; ?>" class="img-responsive product_drag" />
             <div class="card-body">
               <h5 class="card-title"><?php echo $row['itemName']; ?></h5>
               <p class="card-text">madeIn: <?php echo $row['madeIn']; ?></p>
