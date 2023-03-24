@@ -8,6 +8,14 @@ tr{
 }
 #map{
   height: 60vmin;
-  width: 80%;
+  width: 100%;
   color: black;
+  border: solid;
+  border-width: 2vmin;
+  border-color: azure;
 } 
+#mapdiv{
+  width: 80%;
+  height: 60vmin;
+
+}

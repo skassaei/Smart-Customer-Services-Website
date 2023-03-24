@@ -30,17 +30,15 @@
 		  <?php 
 			if(isset($_SESSION['isAdmin'])) {
 				?>
-		  <li class="nav-item dropdown">
+		      <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              MaintainDB
+              Maintain DB
             </a>
-
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="./Forms/update.php">SELECT</a></li>
-              <li><a class="dropdown-item" href="./Forms/chose_Table_for_insert.php">INSERT</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#">UPDATE</a></li>
-              <li><a class="dropdown-item" href="./delete.php">DELETE</a></li>
+              <li><a class="dropdown-item" href="./Forms/chose_Table_for_insert.php">Insert</a></li>
+              <li><a class="dropdown-item" href="./Forms/update.php">Update</a></li>
+              <li><a class="dropdown-item" href="./Froms/delete.php">Delete</a></li>
+              <li><a class="dropdown-item" href="#">Select</a></li>
             </ul>
           </li>
 		  <?php

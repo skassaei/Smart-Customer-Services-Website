@@ -8,8 +8,9 @@
 
         $location = mysqli_real_escape_string( $conn,$_POST["location"]);
         $city = mysqli_real_escape_string( $conn,$_POST["city"]);
-        echo "location,city:" .$location;
-        $query = "INSERT INTO store (location, city) VALUE ('$location','$city')";
+        $postalCode = mysqli_real_escape_string( $conn,$_POST["postalCode"]);
+        echo "location, city, postalCode:" .$location.$postalCode;
+        $query = "INSERT INTO store (location, city, postalCode) VALUES ('$location', '$city', '$postalCode');";
 
         $query_run= mysqli_query($conn,$query);
         if($query_run){
@@ -33,7 +34,6 @@
         
         $firstName = mysqli_real_escape_string( $conn,$_POST["firstName"]);
         $lastName = mysqli_real_escape_string( $conn,$_POST["lastName"]);
-        $username = mysqli_real_escape_string( $conn,$_POST["username"]);
         $email = mysqli_real_escape_string( $conn,$_POST["email"]);
         $phone = mysqli_real_escape_string( $conn,$_POST["phone"]);
         
@@ -43,13 +43,13 @@
         $city = mysqli_real_escape_string( $conn,$_POST["city"]);
         $province = mysqli_real_escape_string( $conn,$_POST["province"]);
         
-        $query = "INSERT INTO user (firstName ,lastName ,username ,email ,phone) VALUE ('$firstName','$lastName','$username','$email','$phone')";
+        $query = "INSERT INTO user (firstName ,lastName ,email ,phone) VALUE ('$firstName','$lastName','$email','$phone')";
         $query_run= mysqli_query($conn,$query);
         
         if($query_run){
             echo "Was added to USER";
             //Getting the User Id of new user
-            $Find_userID = "SELECT userID FROM user WHERE username = '$username'";
+            $Find_userID = "SELECT userID FROM user WHERE email = '$email'";
             echo "<br/>the Find_userID is:".$Find_userID;
             $userID_run= mysqli_query($conn, $Find_userID);
             $userID= mysqli_fetch_row($userID_run);

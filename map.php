@@ -120,35 +120,65 @@
       <div class="row justify-content-evenly mt-3 overflow-hidden">
         <div class="card col-10 p-4 bg-darkk shadow-lg rounded align-items-center">
           <h2>The Delivery Route</h2>
-          <div id="map"></div>
-            <script>
-                function initMap()
-                {
-                  var location = {lat: 43.7272, lng: -79.4121};
-                  var location2 = {lat: 43.7575, lng: -79.3910};
-                  var map = new google.maps.Map(document.getElementById("map"),
-                      { zoom: 12, center: location});
-                  var marker = new google.maps.Marker(
-                      {position: location, map: map});    
-                  var infoWindow = new google.maps.InfoWindow(
-                      {content: "<h5> The Branch </h5>"});
-                  marker.addListener("click", function()
-                      {infoWindow.open(map, marker); });
-                  var marker2 = new google.maps.Marker(
-                      {position: location2, map: map});    
-                  var infoWindow2 = new google.maps.InfoWindow(
-                      {content: "<h5> Your Address </h5>"});
-                  marker2.addListener("click", function()
-                      {infoWindow2.open(map, marker2); });
-                  } 
-
-            </script>
-            <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh2dqXcuimTN834D5gv8p8sPxOxLMMTXc&callback=initMap">
-            </script>
+          <div id="floating-panel">
+              <b>Branch: </b>
+              <select class="mb-2 mt-1" id="start">
+                <option value="L4K 5A9">Concord</option>
+                <option value="L3R 3L5">Markham</option>
+                <option value="M4N 2J2">Toronto</option>
+              </select>
+              <b class="visually-hidden">End: </b>
+              <select id="end" class="visually-hidden">
+                <option value="L4K 5A9">Customer Address</option>
+              </select>
+            </div>
+            <div id="map"></div>
           </div>
         </div>
       </div>
     </div>
+    <script>
+		function initMap() {
+			const directionsService = new google.maps.DirectionsService();
+			const directionsRenderer = new google.maps.DirectionsRenderer();
+			const map = new google.maps.Map(document.getElementById("map"), {
+				zoom: 11,
+				center: { lat: 43.75, lng: -79.36 },
+			});
+
+			directionsRenderer.setMap(map);
+
+			const onChangeHandler = function () {
+				calculateAndDisplayRoute(directionsService, directionsRenderer);
+			};
+			
+			document.getElementById("start").addEventListener("change", onChangeHandler);
+			document.getElementById("end");
+		}
+
+		function calculateAndDisplayRoute(directionsService, directionsRenderer) {
+			directionsService
+				.route({
+				origin: {
+					query: document.getElementById("start").value,
+				},
+				destination: {
+					query: document.getElementById("end").value,
+				},
+				travelMode: google.maps.TravelMode.DRIVING,
+				})
+				.then((response) => {
+				directionsRenderer.setDirections(response);
+				})
+				.catch((e) => window.alert("Directions request failed due to " + status));
+		}
+		window.initMap = initMap;
+	</script>
+
+	<script
+	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh2dqXcuimTN834D5gv8p8sPxOxLMMTXc&callback=initMap&v=weekly"
+	defer
+	></script>
   </body>
 </html>
   

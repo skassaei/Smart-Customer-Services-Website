@@ -37,7 +37,7 @@
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
               <li><a class="dropdown-item" href="./chose_Table_for_insert.php">Insert</a></li>
               <li><a class="dropdown-item" href="./update.php">Update</a></li>
-              <li><a class="dropdown-item" href="../delete.php">Delete</a></li>
+              <li><a class="dropdown-item" href="./delete.php">Delete</a></li>
               <li><a class="dropdown-item" href="#">Select</a></li>
             </ul>
           </li>
