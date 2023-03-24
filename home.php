@@ -13,7 +13,45 @@ include 'DB_Operations/login.php'
     <link rel="stylesheet" href="./CSS/home.css">
     <link rel="stylesheet" href="./CSS/nav.css?v=<?php echo time(); ?>">
     <script src="https://code.angularjs.org/1.5.0/angular.min.js" ></script>
+    <style>
+.product_drag_area {
+  width: 600px;
+  height: 200px;
+  border: 2px dashed #ccc;
+  color: #ccc;
+  line-height: 200px;
+  text-align: center;
+  font-size: 24px;
+  
+  position: absolute; /* added position:relative */
+  bottom: 7rem; /* changed to bottom margin */
+  margin: 0 auto 5rem auto; /* changed margin */
+  left: 50%;
+  transform: translateX(-50%);
+}
 
+    .product_drag_over {
+      color: #000;
+      border-color: #000;
+    }
+
+    .table-responsive {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: 2rem; /* added margin-top */
+    }
+
+    h3 {
+      right:60%;
+      transform: translateX(-50%);
+      position: absolute;
+      bottom: 5rem;
+      margin-top: 2rem; /* added margin-top */
+    }
+
+  </style>
 </head>
 
 <html>
@@ -30,19 +68,21 @@ include 'DB_Operations/login.php'
         if($query_run->num_rows > 0){
             foreach($query_run as $row){
             ?>
-                <div class="grid-item">
-                <div class="card "  style="width: 14rem;">
-                    <img class="card-img-top" src="<?php echo $row['itemPic']; ?>" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title"><?php echo $row['itemName']; ?></h5>
-                        <p class="card-text"><?php echo $row['madeIn']; ?></p>
-                    </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">price: $<?php echo $row['price']; ?></li>
-                        <li class="list-group-item">size: <?php echo $row['size']; ?></li>
-                    </ul>
-                </div>
+                        <div class="grid-item">
+          <div class="card" style="border:1px solid #333; background-color:#f1f1f1; border-radius:5px;  width: 17rem; cursor:move" align="center">
+            <img src="<?php echo $row["itemPic"]; ?>" data-id="<?php echo $row['itemID']; ?>" data-name="<?php echo $row['itemName']; ?>" data-price="<?php echo $row['price']; ?>" data-depcode="<?php echo $row['depCode']; ?>" class="img-responsive product_drag" />
+            <div class="card-body">
+              <h5 class="card-title"><?php echo $row['itemName']; ?></h5>
+              <p class="card-text">madeIn: <?php echo $row['madeIn']; ?></p>
+              
             </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">price: <?php echo $row['price']; ?></li>
+              <li class="list-group-item">size: <?php echo $row['size']; ?></li>
+              
+            </ul>
+          </div>
+        </div>
            
             <?php
             }
@@ -64,19 +104,19 @@ include 'DB_Operations/login.php'
                     if(!empty($rows)){
                         foreach($rows as $row){
                 ?>
-                <div class="grid-item">
-                    <div class="card "  style="width: 14rem;">
-                        <img class="card-img-top" src="<?php echo $row['itemPic']; ?>" alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title"><?php echo $row['itemName']; ?></h5>
-                            <p class="card-text"><?php echo $row['madeIn']; ?></p>
-                        </div>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item">price: $<?php echo $row['price']; ?></li>
-                            <li class="list-group-item">size: <?php echo $row['size']; ?></li>
-                        </ul>
-                    </div>
-                </div>
+                        <div class="grid-item">
+          <div class="card" style="border:1px solid #333; background-color:#f1f1f1; border-radius:5px;  width: 17rem; cursor:move" align="center">
+            <img src="<?php echo $row["itemPic"]; ?>" data-id="<?php echo $row['itemID']; ?>" data-name="<?php echo $row['itemName']; ?>" data-price="<?php echo $row['price']; ?>" data-depcode="<?php echo $row['depCode']; ?>" class="img-responsive product_drag" />
+            <div class="card-body">
+              <h5 class="card-title"><?php echo $row['itemName']; ?></h5>
+              <p class="card-text">madeIn: <?php echo $row['madeIn']; ?></p>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">price: <?php echo $row['price']; ?></li>
+              <li class="list-group-item">size: <?php echo $row['size']; ?></li>
+            </ul>
+          </div>
+        </div>
                     <?php }} ?>
         </div>
             <div class="shopping cart">
@@ -86,18 +126,18 @@ include 'DB_Operations/login.php'
                   
          </div>
 
-            <div class="col-2">
+            
                 
             <div style="clear:both"></div>
             <br />
             <div align="center">
             <div class="product_drag_area">Drop Product Here</div>
             </div>
-            <div id="dragable_product_order">
+            <div id="draggable_product_order">
             </div>
 
 
-            </div>
+            
 
 
 
@@ -121,6 +161,8 @@ include 'DB_Operations/login.php'
   <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
     </body>
 </html>
+
+
 <script>
   $(document).ready(function(data) {
     $('.product_drag_area').on('dragover', function() {
@@ -153,7 +195,7 @@ include 'DB_Operations/login.php'
           action: action
         },
         success: function(data) {
-          $('#dragable_product_order').html(data);
+          $('#draggable_product_order').html(data);
         }
       })
     });
@@ -169,7 +211,7 @@ include 'DB_Operations/login.php'
             action: action
           },
           success: function(data) {
-            $('#dragable_product_order').html(data);
+            $('#draggable_product_order').html(data);
           }
         });
       } else {
