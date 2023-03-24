@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <?php include '../DB_Operations/login.php' ?>
 <!DOCTYPE html>
 <head>
@@ -14,9 +13,8 @@
 <html>
 
     <body>
-        
-		<?php include '../DB_Operations/display_Table_for_update_Class.php' ?>
-		<?php include './nav_admin.php' ?> 
+        <?php include './nav_admin.php' ?> 
+		<?php include '../DB_Operations/tableClass.php' ?>
 <?php
 	$tableNames = array();
 	$tableNames[0] = "user";
@@ -29,11 +27,9 @@
 	$tableNames[7] = "trip";
 	$tableNames[8] = "orders";
 	foreach ($tableNames as $tn){
-		$tableObj = new updateTable($tn,$conn);
+		$tableObj = new Table($tn,$conn);
 		$tableObj->display_all_rows();
 	}
 
 
 ?>
-	</body>
-</html>

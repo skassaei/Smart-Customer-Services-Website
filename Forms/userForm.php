@@ -28,10 +28,6 @@
       <?php include('message.php')?>
       <form class="row g-3" action = "../DB_operations/insert.php" method="post">
       <h3> User: <br></h3>
-        <div class="form-group col-12">
-          <label for="username">Username:</label>
-          <input type="text" class="form-control" id="username" name="username" required>
-        </div>
 
         <div class="form-group col-12">
           <label for="first_name">First Name:</label>

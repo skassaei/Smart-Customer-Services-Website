@@ -16,7 +16,7 @@
   <body>
   
     <?php
-     include './nav_admin.php';
+    include './nav_admin.php';
     require '../DB_Operations/dbConnect.php';
      ?> 
 
@@ -123,7 +123,7 @@
     </div>
 
     <!-------------------3) ITEMS TABLE ----------------------->
-        <div class="input_container">
+        <div class="container">
             <h3>Items</h3>
             <div  class="table_wrapper col-12">
             <table class="table table-striped">
@@ -188,12 +188,11 @@
 <!-------------------4) User TABLE ----------------------->
     <div class="container">
         <h3>Users</h3>
-        <div  class="table_wrapper col-12">
+        <div  class="table_wrapper">
             <table class="table table-striped">
                 <thead>
                     <tr>
                     <th scope="col">userID</th>
-                    <th scope="col">username</th>
                     <th scope="col">First Name</th>
                     <th scope="col">Last Name</th>
                     <th scope="col">email</th>
@@ -223,7 +222,6 @@
                     <tr>
         
                         <td><?php echo $row['userID']; ?></td>
-                        <td><?php echo $row['username']; ?></td>
                         <td><?php echo $row['firstName']; ?></td>
                         <td><?php echo $row['lastName']; ?></td>
                         <td><?php echo $row['email']; ?></td>
@@ -239,7 +237,7 @@
         </div>
     </div>
 <!-------------------5) Address TABLE ----------------------->
-        <div class="input_container">
+        <div class="container">
             <h3>Address</h3>
             <div class="table_wrapper col-12">
                 <table class="table table-striped">

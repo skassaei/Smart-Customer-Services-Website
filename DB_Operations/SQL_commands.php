@@ -34,7 +34,6 @@ $sql[0] = "CREATE TABLE user  (
     firstName VARCHAR(25) NOT NULL,
     lastName VARCHAR(25) NOT NULL,
     userID INT NOT NULL AUTO_INCREMENT,
-    username VARCHAR(25) NOT NULL UNIQUE,
     email VARCHAR(25) NOT NULL UNIQUE,
 	admin BOOLEAN,
     password VARCHAR(255) NOT NULL,
@@ -55,6 +54,7 @@ $sql[1] = "CREATE TABLE address(
 $sql[2] = "CREATE TABLE store (
     location VARCHAR(25) NOT NULL,
     city VARCHAR(25) NOT NULL,
+    postalCode VARCHAR(20) NOT NULL,
     depCode INT NOT NULL AUTO_INCREMENT,
     PRIMARY KEY(depCode)
      )";
@@ -104,7 +104,6 @@ $sql[6] = "CREATE TABLE itemsInShoppingCart (
     FOREIGN KEY (receiptID) REFERENCES shopping_cart(receiptID),
 	itemsInShoppingCartID INT NOT NULL AUTO_INCREMENT,
 	PRIMARY KEY(itemsInShoppingCartID)
-
     )";
     
 
@@ -117,7 +116,6 @@ $sql[7] = "CREATE TABLE orders(
     paymentCode INT,
     userID INT NOT NULL,
     FOREIGN KEY (userID) REFERENCES user(userID),
-	
     receiptID INT NOT NULL,
     FOREIGN KEY (receiptID) REFERENCES shopping_cart(receiptID)
  )";

@@ -13,8 +13,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 	$street_name = $_POST["street_name"];
 	$city = $_POST["city"];
 	$province = $_POST["province"];
-	
-	$username = $_POST["username"]; 
+
 	$first_name = $_POST["first_name"];
 	$last_name = $_POST["last_name"];
 	$email = $_POST["email"]; 
@@ -22,7 +21,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = $_POST["password"]; 
     $cpassword = $_POST["password2"];
             
-    $sql = "Select * from user where username='$username'";
+    $sql = "Select * from user where email='$email'";
     
     $result = mysqli_query($conn, $sql);
     
@@ -40,7 +39,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 		$numE = mysqli_num_rows($resultE); 
 		if ($numE != 0){
 			echo "<script>
-					alert('Email Not Available');
+					alert('Email Already In Use');
 					window.location.href='../signup.html';
 					</script>";
 		}
@@ -53,10 +52,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 				
 				
 				// Password Hashing is used here. 
-				$sql = "INSERT INTO `user` ( `username`, 
-					`password`, `firstName`, `lastName`, `email`, `phone`,`admin`)
-					VALUES ('$username', 
-					'$hash', '$first_name', '$last_name', '$email', '$phone',0)";
+				$sql = "INSERT INTO `user` ( `password`, `firstName`, `lastName`, `email`, `phone`,`admin`)
+					VALUES ('$hash', '$first_name', '$last_name', '$email', '$phone',0)";
 			
 				$result1 = mysqli_query($conn, $sql);
 				
@@ -86,13 +83,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 		exit();
     }// end if 
     
-   if($num>0) 
-   {
-      echo "<script>
-				alert('Username not available');
-				window.location.href='../signup.html';
-				</script>"; 
-   } 
+//    if($num>0) 
+//    {
+//       echo "<script>
+// 				alert('Username not available');
+// 				window.location.href='../signup.html';
+// 				</script>"; 
+//    } 
    
 }//end if   
     

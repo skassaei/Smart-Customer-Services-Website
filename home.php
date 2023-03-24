@@ -1,9 +1,8 @@
+<!DOCTYPE html>
 <?php 
-require './DB_Operations/dbConnect.php';
+require 'DB_Operations/dbConnect.php';
 include 'DB_Operations/login.php' 
-
 ?>
-
 <!DOCTYPE html>
 <head>
     <title>CPS630 Project</title>

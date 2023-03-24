@@ -38,6 +38,11 @@
                 <label class="sr-only" for="inlineFormInput">City</label>
                 <input name="city" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="City" required>
             </div>
+            <div class="form-group col-12">
+                <label class="sr-only" for="inlineFormInput">Postal Code</label>
+                <input name="postalCode" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="X0X 0X0" required>
+            </div>
+
 
             <div class="col-3">
             <a class="btn btn-secondary" href="./chose_Table_for_insert.php">Back</a>
