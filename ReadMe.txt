@@ -26,18 +26,14 @@ incomplete:
 9) Search the order (Sahar)
 
 The new Changes (Parmida):
-- signup.html is changed. "username" is deleted and the DB and the other
- files are changed to match it.
+- signup.html is changed. "username" is deleted and the DB and the other files are changed to match it.
 - the drop downs work on all pages.
 - the visuals of "Insert" are fixed.
-- the "map.php" now shows the route from a chosen branch to the
-hard-coded customer address. (I will connect it to the DB later)
+- the "map.php" now shows the route from a chosen branch to the hard-coded customer address. (I will connect it to the DB later)
 - the CSS of the signup, forgot and signin is also changed a bit.
 - the "store" DB table now has postalCode and the map works with that.
-- the "nav" and "nav_admin" are edited and fixed a bit, but the
-BD maint. still needs for (Sahar's part)
-- The "aboutUs" and "contactUs" were missing their CSS files so I
-added those.
+- the "nav" and "nav_admin" are edited and fixed a bit, but the BD maint. still needs for (Sahar's part)
+- The "aboutUs" and "contactUs" were missing their CSS files so I added those.
 
 
 Iteration 3:
