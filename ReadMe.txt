@@ -13,7 +13,7 @@ incomplete:
 
 4) go to payment page (the form is ready) (Parmida)
 
-4.2) add every thing with a truck ID to the order Table (Alex OR Parmida)
+4.2) add every thing with a truck ID to the order Table (Parmida)
 
 5) Select, Update pages (Sahar)
 
