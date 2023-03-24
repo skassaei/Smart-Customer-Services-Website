@@ -25,7 +25,7 @@ incomplete:
 
 9) Search the order (Sahar)
 
-The new Changes:
+The new Changes (Parmida):
 - signup.html is changed. "username" is deleted and the DB and the other
  files are changed to match it.
 - the drop downs work on all pages.
