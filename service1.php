@@ -1,15 +1,15 @@
 <?php
-//index.php  
 session_start();
-$connect = mysqli_connect("localhost", "root", "", "product");
+
+require './DB_Operations/dbConnect.php';
 ?>
-<?php include 'nav.html' ?>
+<?php include 'nav.php' ?>
 
 <!DOCTYPE html>
 <html>
 
 <head>
-
+  <link rel="stylesheet" href="./CSS/nav.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
@@ -35,18 +35,24 @@ $connect = mysqli_connect("localhost", "root", "", "product");
 <body>
   <br />
   <div class="container" style="width:700px;">
-    <h3 align="center">Shopping Cart</h3><br />
+    <h3 align="center">Products</h3><br />
     <?php
-    $query = "SELECT * FROM product ORDER BY id ASC";
-    $result = mysqli_query($connect, $query);
+    $query = "SELECT * FROM item ORDER BY itemID ASC";
+    $result = mysqli_query($conn, $query);
     if (mysqli_num_rows($result) > 0) {
       while ($row = mysqli_fetch_array($result)) {
     ?>
-        <div class="col-md-4">
-          <div style="border:1px solid #333; background-color:#f1f1f1; border-radius:5px; padding:16px; cursor:move" align="center">
-            <img src="<?php echo $row["image"]; ?>" data-id="<?php echo $row['id']; ?>" data-name="<?php echo $row['name']; ?>" data-price="<?php echo $row['price']; ?>" class="img-responsive product_drag" />
-            <h4 class="text-info"><?php echo $row["name"]; ?></h4>
-            <h4 class="text-danger">$ <?php echo $row["price"]; ?></h4>
+        <div class="grid-item">
+          <div class="card" style="border:1px solid #333; background-color:#f1f1f1; border-radius:5px;  width: 17rem; cursor:move" align="center">
+            <img src="<?php echo $row["itemPic"]; ?>" data-id="<?php echo $row['itemID']; ?>" data-name="<?php echo $row['itemName']; ?>" data-price="<?php echo $row['price']; ?>" class="img-responsive product_drag" />
+            <div class="card-body">
+              <h5 class="card-title"><?php echo $row['itemName']; ?></h5>
+              <p class="card-text">madeIn: <?php echo $row['madeIn']; ?></p>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">price: <?php echo $row['price']; ?></li>
+              <li class="list-group-item">size: <?php echo $row['size']; ?></li>
+            </ul>
           </div>
         </div>
     <?php
@@ -55,10 +61,10 @@ $connect = mysqli_connect("localhost", "root", "", "product");
     ?>
     <div style="clear:both"></div>
     <br />
-    <div align="center">
-      <div class="product_drag_area">Drop Product Here</div>
-    </div>
-    <div id="dragable_product_order">
+
+    <div class="product_drag_area">Drop Product Here</div>
+
+    <div id="draggable_product_order">
     </div>
   </div>
   <br />
@@ -97,7 +103,7 @@ $connect = mysqli_connect("localhost", "root", "", "product");
           action: action
         },
         success: function(data) {
-          $('#dragable_product_order').html(data);
+          $('#draggable_product_order').html(data);
         }
       })
     });
@@ -113,7 +119,7 @@ $connect = mysqli_connect("localhost", "root", "", "product");
             action: action
           },
           success: function(data) {
-            $('#dragable_product_order').html(data);
+            $('#draggable_product_order').html(data);
           }
         });
       } else {
