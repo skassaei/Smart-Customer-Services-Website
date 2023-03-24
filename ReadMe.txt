@@ -2,7 +2,7 @@
 
 Iteration 1&2:
 incomplete:
-#### Select (drag and drop) items into shapping cart => view every thing for confirmation and selecting a branch, date and time for the delivery => Payment page =>     Saveing every thing in the Order Table and sent a message to the customer with the truck ID assigned to thier order.
+#### Select (drag and drop) items into shapping cart => view every thing for confirmation and selecting a branch, date and time for the delivery => Payment page =>     Saving every thing in the Order Table and sent a message to the customer with the truck ID assigned to thier order.
 
 
 1) shopingcart should be added automaticly for each user at sign up time (Alex)
