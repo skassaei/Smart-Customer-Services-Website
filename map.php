@@ -120,6 +120,17 @@
       <div class="row justify-content-evenly mt-3 overflow-hidden">
         <div class="card col-10 p-4 bg-darkk shadow-lg rounded align-items-center">
           <h2>The Delivery Route</h2>
+          <?php
+          $email = $_SESSION["email"];
+          include './DB_Operations/dbconnect.php';
+          $Find_userID = "SELECT userID FROM user WHERE email = '$email'";
+          $userID_run= mysqli_query($conn, $Find_userID);
+          $userID= mysqli_fetch_row($userID_run);
+
+          $Find_userAdd = "SELECT postalCode FROM address WHERE userID = '$userID[0]'";
+          $userAdd_run= mysqli_query($conn, $Find_userAdd);
+          $userAdd= mysqli_fetch_row($userAdd_run);
+          ?>
           <div id="floating-panel">
               <b>Branch: </b>
               <select class="mb-2 mt-1" id="start">
@@ -129,7 +140,7 @@
               </select>
               <b class="visually-hidden">End: </b>
               <select id="end" class="visually-hidden">
-                <option value="L4K 5A9">Customer Address</option>
+                <option value="<?php echo $userAdd[0] ?>">Customer Address</option>
               </select>
             </div>
             <div id="map"></div>
