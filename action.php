@@ -2,6 +2,17 @@
 
 session_start();
 
+
+if (isset($_SESSION['user_id'])) {
+  // Check if shopping cart exists for user
+  if (isset($_SESSION['shopping_cart'])) {
+    // Do something if the shopping cart exists
+  } else {
+    // Create a new shopping cart for the user
+    $_SESSION['shopping_cart'] = array();
+  }
+}
+
 /* We check if shopping cart exists */
 if ($_POST["action"] == "add") {
   if (isset($_SESSION['shopping_cart'])) {
@@ -16,20 +27,9 @@ if ($_POST["action"] == "add") {
         'item_id'       => $_POST["id"],
         'item_name'     => $_POST["name"],
         'item_price'    => $_POST["price"],
-        'dep_code'      => $_POST["depCode"],
-        'item_quantity' => 1);
-
+        'item_quantity' => 1
+      );
       $_SESSION["shopping_cart"][$count] = $item_array;
-
-      $item_id = $_POST["id"];
-      $receipt_id = mt_rand(1000,9000);
-      $depcode = $_POST["depCode"];
-      $totalPrice = $total;
-      $user_id = $_SESSION["ID"];
-      
-      $sql =   "INSERT INTO shopping_cart (itemID, receiptId, depCode, TotalPrice, userID) VALUES ('$item_id', '$receipt_id', '$depcode', '$totalPrice', '$user_id')";
-      
-
     } else {
 
       /* if item exists in cart, we can find the index using arra_search and increment the quantity of that item */
@@ -75,7 +75,7 @@ function make_cart_table()
                                <th width="40%">Item Name</th>  
                                <th width="10%">Quantity</th>  
                                <th width="20%">Price</th>  
-                               <th width="25%">Action</th>  
+                               <th width="20%">Action</th>  
                           </tr>  
            ';
     foreach ($_SESSION["shopping_cart"] as $keys => $values) {
