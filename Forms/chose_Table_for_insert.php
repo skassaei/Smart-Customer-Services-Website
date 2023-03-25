@@ -131,7 +131,6 @@
                     <tr>
                     <th scope="col">#</th>
                     <th scope="col">Name</th>
-                    <th scope="col">size</th>
                     <th scope="col">Pic</th>
                     <th scope="col">price</th>
                     <th scope="col">madeIn</th>
@@ -161,7 +160,6 @@
     
                     <td><?php echo $row['itemID']; ?></td>
                     <td><?php echo $row['itemName']; ?></td>
-                    <td><?php echo $row['size']; ?></td>
                     <td><picture>
                         <img alt="<?php echo $row['itemPic']; ?>" style="width: 20%; height: 10%;" src="<?php echo $row['itemPic']; ?> "/>
                         </picture></td>
@@ -272,7 +270,7 @@
                 <tr>
     
                     <td><?php echo $row['userID']; ?></td>
-                    <td><?php echo $row['unitNum']; ?></td>
+                    <td><?php echo $row['postalCode']; ?></td>
                     <td><?php echo $row['streetName']; ?></td>
                     <td><?php echo $row['city']; ?></td>
                     <td><?php echo $row['province']; ?></td>

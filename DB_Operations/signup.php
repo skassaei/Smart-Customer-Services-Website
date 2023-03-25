@@ -9,7 +9,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     include 'dbconnect.php';  
 
 	
-    $unitNum = $_POST["unit_num"]; 
+    $postalCode = $_POST["postalCode"]; 
 	$street_name = $_POST["street_name"];
 	$city = $_POST["city"];
 	$province = $_POST["province"];
@@ -59,8 +59,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 				
 				$userPK = $conn->insert_id;
 				
-				$sqlAddress = "INSERT INTO `address` ( `unitNum`, 
-					`streetName`, `city`, `province`, `userID`) VALUES ('$unitNum', 
+				$sqlAddress = "INSERT INTO `address` ( `postalCode`, 
+					`streetName`, `city`, `province`, `userID`) VALUES ('$postalCode', 
 					'$street_name', '$city','$province', $userPK)";
 		
 				$result2 = mysqli_query($conn, $sqlAddress);

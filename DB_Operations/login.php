@@ -13,10 +13,9 @@ if(isset($_POST['save']))
     {
 		if  (password_verify($pass, $row['password'])){
 			$_SESSION["ID"] = $row['ID'];
-			$_SESSION["email"]=$row['Email'];
+			$_SESSION["email"]=$row['email'];
 			$_SESSION["first_name"]=$row['firstName'];
 			$_SESSION["last_name"]=$row['lastName'];
-			$_SESSION["username"]=$row['username'];
 			$_SESSION['loggedin'] = true;
 			if ($row['admin'] != 0){
 				$_SESSION['isAdmin'] = true;

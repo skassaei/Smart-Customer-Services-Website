@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-
+<?php
+session_start();
+?>
 <head>
     <title>CPS630 Project</title>
     <meta charset="utf-8">
@@ -12,140 +14,46 @@
 <html>
   <?php include 'nav.php' ?> 
   <body>
-    <div class="container m-4">
-      <h1 style="font-size: 7vmin;">Invoice Summary</h1>
+    <div class="container mr-4 mt-1 mb-4 ml-5">
+      <h1 style="font-size: 7vmin;">Branch Options</h1>
+      <h4>Please choose a branch for your orders to be shipped from.</h4>
     </div>
-    <div class="align-content-center container-fluid">
-      <div class="row justify-content-evenly mb-3 mt-3">
-        <div class="card col-5 bg-darkk shadow-lg rounded">
-          <h2>Branch information</h2>
-          <div class="card-body ">
-            <h4 class="card-title branchName">Branch Name from DB</h4>
-            <p class="card-text ">Branch Address Branch Address Branch Address Branch Address</p>
-          </div>
-        </div>
-        <div class="card col-6 bg-darkk shadow-lg rounded">
-          <h2>Recipient Delivery Information</h2>
-          <div class="card-body ">
-            <h4 class="card-title CustomerName">RecipientFullName from DB</h4>
-            <p class="card-text CustomerAddress"><b>Address: </b>Address From DB</p>
-            <p class="card-text CustomerPC"><b>Postal Code: </b>From DB</p>
-            <p class="card-text CustomerDate"><b>Delivery Date: </b>From DB</p>
-            <p class="card-text CustomerExtra"><b>Note: </b>From DB (default empty)</p>
-
-          </div>
-        </div>
-      </div>
-      <div class="row justify-content-evenly">
-        <div class="card d-sm-none d-md-block col-6 p-2 bg-darkk shadow-lg rounded overflow-hidden">
-          <h4 class="card-title"><b>Order ID:</b> theID</h4>
-          <table>
-            <tr>
-              <th>Product Name</th>
-              <th>Size/Color</th>
-              <th>Price</th>
-              <th>Quantity</th>
-              <th>Tax</th>
-              <th>Total</th>
-            </tr>
-            <tr>
-              <td>Split Hem Sleeveless Dress Without Blouse</td>
-              <td>L/Coffee Brown</td>
-              <td>20.05</td>
-              <td>1</td>
-              <td>X</td>
-              <td>20.05</td>
-            </tr><tr>
-              <td>Zip Back Houndstooth Skirt</td>
-              <td>M/Multicolor</td>
-              <td>12.99</td>
-              <td>1</td>
-              <td>X</td>
-              <td>12.99</td>
-            </tr><tr>
-              <td>High Waist Wide Leg Jeans</td>
-              <td>M/Black</td>
-              <td>34.58</td>
-              <td>1</td>
-              <td>4.49</td>
-              <td>39.07</td>
-            </tr><tr>
-              <td>High Waist Wide Leg Jeans</td>
-              <td>M/Black</td>
-              <td>34.58</td>
-              <td>1</td>
-              <td>4.49</td>
-              <td>39.07</td>
-            </tr><tr>
-              <td>High Waist Wide Leg Jeans</td>
-              <td>M/Black</td>
-              <td>34.58</td>
-              <td>1</td>
-              <td>4.49</td>
-              <td>39.07</td>
-            </tr><tr>
-              <td>High Waist Wide Leg Jeans</td>
-              <td>M/Black</td>
-              <td>34.58</td>
-              <td>1</td>
-              <td>4.49</td>
-              <td>39.07</td>
-            </tr><tr>
-              <td>High Waist Wide Leg Jeans</td>
-              <td>M/Black</td>
-              <td>34.58</td>
-              <td>1</td>
-              <td>4.49</td>
-              <td>39.07</td>
-            </tr><tr>
-              <td>High Waist Wide Leg Jeans</td>
-              <td>M/Black</td>
-              <td>34.58</td>
-              <td>1</td>
-              <td>4.49</td>
-              <td>39.07</td>
-            </tr>
-          </table>
-        </div>
-        <div class="col-5 p-3 bg-darkk shadow-lg rounded total">
-          <P><b>Net Total: </b> Amount</P>
-          <hr class="rounded">
-          <p><b>Online Service Charges: </b> Amount</p>
-          <hr class="rounded">
-          <p><b>Shipping Fees: </b> Amount</p>
-          <hr class="rounded">
-          <p><b>Shipping Tax: </b> Amount</p>
-        </div>
-      </div>
-      <div class="row justify-content-evenly mt-3 overflow-hidden">
-        <div class="card col-10 p-4 bg-darkk shadow-lg rounded align-items-center">
-          <h2>The Delivery Route</h2>
-          <?php
-          $email = $_SESSION["email"];
-          include './DB_Operations/dbconnect.php';
-          $Find_userID = "SELECT userID FROM user WHERE email = '$email'";
-          $userID_run= mysqli_query($conn, $Find_userID);
-          $userID= mysqli_fetch_row($userID_run);
-
-          $Find_userAdd = "SELECT postalCode FROM address WHERE userID = '$userID[0]'";
-          $userAdd_run= mysqli_query($conn, $Find_userAdd);
-          $userAdd= mysqli_fetch_row($userAdd_run);
-          ?>
-          <div id="floating-panel">
+    <div class="row justify-content-evenly mt-3 overflow-hidden">
+      <div class="mb-5 card col-10 p-4 bg-darkk shadow-lg rounded align-items-center">
+        <h2>The Delivery Route</h2>
+        <?php
+        $email = $_SESSION["email"];
+        include './DB_Operations/dbconnect.php';
+        $Find_userID = "SELECT userID FROM user WHERE email = '$email'";
+        $userID_run= mysqli_query($conn, $Find_userID);
+        $userID= mysqli_fetch_row($userID_run);
+        $Find_userAdd = "SELECT postalCode FROM address WHERE userID = '$userID[0]'";
+        $userAdd_run= mysqli_query($conn, $Find_userAdd);
+        $userAdd= mysqli_fetch_row($userAdd_run);
+        ?>
+        <form class="col-12" action = "invoice.php" method="post">
+        <div id="floating-panel mapf">
+          <div class="row">
+            <div class="col-11">
               <b>Branch: </b>
-              <select class="mb-2 mt-1" id="start">
+              <select class=" p-1" id="start" name="branchAdd" required>
+                <option value="" disabled selected hidden>Choose a Branch</option>
                 <option value="L4K 5A9">Concord</option>
                 <option value="L3R 3L5">Markham</option>
                 <option value="M4N 2J2">Toronto</option>
               </select>
-              <b class="visually-hidden">End: </b>
+              <b class="visually-hidden col-7">End: </b>
               <select id="end" class="visually-hidden">
                 <option value="<?php echo $userAdd[0] ?>">Customer Address</option>
               </select>
             </div>
-            <div id="map"></div>
+            <div class="col-1">
+              <input type="submit" class="btn btn-outline-light mb-2 mt-1 pt-1 pb-1 pr-2 pl-2" >
+            </div>
           </div>
+          <div id="map"></div>
         </div>
+        </form>
       </div>
     </div>
     <script>
