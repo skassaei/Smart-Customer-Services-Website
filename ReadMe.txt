@@ -9,9 +9,9 @@ incomplete:
 
 2) drag and drop the items into the shopping cart(database) (Alex, Done)
 
-3) get the branch and user address, date and time for delivery and show it in the map page with the over view of items (Parmida)
+3) get the branch and user address, date and time for delivery and show it in the map page with the over view of items (Parmida) [Done]
 
-4) go to payment page (the form is ready) (Parmida)
+4) go to payment page (the form is ready) (Parmida) [Done]
 
 4.2) add every thing with a truck ID to the order Table (Parmida)
 
@@ -34,13 +34,19 @@ The new Changes (Parmida):
 - the "store" DB table now has postalCode and the map works with that.
 - the "nav" and "nav_admin" are edited and fixed a bit, but the BD maint. still needs for (Sahar's part)
 - The "aboutUs" and "contactUs" were missing their CSS files so I added those.
-
+------------
+-Removed "size" from all DB tables!!! we're selling cakes now instead!
+-The table in the home.php needs to be there from the beginning.
+-the size col should be deleted from the table in home.php, we don't need it anymore.
+-A button for "checkout" should be added to home.php
+-The discount page is still under dev. but the mock data is there.
+-The home page is responsive to every screen size. test it if you can and let me know if there's anything wrong with it
 
 Iteration 3:
 
 1) SPA (Alex)
 
-2) User should be able to write a short review and rank Items and Services (Sahar)
+2) User should be able to write a short review and rank Items and Services (Sahar or Alex)
 
 3) Impeliment a new Service for short amout of time (Parmida)
 
