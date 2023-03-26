@@ -1,20 +1,29 @@
 <?php
-
 session_start();
+require 'DB_Operations/dbConnect.php';
+
+$email = $_SESSION["email"];
+$Find_userID = "SELECT userID FROM user WHERE email = '$email'";
+$userID_run = mysqli_query($conn, $Find_userID);
+$userID = mysqli_fetch_row($userID_run);
 
 
-if (isset($_SESSION['user_id'])) {
-  // Check if shopping cart exists for user
-  if (isset($_SESSION['shopping_cart'])) {
-    // Do something if the shopping cart exists
-  } else {
-    // Create a new shopping cart for the user
-    $_SESSION['shopping_cart'] = array();
-  }
+$Find_rcptID = "SELECT receiptID FROM shopping_cart WHERE userID = '$userID[0]'";
+$rcptID_run= mysqli_query($conn, $Find_rcptID);
+$rcptID= mysqli_fetch_row($rcptID_run);
+
+
+if (isset($_SESSION["shopping_cart"]) && !empty($_SESSION["shopping_cart"])) {
+  $total = get_total();
+} else {
+  $total = 0;
 }
 
 /* We check if shopping cart exists */
 if ($_POST["action"] == "add") {
+
+
+
   if (isset($_SESSION['shopping_cart'])) {
 
     /* array_column to get array of all item IDs in shopping cart */
@@ -27,8 +36,10 @@ if ($_POST["action"] == "add") {
         'item_id'       => $_POST["id"],
         'item_name'     => $_POST["name"],
         'item_price'    => $_POST["price"],
-        'item_quantity' => 1
+        'item_quantity' => $_POST["quantity"],
+        'size'    => $_POST["size"]
       );
+
       $_SESSION["shopping_cart"][$count] = $item_array;
     } else {
 
@@ -43,10 +54,18 @@ if ($_POST["action"] == "add") {
       'item_id'       => $_POST["id"],
       'item_name'     => $_POST["name"],
       'item_price'    => $_POST["price"],
-      'item_quantity' => 1
+      'item_quantity' => $_POST["quantity"],
+      'size'    => $_POST["size"]
     );
     $_SESSION["shopping_cart"][0] = $item_array;
   }
+   #$sql = "INSERT INTO shopping_cart (userID) VALUES ('$userID[0]')";
+  #$result = mysqli_query($conn, $sql);
+
+
+
+  $sql = "INSERT INTO itemsinshoppingcart (itemID, receiptID, quantity, size) VALUES ('{$_POST["id"]}', $rcptID[0] ,{$_POST["quantity"]}, '{$_POST["size"]}')";
+  $result = mysqli_query($conn, $sql); 
 
   echo make_cart_table();
 }
@@ -99,4 +118,13 @@ function make_cart_table()
            ';
   }
   return $output;
+}
+
+function get_total()
+{
+  $total = 0;
+  foreach ($_SESSION["shopping_cart"] as $keys => $values) {
+    $total = $total + (int)($values["item_quantity"] * (int)$values["item_price"]);
+  }
+  return $total;
 }

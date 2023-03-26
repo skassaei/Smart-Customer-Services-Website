@@ -1,56 +1,42 @@
 **************(make sure to use the last version!!)*************
+( some parts have been change including the nav.php,contactus and sign up form and ...)
 
 Iteration 1&2:
-incomplete:
-#### Select (drag and drop) items into shapping cart => view every thing for confirmation and selecting a branch, date and time for the delivery => Payment page =>     Saveing every thing in the Order Table and sent a message to the customer with the truck ID assigned to thier order.
+
+1)shopingcart should be added automaticly for each user at sign up time
+
+2)Search and Filter on Items
+
+3)(Implementing Payment is for NEXT iteration) After the customer drag and drops items in "itemsInShoppingCart?" then they have to have an option to select the branch location, date and time for delivery.thier info after confirmation will be added to "order" table: 
+the branch ID,
+ date and time and,receiptID(shoppingcart belonging to the user) ,totalPrice will be saved in the "order" table
 
 
-1) shopingcart should be added automaticly for each user at sign up time (Alex)
+4)website should work on at least 3 browsers
 
-2) drag and drop the items into the shopping cart(database) (Alex, Done)
+5)need a system logo
 
-3) get the branch and user address, date and time for delivery and show it in the map page with the over view of items (Parmida)
+6)Technical Report
 
-4) go to payment page (the form is ready) (Parmida)
+Issues:
 
-4.2) add every thing with a truck ID to the order Table (Alex OR Parmida)
+1) MaintainDB nav_admin => the admin looses the access after viewing aboutUs/contactUs/Home pages
 
-5) Select, Update pages (Sahar)
+2) MaintainDB nav_admin => check the address is should work from all pages
 
-6) The alrt message does not close (Sahar)
-
-7) The code for displaying  the tables skips the firs row (Sahar)
-
-8) The userNme at sign up and insert page should be unique 
-
-9) Search the order (Sahar)
-
-The new Changes (Parmida):
-- signup.html is changed. "username" is deleted and the DB and the other files are changed to match it.
-- the drop downs work on all pages.
-- the visuals of "Insert" are fixed.
-- the "map.php" now shows the route from a chosen branch to the hard-coded customer address. (I will connect it to the DB later)
-- the CSS of the signup, forgot and signin is also changed a bit.
-- the "store" DB table now has postalCode and the map works with that.
-- the "nav" and "nav_admin" are edited and fixed a bit, but the BD maint. still needs for (Sahar's part)
-- The "aboutUs" and "contactUs" were missing their CSS files so I added those.
+3) we should make sure the username at the sign up time is unique
+****it does NOT save the user if the username is not unique. => insertForm.php
 
 
-Iteration 3:
+5) the dropdown menu in delete.php doesn't work for some reason. it works in other pages! => maybe put all the pages related to admin to one folder
 
-1) SPA
+7)delete.php=> does not show the first users
 
-2) User should be able to write a short review and rank Items and Services
 
-3) Impeliment a new Service for short amout of time
-
-4)Browser detecting : website should work on at least 3 browsers
-
-Iteration 4:
-
-1) Apply security on password, user balance, credit card number
-
-2) Need a system logo
-
-3) Technical Report
-
+TO DO:
+- access to certain pages available only to logged in users (Sina) => DONE
+- different navs based on logged in user: customer vs admin (Sina) => DONE
+- logout (Sina) => DONE
+- alert boxes for login (Sina: will do by Sunday March 19)
+- create payment view (next it)
+- add payment to database - next it(Sina)
