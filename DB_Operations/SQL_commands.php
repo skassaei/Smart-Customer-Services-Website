@@ -68,7 +68,6 @@ $sql[3] = "CREATE TABLE item (
     quantity INT UNSIGNED NOT NULL,
     price INT UNSIGNED NOT NULL,
     depCode INT NOT NULL,
-    size VARCHAR(25),
     FOREIGN KEY (depCode) REFERENCES store(depCode)
 
     )";
@@ -108,7 +107,6 @@ $sql[7] = "CREATE TABLE itemsInShoppingCart (
     itemID INT NOT NULL,
     receiptID INT NOT NULL,
     quantity INT,
-    size VARCHAR(25),
     FOREIGN KEY (itemID) REFERENCES item(itemID),
     FOREIGN KEY (receiptID) REFERENCES shopping_cart(receiptID),
 	itemsInShoppingCartID INT NOT NULL AUTO_INCREMENT,
