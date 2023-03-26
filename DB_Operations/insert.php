@@ -38,7 +38,7 @@
         $phone = mysqli_real_escape_string( $conn,$_POST["phone"]);
         
         //---------------ADDRESS INFO---------------------------------
-        $unitNum = mysqli_real_escape_string( $conn,$_POST["unitNum"]);
+        $postalCode = mysqli_real_escape_string( $conn,$_POST["postalCode"]);
         $streetName = mysqli_real_escape_string( $conn,$_POST["streetName"]);
         $city = mysqli_real_escape_string( $conn,$_POST["city"]);
         $province = mysqli_real_escape_string( $conn,$_POST["province"]);
@@ -55,7 +55,7 @@
             $userID= mysqli_fetch_row($userID_run);
             //Saving the address info in address Table
             if($userID[0]){        
-                $sava_address = "INSERT INTO address (userID ,unitNum ,streetName ,city ,province) VALUE ('$userID[0]','$unitNum','$streetName','$city','$province')";
+                $sava_address = "INSERT INTO address (userID ,postalCode ,streetName ,city ,province) VALUE ('$userID[0]','$postalCode','$streetName','$city','$province')";
                 $sava_address_run= mysqli_query($conn,$sava_address);
                 if ($sava_address_run){        
                     $_SESSION['message'] ="User Was Added Successfully" ;
@@ -106,7 +106,6 @@
     if(isset($_POST['Save_item'])){
         $itemName = mysqli_real_escape_string( $conn,$_POST["itemName"]);
         $madeIn = mysqli_real_escape_string( $conn,$_POST["madeIn"]);
-        $size = mysqli_real_escape_string( $conn,$_POST["size"]);
         $itemPic = mysqli_real_escape_string( $conn,$_POST["itemPic"]);
         $price = mysqli_real_escape_string( $conn,$_POST["price"]);
         $depCode = mysqli_real_escape_string( $conn,$_POST["depCode"]);
@@ -115,7 +114,7 @@
             $Find_depCode = "SELECT depCode FROM store WHERE depCode = '$depCode'";
             $depCode_run= mysqli_query($conn, $Find_depCode);
                 if($depCode_run->num_rows>0){
-                    $query = "INSERT INTO item (itemName ,madeIn ,size,itemPic,quantity,price,depCode) VALUE ('$itemName','$madeIn','$size','$itemPic','$quantity','$price','$depCode')";
+                    $query = "INSERT INTO item (itemName ,madeIn,itemPic,quantity,price,depCode) VALUE ('$itemName','$madeIn','$itemPic','$quantity','$price','$depCode')";
                     $query_run= mysqli_query($conn, $query);
                     if($query_run){
 
