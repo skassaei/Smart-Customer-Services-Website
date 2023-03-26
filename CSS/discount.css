@@ -1,0 +1,65 @@
+
+.grid-container {
+  display: inline-grid;
+  grid-template-columns: auto auto auto;
+  padding: 10px;
+}
+
+.grid-item {
+  padding: 20px;
+  
+}
+
+#cardholder:nth-last-child(2) {
+  margin-bottom: 10vh;
+}
+.newp{
+  padding-top: 8vh;
+  padding-bottom: 10vh;
+}
+
+#demo {
+  color:rgb(166, 0, 55);
+  transform: scale(1);
+	animation: pulse 2s infinite;
+}
+#demo2 {
+  color:rgb(166, 0, 55);
+  transform: scale(2);
+	animation: pulse 2s infinite;
+}
+h1{
+  color:rgb(166, 0, 55);
+
+}
+
+@keyframes pulse {
+	0% {
+		transform: scale(0.95);
+
+	}
+
+	70% {
+		transform: scale(1.1);
+
+	}
+
+	100% {
+		transform: scale(0.95);
+
+	}
+}
+
+footer a{
+  text-decoration: none;
+  color: white;
+}
+footer a:hover {
+  opacity:0.9;
+  color: mistyrose;
+}
+
+footer .copyright {
+
+  color:#aaa; 
+}

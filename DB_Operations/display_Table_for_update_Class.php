@@ -26,7 +26,7 @@ class updateTable {
                 // making HTML table
                 echo "<div class='container' >
         <h3>$this->tableName</h3>
-        <div class='table_wrapper'>
+        <div class='table_wrapper col-12'>
             <table class='table table-striped'>
                 <thead>
                 <tr>";
@@ -49,7 +49,7 @@ class updateTable {
                         $pk = $this->pk[$tn];
                         $tablePKValue = $value;
                     }
-                    echo "<td>$value</td>";
+                    echo "<td style='overflow-wrap: break-word;'>$value</td>";
                 }
                 echo"<td>
                 <a class='btn btn-danger my-3' onclick='DeleteConfirm()' href='DB_Operations/deleteSingleItem.php?tableName=<?php echo $tn?>&tablePKField=<?php echo $pk?>&tablePKValue=<?php echo $tablePKValue?>'>

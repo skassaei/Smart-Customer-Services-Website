@@ -1,0 +1,41 @@
+
+.grid-container {
+  display: inline-grid;
+  grid-template-columns: auto auto;
+}
+
+@media screen and (max-width: 320px) {
+  body { padding-top: 10px; }
+}
+body { padding-top: 30px; }
+
+#mainP{
+padding: 0%;
+margin: 0%;
+}
+
+.newp{
+  padding-top: 8vh;
+  padding-bottom: 10vh;
+}
+/* div {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow:ellipsis;
+} */
+
+
+footer a{
+  text-decoration: none;
+  color: #aaa;
+}
+footer a:hover {
+  opacity:0.8;
+  color: white;
+  transform: translate3D(0,-1px,0) scale(1.03);
+}
+
+footer .copyright {
+  font-size:13px;
+  color:#aaa; 
+}
