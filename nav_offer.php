@@ -15,13 +15,8 @@
          <li class="nav-item">
            <a class="nav-link active" href="contactus.php">Contact Us</a>
          </li>
-         <li class="nav-item dropdown">
-           <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-             Types of Services
-           </a>
-           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-             <li><a class="dropdown-item" href="discount.php">Special Offers</a></li>
-           </ul>
+         <li class="nav-item pl-3">
+           <p id="demo" style="color:white; font-size:3vh; padding:0%; margin:0%; padding-left:2vh;padding-right:2vh;"></p>
          </li>
          <?php
           if (isset($_SESSION['isAdmin'])) {
@@ -31,10 +26,10 @@
                Maintain DB
              </a>
              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-               <li><a class="dropdown-item" href="./Forms/display_tables_for_insert.php">Insert</a></li>
-               <li><a class="dropdown-item" href="./Forms/display_tables_for_update.php">Update</a></li>
-               <li><a class="dropdown-item" href="./Forms/display_tables_for_delete.php">Delete</a></li>
-               <li><a class="dropdown-item" href="./Forms/select.php">Select</a></li>
+               <li><a class="dropdown-item" href="./Forms/chose_Table_for_insert.php">Insert</a></li>
+               <li><a class="dropdown-item" href="./Forms/update.php">Update</a></li>
+               <li><a class="dropdown-item" href="./Forms/delete.php">Delete</a></li>
+               <li><a class="dropdown-item" href="./map.php">Select</a></li>
              </ul>
            </li>
          <?php
@@ -50,7 +45,7 @@
         if (isset($_SESSION['loggedin'])) {
         ?>
          <ul class="nav navbar-nav navbar-right light">
-           <li><a href="shoppingcart.php"><svg width="30px" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+           <li><a href="#"><svg width="30px" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                  <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
                  <g id="SVGRepo_iconCarrier">
@@ -69,7 +64,7 @@
         } else {
         ?>
          <ul class="nav navbar-nav navbar-right light">
-           <li><a href="#"><svg width="30px" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+           <li><a href="shoppingcart.php"><svg width="30px" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                  <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
                  <g id="SVGRepo_iconCarrier">
