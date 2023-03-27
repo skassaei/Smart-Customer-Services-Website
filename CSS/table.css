@@ -1,0 +1,17 @@
+
+tr:first-child {
+  border-bottom : 1px solid rgba(214, 183, 183, 0.267);
+  }
+  tr:first-of-type:hover{
+  transform: translate3D(0,0,0) scale(1);
+  color:rgba(214, 183, 183);
+
+  }
+  tr:hover{
+  transform: translate3D(0,0,1px) scale(1.005);
+  color:white;
+  }
+  td a{
+  color:white;
+  text-decoration: none;
+  }

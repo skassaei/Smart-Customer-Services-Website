@@ -15,13 +15,8 @@
           <li class="nav-item">
             <a class="nav-link active" href="contactus.php">Contact Us</a>
           </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Special Offers
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="discount.php">Discounts</a></li>
-            </ul>
+          <li class="nav-item pl-3">
+          <p id="demo" style="color:white; font-size:3vh; padding:0%; margin:0%; padding-left:2vh;padding-right:2vh;"></p>
           </li>
 		  <?php 
 			if(isset($_SESSION['isAdmin'])) {
@@ -58,11 +53,10 @@
           <path d="M18 19.5C18 20.3284 17.3284 21 16.5 21C15.6716 21 15 20.3284 15 19.5C15 18.6716 15.6716 18 16.5 18C17.3284 18 18 18.6716 18 19.5Z" stroke="#f2f2f2" stroke-width="1"></path>
         </g>
       </svg></a></li>
-        <li><a href="DB_Operations/logout.php" style="color:white;">
-          <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" fill="currentColor" class="bi bi-door-closed" viewBox="0 0 16 16">
-          <path d="M3 2a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v13h1.5a.5.5 0 0 1 0 1h-13a.5.5 0 0 1 0-1H3V2zm1 13h8V2H4v13z"/>
-          <path d="M9 9a1 1 0 1 0 2 0 1 1 0 0 0-2 0z"/>
-        </svg></a></li>
+      <li><a href="DB_Operations/logout.php"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-door-closed" viewBox="0 0 16 16">
+  <path d="M3 2a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v13h1.5a.5.5 0 0 1 0 1h-13a.5.5 0 0 1 0-1H3V2zm1 13h8V2H4v13z"/>
+  <path d="M9 9a1 1 0 1 0 2 0 1 1 0 0 0-2 0z"/>
+</svg></a></li>
 			</ul>
 		<?php 
 		}
