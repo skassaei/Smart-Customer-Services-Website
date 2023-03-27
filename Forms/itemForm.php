@@ -63,14 +63,14 @@
                 <input name="quantity" type="number" class="form-control"  id="availableNum"  min="1" placeholder="Quantity" required>
                 </div>
             </div>
-            <select name="size" class="form-select col-12" aria-label="Size">
+            <!-- <select name="size" class="form-select col-12" aria-label="Size">
                 <option selected>select size</option>
                     <option value="XS">XS</option>
                     <option value="S">S</option>
                     <option value="Midum">Midum</option>
                     <option value="Large">Large</option>
                     <option  value="XLarge">XLarge</option>
-                </select>
+                </select> -->
                 <div class="col-3">
                     <a class="btn btn-secondary" href="./chose_Table_for_insert.php">Back</a>
                 </div>

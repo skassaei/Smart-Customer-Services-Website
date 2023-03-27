@@ -15,13 +15,8 @@
           <li class="nav-item">
             <a class="nav-link active" href="contactus.php">Contact Us</a>
           </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Special Offers
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="discount.php">Discounts</a></li>
-            </ul>
+          <li class="nav-item pl-3">
+          <p id="demo" style="color:white; font-size:3vh; padding:0%; margin:0%; padding-left:2vh;padding-right:2vh;"></p>
           </li>
 		  <?php 
 			if(isset($_SESSION['isAdmin'])) {
