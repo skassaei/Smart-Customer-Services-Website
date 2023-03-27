@@ -1,7 +1,13 @@
 <script>
 	function DeleteConfirm() {
-      confirm("Are you sure to delete the record");
+      if(confirm("Are you sure to delete the record"))
+      {
+    }else{
+        return false;
+    
     }
+}
+    
 </script>
 <?php
 	require 'dbconnect.php';

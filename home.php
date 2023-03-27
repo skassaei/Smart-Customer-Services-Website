@@ -38,8 +38,8 @@ include 'DB_Operations/login.php'
                   <ul class="list-group list-group-flush">
                     <li class="list-group-item">price: $<?php echo number_format($row['price'], 2); ?></li>
                     <li class="list-group-item">
-                    <a class='btn btn-light my-3'  href='./reviews.php?itemName=<?php echo $row['itemName']?>&itemID=<?php echo $row['itemID']?>'>
-                Update</a>
+                      <a class='btn btn-light my-3'  href='./reviews.php?itemName=<?php echo $row['itemName']?>&itemID=<?php echo $row['itemID']?>'>
+                          Reviews</a>
                     </li>
                   </ul>
                 </div>
@@ -69,6 +69,10 @@ include 'DB_Operations/login.php'
                   </div>
                   <ul class="list-group list-group-flush">
                     <li class="list-group-item">price: $<?php echo number_format($row['price'], 2); ?></li>
+                    <li class="list-group-item">
+                      <a class='btn btn-light my-3'  href='./reviews.php?itemName=<?php echo $row['itemName']?>&itemID=<?php echo $row['itemID']?>'>
+                          Reviews</a>
+                    </li>
                   </ul>
                 </div>
               </div>
