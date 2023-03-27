@@ -126,6 +126,15 @@ $sql[8] = "CREATE TABLE trip(
 	FOREIGN KEY (destinationCode) REFERENCES address(userID)
  )";
 
+
+$sql[9] = "CREATE TABLE Review(
+    itemRv INT NOT NULL,
+    PRIMARY KEY(itemRv),
+    itemID INT NOT NULL,
+    FOREIGN KEY (itemID) REFERENCES item(itemID),
+    rankNum INT ,
+    reviewTXT VARCHAR(300)
+ )";
      
     foreach($sql as $sql){
     if ($conn->query($sql)) {

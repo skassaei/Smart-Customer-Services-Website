@@ -33,7 +33,7 @@ include 'DB_Operations/login.php'
                   <img src="<?php echo $row["itemPic"]; ?>" data-id="<?php echo $row['itemID']; ?>" data-name="<?php echo $row['itemName']; ?>" data-price="<?php echo $row['price']; ?>" data-quantity="<?php echo $row['quantity']; ?>" data-size="<?php echo $row['size']; ?>" class="img-responsive product_drag" />
                   <div class="card-body">
                     <h5 class="card-title"><?php echo $row['itemName']; ?></h5>
-                    <p class="card-text">madeIn: <?php echo $row['madeIn']; ?></p>
+                    <p class="card-text">Color Code:: <?php echo $row['madeIn']; ?></p>
                   </div>
                   <ul class="list-group list-group-flush">
                     <li class="list-group-item">price: $<?php echo number_format($row['price'], 2); ?></li>
@@ -70,7 +70,7 @@ include 'DB_Operations/login.php'
                   <ul class="list-group list-group-flush">
                     <li class="list-group-item">price: $<?php echo number_format($row['price'], 2); ?></li>
                     <li class="list-group-item">
-                      <a class='btn btn-light my-3'  href='./reviews.php?itemName=<?php echo $row['itemName']?>&itemID=<?php echo $row['itemID']?>'>
+                      <a class='btn btn-light my-3'  href='./reviews.php?itemID=<?php echo $row['itemID']?>'>
                           Reviews</a>
                     </li>
                   </ul>
