@@ -87,6 +87,7 @@
                     <th scope="col">Department Cod</th>
                     <th scope="col">Street</th>
                     <th scope="col">City</th>
+                    <th scope="col">postalCode</th>
                     <th scope="col">
                     <a class="btn btn-secondary" href="storeForm.php">Insert</a>
                     </th>
@@ -112,6 +113,7 @@
                         <td><?php echo $row['depCode']; ?></td>
                         <td><?php echo $row['location']; ?></td>
                         <td><?php echo $row['city']; ?></td>
+                        <td><?php echo $row['postalCode']; ?></td>
                         <td></td>
 
                     </tr>

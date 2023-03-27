@@ -78,6 +78,33 @@
 
     }
 
+//---------Saving address------------
+if(isset($_POST['Save_address'])){
+
+      $userID = mysqli_real_escape_string( $conn,$_POST["userID"]);
+      $postalCode = mysqli_real_escape_string( $conn,$_POST["postalCode"]);
+      $unitNum = mysqli_real_escape_string( $conn,$_POST["unitNum"]);
+      $streetName = mysqli_real_escape_string( $conn,$_POST["streetName"]);
+      $city = mysqli_real_escape_string( $conn,$_POST["city"]);
+      $province = mysqli_real_escape_string( $conn,$_POST["province"]);
+      
+      $query = "INSERT INTO address (postalCode ,unitNum ,streetName ,city,province) VALUE ('$postalCode','$unitNum','$streetName','$city','$province') WHERE userID = '$userID' ";
+      $query_run= mysqli_query($conn,$query);
+      
+      if($query_run){
+
+            $_SESSION['message'] ="Address Was Added Successfully" ;
+            header("Location: ../Forms/chose_Table_for_insert.php");
+            exit(0);
+            }
+            else{
+                $_SESSION['message'] ="User ID does not exit OR already has address.Please try with different ID. " ;
+                header("Location: ../Forms/addressForm.php");
+                exit(0);
+            }
+    }
+      
+
 // ---------Saving Truck----------
     if(isset($_POST['Save_truck'])){
         $driverFirstName = mysqli_real_escape_string( $conn,$_POST["driverFirstName"]);

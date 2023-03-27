@@ -43,7 +43,7 @@ $sql[0] = "CREATE TABLE user (
     
 $sql[1] = "CREATE TABLE address (
     userID INT NOT NULL,
-    FOREIGN KEY (userID) REFERENCES user(userID),
+    FOREIGN KEY (userID) REFERENCES user(userID) ON DELETE CASCADE,
     PRIMARY KEY(userID),
     postalCode VARCHAR(25) NOT NULL,
     streetName VARCHAR(25) NOT NULL,
@@ -68,7 +68,7 @@ $sql[3] = "CREATE TABLE item (
     quantity INT UNSIGNED NOT NULL,
     price INT UNSIGNED NOT NULL,
     depCode INT NOT NULL,
-    FOREIGN KEY (depCode) REFERENCES store(depCode)
+    FOREIGN KEY (depCode) REFERENCES store(depCode) ON DELETE CASCADE
 
     )";
 
@@ -76,7 +76,7 @@ $sql[4] = "CREATE TABLE shopping_cart (
     receiptId int NOT NULL AUTO_INCREMENT,
     PRIMARY KEY(receiptId),
     userID INT NOT NULL,
-    FOREIGN KEY (userID) REFERENCES USER(userID)
+    FOREIGN KEY (userID) REFERENCES USER(userID) ON DELETE CASCADE
     )";
 
 
@@ -118,12 +118,12 @@ $sql[8] = "CREATE TABLE trip(
     PRIMARY KEY(tripID),
     truckID INT NOT NULL,
     FOREIGN KEY (truckID) REFERENCES truck(truckID),
-    PRICE INT UNSIGNED,
+    orderID INT NOT NULL,
+    FOREIGN KEY (orderID) REFERENCES orders(orderID),
     depCode INT NOT NULL,
 	FOREIGN KEY (depCode) REFERENCES store(depCode),
     destinationCode INT NOT NULL,
-	FOREIGN KEY (destinationCode) REFERENCES address(userID),
-    distance INT UNSIGNED
+	FOREIGN KEY (destinationCode) REFERENCES address(userID)
  )";
 
      

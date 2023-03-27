@@ -27,46 +27,27 @@
     <div class="container">
       <?php include('message.php')?>
       <form class="row g-3" action = "../DB_operations/insert.php" method="post">
-      <h3> User: <br></h3>
-
-        <div class="form-group col-12">
-          <label for="first_name">First Name:</label>
-          <input type="text" class="form-control" id="first_name" name="firstName" required>
-        </div>
-
-        <div class="form-group col-12">
-          <label for="last_name">Last Name:</label>
-          <input type="text" class="form-control" id="last_name" name="lastName" required>
-        </div>
-
-        <div class="form-group col-12">
-          <label for="email">Email:</label>
-          <input type="email" class="form-control" id="email" name="email">
-        </div>
-
-        <div class="row col-12">
-        
-          <div class="form-group col-6">
-            <label for="password">Password:</label>
-            <input type="password" class="form-control" id="password" name="password" minlength="8" required>
-          </div>
-
-          <div class="form-group col-6">
-            <label for="phone">phone:</label>
-            <input type="tel" class="form-control" id="phone" placeholder="6474576768" pattern="[0-9]{3}[0-9]{3}[0-9]{4}" name="phone" >
-            <br>
-          </div>
-        
 
             <!-- address info below --> 
             <div class="form-group col-12">
-              <h3> Please Enter the Address Information <br></h3>
+                <h3> Address: </h3>
             </div>
-            
+            <div class="form-group col-3">
+                    <label for="UserID">UserID:</label>
+                    <input type="text" class="form-control" id="UserID" name="userID" required>
+            </div>
+            <div class="form-group col-3">
+                    <label for="unit_num">Unit Number:</label>
+                    <input type="text" class="form-control" id="unit_num" name="unitNum" required>
+            </div>
             
             <div class="form-group col-6">
                     <label for="street_num">Street Name:</label>
                     <input type="text" class="form-control" id="street_num" name="streetName" required>
+            </div>
+            <div class="form-group col-3">
+                    <label for="Postal">Postal Code:</label>
+                    <input type="text" class="form-control" id="street_num" name="postalCode" required>
             </div>
             
             
@@ -74,11 +55,8 @@
                     <label for="city">City:</label>
                     <input type="text" class="form-control" id="city" name="city" required>
             </div>
-            <div class="form-group col-4">
-                    <label for="postalCode">Postal Code:</label>
-                    <input type="text" class="form-control" id="postalCode" name="postalCode" required>
-            </div>
-            <div class="form-group col-8">
+            
+            <div class="form-group col-6">
                     <label for="province">Province:</label>
                     <input type="text" class="form-control" id="province" name="province" required>
             </div>
@@ -88,7 +66,7 @@
                     <a class="btn btn-secondary" href="./display_tables_for_insert.php">Back</a>
                 </div>
                 <div class="col-9">
-                  <button type="submit" name="Save_user" class="btn btn-primary">Save</button>
+                  <button type="submit" name="Save_address" class="btn btn-primary">Save</button>
                 </div>
               
 

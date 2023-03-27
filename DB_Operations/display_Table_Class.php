@@ -108,8 +108,10 @@ class Table {
                 foreach($firstRow as $head => $value){
 
                         if($head != "password"){
-                                echo "<th scope='col'>$head</th>";
-                                }
+                            echo "<th scope='col'>$head</th>";
+                        }
+                                
+                                
                     }
                     echo "<th scope='col'>action</th></thead><tbody>";
 
@@ -119,9 +121,20 @@ class Table {
                     foreach($row as $head => $value){
 
                         if ($head != "password"){
-                        if ($head == $tpk) $PKValue = $value;
                             
-                        echo "<td>$value</td>";
+                            if ($head == $tpk) $PKValue = $value;
+                            
+                            if( $head == "itemPic"){
+                                echo "<th scope='col'>
+                                <picture>
+                                <img alt='' style='width: 20%; height: 10%;' src='<?php echo $value ?>' />
+                                </picture></th>";
+                            }else{
+                                echo "<td>$value</td>";
+                            }
+                            
+                            
+                        
                     }
 
                 }
