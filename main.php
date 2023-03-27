@@ -1,3 +1,9 @@
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+
+<body ng-app="myApp">
+<!--
  <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-darkk">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">SystemLogoHolder</a>
@@ -7,20 +13,20 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#!home">Home</a>
+            <a class="nav-link active" aria-current="page" href="#/home">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#!aboutus">About Us</a>
+            <a class="nav-link active" aria-current="page" href="#/aboutus">About Us</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" href="#!contactus">Contact Us</a>
+            <a class="nav-link active" href="#/contactus">Contact Us</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Types of Services
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="#!discount">Special Offers</a></li>
+              <li><a class="dropdown-item" href="#/discount">Special Offers</a></li>
             </ul>
           </li>
 		  <?php 
@@ -67,4 +73,23 @@
       </div>
     </div>
   </nav>
-		
+  -->
+  <div ng-view></div>
+  <script>
+    var app = angular.module("myApp", ["ngRoute"]);
+app.config(function($routeProvider) {
+    $routeProvider
+    .when("/", {
+        templateUrl : "home.php"
+    })
+    .when("/aboutus", {
+        templateUrl : "aboutus.php"
+    })
+	
+	.when("/contactus", {
+        templateUrl : "contactus.php"
+    })
+    .otherwise({redirectTo: '/'});
+});
+    </script>
+  </body>
