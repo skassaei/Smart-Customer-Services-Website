@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <?php
 session_start();
+
+if (isset($_SESSION['loggedin'])) {
+	
 ?>
 <head>
     <title>CPS630 Project</title>
@@ -78,9 +81,9 @@ session_start();
             $avDay_run= mysqli_query($conn, $Find_avDay);
             $avDay= mysqli_fetch_row($avDay_run);
 
-            $Update_Truck = "UPDATE trucktogo SET $deliveryDateWeek = ($avDay[0]-1) WHERE truckID= '$avTruck[0]'";
-            mysqli_query($conn, $Update_Truck);
+            $_SESSION['deliveryDateWeek']=$deliveryDateWeek;
             $_SESSION['truck_togo']=$avTruck[0];
+            $_SESSION['dec']=$avDay[0];
             $_SESSION['dayToDeliver']=date("l jS \of F Y ",$d);
 
 
@@ -309,4 +312,11 @@ session_start();
     });
   });
 </script>
+<?php
+
+}	
+else{
+  header("Location: ./login.html");
+}
+  ?>
 </html>

@@ -225,7 +225,7 @@ if (isset($_SESSION['loggedin'])) {
 
 	}	
 	else{
-		header("Location: ../login.html");
+		header("Location: ./login.html");
 	}
     ?>
 

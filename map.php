@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <?php
 session_start();
+
+if (isset($_SESSION['loggedin'])) {
+	
 ?>
 <head>
     <title>CPS630 Project</title>
@@ -57,7 +60,7 @@ session_start();
               </select>
             </div>
             <div class="col-1">
-              <input type="submit" class="btn btn-outline-light mb-2 mt-1 pt-1 pb-1 pr-2 pl-2" >
+              <input type="submit" name="mapDone" class="btn btn-outline-light mb-2 mt-1 pt-1 pb-1 pr-2 pl-2" >
             </div>
           </div>
           <div id="map"></div>
@@ -108,5 +111,12 @@ session_start();
 	defer
 	></script>
   </body>
+  <?php
+
+	}	
+	else{
+		header("Location: ./login.html");
+	}
+    ?>
 </html>
   

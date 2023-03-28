@@ -6,13 +6,11 @@ include './DB_Operations/login.php';
 
 if (isset($_SESSION['loggedin'])) {
 	
-if(isset($_POST['Save_review'])) 
+if(isset($_POST['Find_Order'])) 
 { 
     $userID = mysqli_real_escape_string( $conn,$_POST["userID"]);
-    $userName = mysqli_real_escape_string( $conn,$_POST["userName"]);
-    $itemID = mysqli_real_escape_string( $conn,$_POST["itemID"]);
-    $userRN = mysqli_real_escape_string( $conn,$_POST["userRN"]);
-    $userReview = mysqli_real_escape_string( $conn,$_POST["userReview"]);
+    $orderID = mysqli_real_escape_string( $conn,$_POST["orderID"]);
+
 
     $query = "INSERT INTO review (userName, itemID, userRN,userReview,userID,reviewTime) VALUES ('$userName', '$itemID', '$userRN','$userReview','$userID',CURRENT_TIMESTAMP);";
 

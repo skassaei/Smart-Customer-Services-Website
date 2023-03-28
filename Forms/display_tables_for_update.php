@@ -1,4 +1,8 @@
-<?php include '../DB_Operations/login.php' ?>
+<?php include '../DB_Operations/login.php';
+
+if (isset($_SESSION['loggedin']) and isset($_SESSION['isAdmin'])) {
+
+	?>
 <!DOCTYPE html>
 <head>
     <title>CPS630 Project</title>
@@ -8,6 +12,10 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     
     <link rel="stylesheet" href="../CSS/nav.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="../CSS/contactus.css">
+    <link rel="stylesheet" href="../CSS/table.css">
+	
+
 </head>
 
 <html>
@@ -26,7 +34,7 @@
 	$tableNames[4] = "discount";
 	$tableNames[5] = "truck";
 	$tableNames[6] = "truckToGo";
-	$tableNames[7] = "reviewID";
+	$tableNames[7] = "review";
 	$tableNames[8] = "orders";
 	include('message.php');
 	foreach ($tableNames as $tn){
@@ -37,4 +45,11 @@
 
 ?>
 	</body>
+	<?php
+
+	}	
+	else{
+		header("Location: ../login.html");
+	}
+    ?>
 </html>

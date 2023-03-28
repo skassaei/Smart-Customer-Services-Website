@@ -1,5 +1,8 @@
 
-<?php include 'DB_Operations/login.php' ?>
+<?php include 'DB_Operations/login.php';
+
+if (isset($_SESSION['loggedin'])) {
+	?>
 <!DOCTYPE html>
 <head>
     <title>CPS630 Project</title>
@@ -32,4 +35,11 @@
             </div>
         </div>
     </body>
+    <?php
+
+}	
+else{
+    header("Location: ./login.html");
+}
+?>
 </html>

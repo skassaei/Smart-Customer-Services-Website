@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <?php
 session_start();
+
+if (isset($_SESSION['loggedin'])) {
+	
 ?>
 <head>
     <title>CPS630 Project</title>
@@ -10,9 +13,10 @@ session_start();
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./CSS/nav.css">
     <link rel="stylesheet" href="./CSS/map.css">
+    <link rel="stylesheet" href="./CSS/table.css">
     <style>
         td, th{
-            width:50em;
+            width:100rem;
         }
     </style>
 </head>
@@ -60,22 +64,36 @@ session_start();
 
             $Find_items = "SELECT itemID FROM itemsInShoppingCart WHERE receiptID = '$currentRcptID[0]'";
             $items_run= mysqli_query($conn, $Find_items);
+            if(isset($_SESSION['shopping_cart'])){
+                
+                $insert_query = "INSERT INTO shopping_cart (userID) VALUES ('{$_SESSION["ID"]}')";
+                mysqli_query($conn, $insert_query);
+    
+                $add_order = "INSERT INTO orders (dateIssued, totalPrice, paymentmethod, userID, receiptID)  VALUES ('$orderDate', '{$_SESSION["totalAmount"]}', '$method', '{$_SESSION["ID"]}', '$currentRcptID[0]' )";
+                $add_order_run= mysqli_query($conn, $add_order);
 
-            $insert_query = "INSERT INTO shopping_cart (userID) VALUES ('{$_SESSION["ID"]}')";
-            mysqli_query($conn, $insert_query);
+                $Find_orderID = "SELECT orderID FROM orders WHERE receiptID = '$currentRcptID[0]' AND userID='{$_SESSION["ID"]}'";
+                $orderID_run= mysqli_query($conn, $Find_orderID);
+                $orderID= mysqli_fetch_row($orderID_run);
+                $_SESSION['orderNum'] = $orderID[0];
 
-            $add_order = "INSERT INTO orders (dateIssued, totalPrice, paymentmethod, userID, receiptID)  VALUES ('$orderDate', '{$_SESSION["totalAmount"]}', '$method', '{$_SESSION["ID"]}', '$currentRcptID[0]' )";
-            $add_order_run= mysqli_query($conn, $add_order);
+                $Update_Truck = "UPDATE trucktogo SET {$_SESSION['deliveryDateWeek']} = ({$_SESSION['dec']}-1) WHERE truckID= '{$_SESSION["truck_togo"]}'";
+                mysqli_query($conn, $Update_Truck);
 
-            $Find_orderID = "SELECT orderID FROM orders WHERE receiptID = '$currentRcptID[0]' AND userID='{$_SESSION["ID"]}'";
-            $orderID_run= mysqli_query($conn, $Find_orderID);
-            $orderID= mysqli_fetch_row($orderID_run);
+                $add_order = "INSERT INTO trip (truckID, orderID)  VALUES ('{$_SESSION["truck_togo"]}','$orderID[0]')";
+                $add_order_run= mysqli_query($conn, $add_order);
+
+            }
+
+
+
+            
             
         ?>
         <div class="container mr-4 mt-1 mb-4 ml-5 text-center">
         <h1 class="text-center" style="font-size: 7vmin;">Order Confirmed!</h1>
 
-        <h4 class="text-center mb-3">Order Number #<?php echo $orderID[0]?></h4>
+        <h4 class="text-center mb-3">Receipt Number #<?php echo $currentRcptID[0];?></h4>
         <a href="home.php" class="mt-2 mb-0"><button class="mt-2 mb-0">Go Back to Main Page</button></a>
         </div>
 
@@ -106,9 +124,9 @@ session_start();
 
                 <hr class="rounded m-0 mt-3">
 
-                <h4 class="card-title"><b>Order ID:</b> #<?php echo $currentRcptID[0]; ?></h4>
+                <h4 class="card-title"><b>Order ID:</b> #<?php echo $_SESSION['orderNum'];?></h4>
                 <hr class="rounded m-0">
-                <table class="col-12 table-responsive d-none d-md-block d-lg-block ">
+                <table class="col-12 d-none d-md-block d-lg-block ">
                     <tr>
                     <th>Product Name</th>
                     <th>Price</th>
@@ -215,5 +233,13 @@ session_start();
             ?>
                 </div>
             </div>
+
+            <?php
+
+}	
+else{
+    header("Location: ./login.html");
+}
+?>
             
 </html>

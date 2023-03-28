@@ -19,6 +19,8 @@ if(isset($_POST['save']))
 				$_SESSION['loggedin'] = true;
 				if ($row['admin'] != 0){
 					$_SESSION['isAdmin'] = true;
+				}else{
+					unset($_SESSION['isAdmin']);
 				}
 				
 

@@ -5,6 +5,7 @@
 </script>
 
 
+
 <?php
 	require 'dbconnect.php';
 class Table {
@@ -44,8 +45,8 @@ class Table {
 
             if(!empty($rows)){
                     // making HTML table
-                        echo "<div class='container' >
-                            <h5>$this->tableName</h5>
+                        echo "<div class='container table-responsive' >
+                            <h3>$this->tableName</h3>
                             <div class='table_wrapper'>
                                 <table  class='table table-hover align-middle'>
                                     <thead>
@@ -115,8 +116,8 @@ class Table {
             if(!empty($rows)){
                     // making HTML table
                      
-                    echo "<div class='container' >
-                        <h5>$this->tableName</h5>
+                    echo "<div class='container table-responsive' >
+                        <h3>$this->tableName</h3>
                         <div class='table_wrapper'>
                             <table  class='table table-hover align-middle'>
                                 <thead>

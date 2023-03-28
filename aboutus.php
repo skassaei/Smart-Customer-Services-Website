@@ -1,5 +1,8 @@
 <!DOCTYPE html>
-<?php include 'DB_Operations/login.php' ?>
+<?php include 'DB_Operations/login.php';
+
+if (isset($_SESSION['loggedin'])) {
+  ?>
 <!DOCTYPE html>
 <head>
     <title>CPS630 Project</title>
@@ -21,17 +24,17 @@
     <div class="align-content-center container-fluid">
       <div class="row justify-content-evenly mb-5 mt-3">
         <div class="card col-5 p-2 bg-darkk shadow-lg rounded">
-          <img class="card-img-top align-self-center rounded-circle border border-white" src="./aboutUs_images/example_p.jpg" alt="Card image" style="width:40vmin">
+          <img class="card-img-top align-self-center rounded-circle border border-white" src="./aboutUs_images/blank.jpg" alt="Card image" style="width:40vmin">
           <div class="card-body ">
             <h4 class="card-title text-center">Parmida Azizi</h4>
-            <p class="card-text text-center">Some example text some example text. Some example text some example text.</p>
+            <p class="card-text text-center">Some text as placeholder for the member's bio.</p>
           </div>
         </div>
         <div class="card col-5 p-2 bg-darkk shadow-lg rounded">
           <img class="card-img-top align-self-center rounded-circle border border-white" src="./aboutUs_images/blank.jpg" alt="Card image" style="width:40vmin">
           <div class="card-body ">
             <h4 class="card-title text-center">Sahar Kassaei</h4>
-            <p class="card-text text-center">Some example text some example text. Some example text some example text.</p>
+            <p class="card-text text-center">Some text as placeholder for the member's bio.</p>
           </div>
         </div>
       </div>
@@ -40,18 +43,25 @@
           <img class="card-img-top align-self-center rounded-circle border border-white" src="./aboutUs_images/blank.jpg" alt="Card image" style="width:40vmin">
           <div class="card-body ">
             <h4 class="card-title text-center">Sina Pahlavan</h4>
-            <p class="card-text text-center">Some example text some example text. Some example text some example text.</p>
+            <p class="card-text text-center">Some text as placeholder for the member's bio.</p>
           </div>
         </div>
         <div class="card col-5 p-2 bg-darkk shadow-lg rounded">
           <img class="card-img-top align-self-center rounded-circle border border-white" src="./aboutUs_images/blank.jpg" alt="Card image" style="width:40vmin">
           <div class="card-body ">
             <h4 class="card-title text-center">Alex Huynh</h4>
-            <p class="card-text text-center">Some example text some example text. Some example text some example text.</p>
+            <p class="card-text text-center">Some text as placeholder for the member's bio.</p>
           </div>
         </div>
       </div>
     </div>
   </body>
+  <?php
+
+}	
+else{
+  header("Location: ./login.html");
+}
+  ?>
 </html>
   

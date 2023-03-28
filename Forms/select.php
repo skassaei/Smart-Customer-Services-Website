@@ -1,5 +1,9 @@
 <?php
 require '../DB_Operations/dbconnect.php';
+include '../DB_Operations/login.php';
+
+if (isset($_SESSION['loggedin']) and isset($_SESSION['isAdmin'])) {
+
 
 if(isset($_POST['select_table'])){
 $tableName =  mysqli_real_escape_string( $conn,$_POST["tableName"]); 
@@ -151,3 +155,10 @@ $query = "SELECT * FROM $tableName WHERE $attribute = '$value' ";
             </script>
   </body>
 </html>
+<?php
+
+	}	
+	else{
+		header("Location: ../login.html");
+	}
+    ?>

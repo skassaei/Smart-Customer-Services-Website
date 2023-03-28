@@ -2,7 +2,8 @@
 require '../DB_Operations/dbConnect.php';
 include '../DB_Operations/login.php';
 
-if (isset($_SESSION['loggedin'])) {
+if (isset($_SESSION['loggedin']) and isset($_SESSION['isAdmin'])) {
+
 	
 ?>
 <!DOCTYPE html>

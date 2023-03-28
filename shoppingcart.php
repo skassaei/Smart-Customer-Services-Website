@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <?php
 session_start();
+
+if (isset($_SESSION['loggedin'])) {
+	
 ?>
 
 <head>
@@ -172,3 +175,10 @@ session_start();
 </script>
 
 </html>
+<?php
+
+	}	
+	else{
+		header("Location: ./login.html");
+	}
+    ?>

@@ -1,4 +1,5 @@
 <?php
+
 session_start();
 if ($_POST["action"] == "delete") {
   foreach ($_SESSION["shopping_cart"] as $keys => $values) {

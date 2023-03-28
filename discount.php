@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <?php
 require 'DB_Operations/dbConnect.php';
-include 'DB_Operations/login.php'
+include 'DB_Operations/login.php';
+
+if (isset($_SESSION['loggedin'])) {
+	
 ?>
 
 <head>
@@ -211,4 +214,11 @@ setInterval(function(){
 },1000);
 
 </script>
+<?php
+
+}	
+else{
+  header("Location: ./login.html");
+}
+  ?>
 </html>
