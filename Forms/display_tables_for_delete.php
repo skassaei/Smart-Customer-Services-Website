@@ -26,6 +26,7 @@
 	$tableNames[6] = "truckToGo";
 	$tableNames[7] = "reviewID";
 	$tableNames[8] = "orders";
+	include('message.php');
 	foreach ($tableNames as $tn){
 		$tableObj = new Table($tn,$conn);
 		$tableObj->display_all_rows_delete();
