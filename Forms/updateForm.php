@@ -3,7 +3,7 @@
 	include '../DB_Operations/login.php'; 
 	if (isset($_SESSION['loggedin']) and isset($_SESSION['isAdmin'])) {
 
-				
+						
 ?>
 <!DOCTYPE html>
 <head>
@@ -67,10 +67,6 @@ if ($tableName =="user"){
          </div>
       </div>
               <div class="form-check">
-                  <!-- <input value="<?php // echo $row["admin"]?>"  class="form-check-input" type="checkbox" id="autoSizingCheck2"  name="admin" >
-                  <label class="form-check-label" for="autoSizingCheck2">
-                  Admin?
-                  </label> -->
 
 				  <select  value="<?php echo $row["admin"]?>" name="admin" class="form-select col-12" aria-label="Size">
                 	<option selected>Admin?</option>
@@ -103,12 +99,12 @@ if ($tableName =="user"){
       <form class="row g-3" action = "../DB_operations/updateSingleRow.php" method="post">
 
 
-            <div class="form-group col-3">
+            <div class="form-group col-6">
                     <label for="street_num">Street Name:</label>
                     <input value="<?php echo $row["streetName"]?>" type="text" class="form-control" id="street_num" name="streetName" required>
             </div>
             
-			<div class="form-group col-3">
+			<div class="form-group col-6">
                     <label for="unit_num">Postal Code:</label>
                     <input value="<?php echo $row["postalCode"]?>" type="text" class="form-control" id="unit_num" name="postalCode" required>
             </div>
@@ -126,7 +122,6 @@ if ($tableName =="user"){
                  <input value="<?php echo $PKValue?>"  type="text"  name="userID" required>
             </div>
 
-        </div>
                 <div class="col-3">
                     <a class="btn btn-secondary" href="./display_tables_for_update.php">Back</a>
                 </div>
@@ -136,6 +131,8 @@ if ($tableName =="user"){
               
 
       </form>
+      </div>
+
 <?php
   }
 // ---------------updating STORE------------------------------
@@ -181,12 +178,16 @@ if ($tableName =="user"){
   }
 // ---------------updating ITEM------------------------------
   elseif($tableName =="item"){
+    $store_rows=[];
     $query = "SELECT * FROM item WHERE itemID = $PKValue ";
     $query_run= mysqli_query($conn,$query);
     $row = mysqli_fetch_assoc($query_run);
+    $store_query = "SELECT depCode FROM store";
+    $store_run= mysqli_query($conn,$store_query);
+    $store_rows = $store_run->fetch_all(MYSQLI_ASSOC);
 ?>
         <div class="container" >
-        <?php include('message.php')?>
+
             <form  action="../DB_Operations/updateSingleRow.php"  class="row g-3" method= POST>
             <h3> Item: <br></h3>
             <div class="form-group col-12">
@@ -214,12 +215,23 @@ if ($tableName =="user"){
                 <input value="<?php echo $row["price"]?>"   name="price" type="text" class="form-control" id="price" required>
                 </div>
             </div>
-            <div class="form-group col-6">
-                <label for="DepartmentCode" >Department Code</label>
-                <div class="col-sm-10">
-                <input  value="<?php echo $row["depCode"]?>"  name="depCode" type="number" class="form-control"  id="DepartmentCode"  min="1"  required>
-                </div>
-            </div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <label class="input-group-text" for="inputGroupSelect01">Department Code</label>
+                  </div>
+                  <select  name='depCode' class="custom-select" id="inputGroupSelect01">
+                    <option selected  name='depCode'  value='<?php echo $row["depCode"]?>'  > <?php echo $row["depCode"]?></option>
+                    <?php
+                      foreach($store_rows as $store){
+                    ?>
+                    <option name='depCode' value='<?php echo $store["depCode"] ?>' ><?php echo $store["depCode"] ?> </option>
+                    <?php
+                          }
+                    ?>
+                  </select>
+              </div>
+
             <div class="form-group col-6">
                 <label for="availableNum" >Quantity</label>
                 <div class="col-sm-10">
@@ -250,7 +262,7 @@ if ($tableName =="user"){
     $row = mysqli_fetch_assoc($query_run);
 ?>
 
-<div lass="container">
+  <div class="container">
             <h3>Truck</h3>
             <form name="storeForm"  class="row g-3" action="../DB_Operations/updateSingleRow.php"   method= POST>
                 
@@ -269,20 +281,90 @@ if ($tableName =="user"){
                 <div hidden  class="form-group col-12">
                  <input value="<?php echo $PKValue?>"  type="text"  name="truckID" required>
                </div>
-                    <div class="form-group col-12">
-                    <div class="form-check">
-                        <input value="<?php echo $row["availabilityCode"]?>"  class="form-check-input" type="checkbox" id="autoSizingCheck2"  name="availabilityCode" >
-                        <label class="form-check-label" for="autoSizingCheck2">
-                        Is the truck available?
-                        </label>
-                    </div>
-                </div>  
             
                 <div class="col-3">
                 <a class="btn btn-secondary" href="./display_tables_for_update.php">Back</a>
             </div>
                 <div class="col-9">
                     <button type="submit" name="update_truck" class="btn btn-primary">Update</button>
+                </div>         
+                
+            </form>
+  </div>
+
+    <?php
+  }
+// ---------------updating truckToGo------------------------------
+  elseif($tableName =="truckToGo"){
+
+    $toGo_query = "SELECT * FROM truckToGo WHERE truckID = $PKValue ";
+    $toGo_run= mysqli_query($conn,$toGo_query);
+    $toGo_row = mysqli_fetch_assoc($toGo_run);
+
+?>
+
+  <div class="container">
+            <h3>Truck</h3>
+            <form name="storeForm"  class="row g-3" action="../DB_Operations/updateSingleRow.php"   method= POST>
+                
+                <div class="form-group col-12">
+                    <label class="form-check-label" for="form-check">
+                        When Is this Truck available?
+                        </label>
+                        <div class="form-group col-12">
+                        <input class="form-check-input" type="checkbox" id="autoSizingCheck2"  name="Monday" value="1">
+                        <label class="form-check-label" for="autoSizingCheck2">
+                        Monday
+                        </label>
+
+                        <input class="form-check-input" type="checkbox" id="autoSizingCheck2"  name="Tuesday" value="1">
+                        <label class="form-check-label" for="autoSizingCheck2">
+                        Tuesday
+                        </label>
+
+                        <input class="form-check-input" type="checkbox" id="autoSizingCheck2"  name="Wednesday" value="1">
+                        <label class="form-check-label" for="autoSizingCheck2">
+                        Wednesday
+                        </label>
+
+                        <input class="form-check-input" type="checkbox" id="autoSizingCheck2"  name="Thursday" value="1">
+                        <label class="form-check-label" for="autoSizingCheck2">
+                        Thursday
+                        </label>
+                        </div>
+                        <div class="form-group col-12">
+                    
+                        <input class="form-check-input" type="checkbox" id="autoSizingCheck2"  name="Friday" value="1">
+                        <label class="form-check-label" for="autoSizingCheck2">
+                        Friday
+                        </label>
+                        
+                        
+                        <input class="form-check-input" type="checkbox" id="autoSizingCheck2"  name="Saturday" value="1">
+                        <label class="form-check-label" for="autoSizingCheck2">
+                        Saturday 
+                        </label>
+
+                    
+                        <input class="form-check-input" type="checkbox" id="autoSizingCheck2"  name="Sunday" value="1">
+                        <label class="form-check-label" for="autoSizingCheck2">
+                        Sunday 
+                        </label></div>
+
+
+                    </div>
+
+
+
+                <div hidden  class="form-group col-12">
+                 <input value="<?php echo $PKValue?>"  type="text"  name="truckID" required>
+               </div>
+               
+                <div class="col-3">
+                    <a class="btn btn-secondary" href="./display_tables_for_update.php">Back</a>
+                </div>
+                <div class="col-9">
+                    <button type="submit" name="update_truckToGo" class="btn btn-primary">Update</button>
                 </div>         
                 
             </form>

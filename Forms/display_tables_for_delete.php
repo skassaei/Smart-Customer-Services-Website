@@ -1,5 +1,6 @@
 <?php include '../DB_Operations/login.php';
 if (isset($_SESSION['loggedin']) and isset($_SESSION['isAdmin'])) {
+
 	?>
 <!DOCTYPE html>
 <head>
@@ -30,6 +31,7 @@ if (isset($_SESSION['loggedin']) and isset($_SESSION['isAdmin'])) {
 	$tableNames[6] = "truckToGo";
 	$tableNames[7] = "review";
 	$tableNames[8] = "orders";
+	include('message.php');
 	foreach ($tableNames as $tn){
 		$tableObj = new Table($tn,$conn);
 		$tableObj->display_all_rows_delete();

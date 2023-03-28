@@ -23,7 +23,7 @@
     include './nav_admin.php';
 
     ?>
-    <div lass="container">
+    <div class="container">
         <?php include('message.php')?>
             <h3>Truck</h3>
             <form name="storeForm"  class="row g-3" action="../DB_Operations/insert.php"   method= POST>

@@ -105,15 +105,14 @@ elseif(isset($_POST['update_item'])){
     }
 
 
-///////truck
+//////truck/////
 elseif(isset($_POST['update_truck'])){
     $truckID = mysqli_real_escape_string( $conn,$_POST["truckID"]);
     $driverFirstName = mysqli_real_escape_string( $conn,$_POST["driverFirstName"]);
     $driverLastName = mysqli_real_escape_string( $conn,$_POST["driverLastName"]);
     $PlateNum = mysqli_real_escape_string( $conn,$_POST["PlateNum"]);
-    $availabilityCode = mysqli_real_escape_string( $conn,$_POST["availabilityCode"]);
-   
-    $query = "UPDATE truck SET driverFirstName = '$driverFirstName', driverLastName = '$driverLastName',PlateNum='$PlateNum', availabilityCode='$availabilityCode' WHERE truckID= $truckID ";
+    
+    $query = "UPDATE truck SET driverFirstName = '$driverFirstName', driverLastName = '$driverLastName',PlateNum='$PlateNum' WHERE truckID= $truckID ";
     $query_run= mysqli_query($conn,$query);
     if($query_run){
         //echo "Updated";
@@ -131,5 +130,34 @@ elseif(isset($_POST['update_truck'])){
 
   }
 
+  ////truckToGo////
+
+  elseif(isset($_POST['update_truckToGo'])){
+    $truckID = mysqli_real_escape_string( $conn,$_POST["truckID"]);
+    $Monday = mysqli_real_escape_string( $conn,$_POST["Monday"]);
+    $Tuesday = mysqli_real_escape_string( $conn,$_POST["Tuesday"]);
+    $Wednesday = mysqli_real_escape_string( $conn,$_POST["Wednesday"]);
+    $Thursday = mysqli_real_escape_string( $conn,$_POST["Thursday"]);
+    $Friday = mysqli_real_escape_string( $conn,$_POST["Friday"]);
+    $Saturday = mysqli_real_escape_string( $conn,$_POST["Saturday"]);
+    $Sunday = mysqli_real_escape_string( $conn,$_POST["Sunday"]);
+
+    $query = "UPDATE truckToGo SET Monday = '$Monday', Tuesday = '$Tuesday',Wednesday='$Wednesday',Thursday='$Thursday',Friday='$Friday', Saturday='$Saturday',Sunday='$Sunday'  WHERE truckID= $truckID ";
+    $query_run= mysqli_query($conn,$query);
+    if($query_run){
+        //echo "Updated";
+        $_SESSION['message'] ="truckToGo Was Successfully Updated" ;
+        header("Location: ../Forms/display_tables_for_update.php");
+        exit(0);
+
+    }
+    else{ 
+        echo " truckToGo NOT Updated";
+        // $_SESSION['message'] ="truck was NOT Updated. Please Try Again" ;
+        // header("Location: ../Forms/display_tables_for_update.php");
+        // exit(0);
+    }
+
+  }
     ?>
         
