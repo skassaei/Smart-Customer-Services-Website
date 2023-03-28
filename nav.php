@@ -1,6 +1,6 @@
  <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-darkk">
    <div class="container-fluid">
-     <a class="navbar-brand" href="#">SystemLogoHolder</a>
+     <a class="navbar-brand" href="main.php">SystemLogoHolder</a>
      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
        <span class="navbar-toggler-icon"></span>
      </button>
@@ -10,10 +10,10 @@
            <a class="nav-link active" aria-current="page" href="home.php">Home</a>
          </li>
          <li class="nav-item">
-           <a class="nav-link active" aria-current="page" href="aboutus.php">About Us</a>
+           <a class="nav-link active" aria-current="page" href="#!aboutus">About Us</a>
          </li>
          <li class="nav-item">
-           <a class="nav-link active" href="contactus.php">Contact Us</a>
+           <a class="nav-link active" href="#!contactus">Contact Us</a>
          </li>
          <li class="nav-item dropdown">
            <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -50,7 +50,7 @@
         if (isset($_SESSION['loggedin'])) {
         ?>
          <ul class="nav navbar-nav navbar-right light">
-           <li><a href="shoppingcart.php"><svg width="30px" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+           <li><a href="#!shoppingcart"><svg width="30px" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                  <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
                  <g id="SVGRepo_iconCarrier">
@@ -60,7 +60,7 @@
                    <path d="M18 19.5C18 20.3284 17.3284 21 16.5 21C15.6716 21 15 20.3284 15 19.5C15 18.6716 15.6716 18 16.5 18C17.3284 18 18 18.6716 18 19.5Z" stroke="#f2f2f2" stroke-width="1"></path>
                  </g>
                </svg></a></li>
-           <li><a href="DB_Operations/logout.php"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-door-closed" viewBox="0 0 16 16">
+           <li><a href="#!logout"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-door-closed" viewBox="0 0 16 16">
                  <path d="M3 2a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v13h1.5a.5.5 0 0 1 0 1h-13a.5.5 0 0 1 0-1H3V2zm1 13h8V2H4v13z" />
                  <path d="M9 9a1 1 0 1 0 2 0 1 1 0 0 0-2 0z" />
                </svg></a></li>
@@ -79,7 +79,7 @@
                    <path d="M18 19.5C18 20.3284 17.3284 21 16.5 21C15.6716 21 15 20.3284 15 19.5C15 18.6716 15.6716 18 16.5 18C17.3284 18 18 18.6716 18 19.5Z" stroke="#f2f2f2" stroke-width="1"></path>
                  </g>
                </svg></a></li>
-           <li><a href="login.html"><svg width="30px" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+           <li><a href="#!login"><svg width="30px" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                  <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
                  <g id="SVGRepo_iconCarrier">
