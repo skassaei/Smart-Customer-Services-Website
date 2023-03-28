@@ -36,7 +36,7 @@
         $lastName = mysqli_real_escape_string( $conn,$_POST["lastName"]);
         $email = mysqli_real_escape_string( $conn,$_POST["email"]);
         $phone = mysqli_real_escape_string( $conn,$_POST["phone"]);
-        
+        $admin = mysqli_real_escape_string( $conn,$_POST["admin"]);
         //---------------ADDRESS INFO---------------------------------
         $postalCode = mysqli_real_escape_string( $conn,$_POST["postalCode"]);
         $streetName = mysqli_real_escape_string( $conn,$_POST["streetName"]);
@@ -57,7 +57,7 @@
 
         }else{
                
-                $query = "INSERT INTO user (firstName ,lastName ,email ,phone) VALUE ('$firstName','$lastName','$email','$phone')";
+                $query = "INSERT INTO user (firstName ,lastName ,email ,phone,admin) VALUE ('$firstName','$lastName','$email','$phone','$admin')";
                 $query_run= mysqli_query($conn,$query);
                 
                 if($query_run){
@@ -127,7 +127,7 @@ if(isset($_POST['Save_address'])){
         $driverFirstName = mysqli_real_escape_string( $conn,$_POST["driverFirstName"]);
         $driverLastName = mysqli_real_escape_string( $conn,$_POST["driverLastName"]);
         $PlateNum = mysqli_real_escape_string( $conn,$_POST["PlateNum"]);
-
+        
         //if 1 => available, 0 => Not available
         $Monday = isset($_POST["Monday"]) ? $_POST["Monday"] : 0; 
         $Tuesday = isset($_POST["Tuesday"]) ? $_POST["Tuesday"] : 0;
@@ -193,7 +193,6 @@ if(isset($_POST['Save_address'])){
 
 // ---------Saving Item----------
     if(isset($_POST['Save_item'])){
-        
         $itemName = mysqli_real_escape_string( $conn,$_POST["itemName"]);
         $madeIn = mysqli_real_escape_string( $conn,$_POST["madeIn"]);
         $itemPic = mysqli_real_escape_string( $conn,$_POST["itemPic"]);

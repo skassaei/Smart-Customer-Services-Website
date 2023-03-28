@@ -56,7 +56,14 @@
             <input type="tel" class="form-control" id="phone" placeholder="6474576768" pattern="[0-9]{3}[0-9]{3}[0-9]{4}" name="phone" >
             <br>
           </div>
-        
+          <div class="form-group col-6">
+          <select name="admin" class="form-select" aria-label="Default select example">
+            <option selected>Admin?</option>
+              <option value="1">Yes</option>
+              <option value="0">No</option>
+          </select>
+          </div>
+  </br>  </br>
 
             <!-- address info below --> 
             <div class="form-group col-12">
@@ -64,13 +71,13 @@
             </div>
             
             
-            <div class="form-group col-6">
+            <div class="form-group col-4">
                     <label for="street_num">Street Name:</label>
                     <input type="text" class="form-control" id="street_num" name="streetName" required>
             </div>
             
             
-            <div class="form-group col-6">
+            <div class="form-group col-8">
                     <label for="city">City:</label>
                     <input type="text" class="form-control" id="city" name="city" required>
             </div>

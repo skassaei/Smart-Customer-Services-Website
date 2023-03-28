@@ -19,11 +19,12 @@ class Table {
             "address" => "userID",
             "store" => "depCode",
             "item" => "itemID",
-            //"shopping_cart" => "receiptID",
             "truck" => "truckID",
-            //"itemsInShoppingCart" => "itemsInShoppingCartID",
-           // "trip" => "tripID",
-            "orders" => "orderID"];
+            "truckToGo" => "truckID",
+            "discount" => "discountID",
+            "review" => "reviewID",
+            "orders" => "orderID"
+        ];
         }
 
 // ===========================UPDATE===========================
@@ -36,12 +37,12 @@ class Table {
                 echo "<div class='container' >
         <h3>$this->tableName</h3>
         <div class='table_wrapper'>
-            <table class='table table-striped'>
+            <table  class='table table-hover align-middle'>
                 <thead>
                 <tr>";
         $rows = [];
         $firstRow=[];
-        if(mysqli_num_rows($result) > 0){
+        if($result){
             $tn = $this->tableName;	
             $tpk = $this->pk[$tn];
             $rows = $result->fetch_all(MYSQLI_ASSOC);
@@ -84,6 +85,11 @@ class Table {
             </div>";
 
 
+        }else{
+            echo  "<td>No Record was Found</td>";
+            echo"</tbody></table>
+            </div>
+            </div>";
         }
     }
 
@@ -98,7 +104,7 @@ class Table {
                 echo "<div class='container' >
         <h4>$this->tableName</h4>
         <div class='table_wrapper'>
-            <table class='table table-striped'>
+            <table  class='table table-hover align-middle'>
                 <thead>
                 <tr>";
         $rows = [];

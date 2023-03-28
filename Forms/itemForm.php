@@ -33,42 +33,50 @@
                 <input name="itemName" type="text" class="form-control" id="Name" placeholder="itemName" required>
                 </div>
             </div>
-            <div class="form-group col-6">
-                <label for="madeIn" >madeIn</label>
-                <div class="col-sm-10">
-                <input name="madeIn" type="text" class="form-control" id="madeIn"  placeholder="madeIn">
-                </div>
-            </div>
-            <div class="form-group col-6">
-                <label for="Picurl"  >Pic url</label>
+            <div class="form-group col-12">
+                <label for="Picurl"  >Pic url: </label>
                 <div class="col-sm-10">
                 <input name="itemPic" type="url" class="form-control" id="Picurl" placeholder="url" required>
                 </div>
             </div>
-            <div class="form-group col-6">
+            <div class="form-group col-12">
+                <label for="madeIn" >Description: </label>
+                <div class="col-sm-10">
+                <input name="madeIn" type="text" class="form-control" id="madeIn"  placeholder="madeIn">
+                </div>
+            </div>
+
+            <div class="form-group col-3">
+                <label for="availableNum" >Quantity</label>
+                <div class="col-sm-10">
+                <input name="quantity" type="number" class="form-control"  id="availableNum"  min="1" placeholder="Quantity" required>
+                </div>
+            </div>
+            <div class="form-group col-3">
                 <label for="price" >price</label>
                 <div class="col-sm-10">
                 <input name="price" type="text" class="form-control" id="price" placeholder="price" required>
                 </div>
             </div>
+
             <div class="form-group col-6">
                 <label for="DepartmentCode" >Department Code</label>
                 <div class="col-sm-10">
                 <input name="depCode" type="number" class="form-control"  id="DepartmentCode"  min="1" placeholder="depCode" required>
                 </div>
             </div>
-            <div class="form-group col-6">
-                <label for="availableNum" >Quantity</label>
-                <div class="col-sm-10">
-                <input name="quantity" type="number" class="form-control"  id="availableNum"  min="1" placeholder="Quantity" required>
-                </div>
-            </div>
+  
+    </br>
+
+
                 <div class="col-3">
                     <a class="btn btn-secondary" href="./display_tables_for_insert.php">Back</a>
                 </div>
-            <div class="col-9">
-                    <button type="submit" name="Save_item" class="btn btn-primary">Insert</button>
-                </div>
+                <div class="col-9">
+                        <button type="submit" name="Save_item" class="btn btn-primary">Insert</button>
+                    </div>
+            
+          
             </form>
         </div>
     </body>

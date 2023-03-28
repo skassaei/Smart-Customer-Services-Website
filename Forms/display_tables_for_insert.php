@@ -30,7 +30,7 @@ if (isset($_SESSION['loggedin'])) {
   <div class="container" >
         <h3>Trucks</h3>
         <div class="table_wrapper">
-            <table class="table table-striped">
+            <table  class="table table-hover align-middle">
                 <thead>
                     <tr>
                     <th scope="col">Truck ID</th>
@@ -85,7 +85,7 @@ if (isset($_SESSION['loggedin'])) {
 <div class="container">
             <h3>Stores</h3>
             <div  class="table_wrapper col-12">
-            <table class="table table-striped">
+            <table  class="table table-hover align-middle">
                 <thead>
                     <tr>
                     <th scope="col">Department Cod</th>
@@ -132,7 +132,7 @@ if (isset($_SESSION['loggedin'])) {
         <div class="container">
             <h3>Items</h3>
             <div  class="table_wrapper col-12">
-            <table class="table table-striped">
+            <table  class="table table-hover align-middle">
                 <thead>
                     <tr>
                     <th scope="col">#</th>
@@ -193,15 +193,15 @@ if (isset($_SESSION['loggedin'])) {
     <div class="container">
         <h3>Users</h3>
         <div  class="table_wrapper">
-            <table class="table table-striped">
+            <table  class="table table-hover align-middle">
                 <thead>
                     <tr>
                     <th scope="col">userID</th>
                     <th scope="col">First Name</th>
-                    <th scope="col">Last Name</th>
+                    <th scope="col">Lastname</th>
                     <th scope="col">email</th>
                     <th scope="col">phone</th>
-                
+                    <th scope="col">Admin</th>
                     <th scope="col">
                     <a class="btn btn-secondary" href="userForm.php">Insert</a>
                     </th>
@@ -230,6 +230,7 @@ if (isset($_SESSION['loggedin'])) {
                         <td><?php echo $row['lastName']; ?></td>
                         <td><?php echo $row['email']; ?></td>
                         <td><?php echo $row['phone']; ?></td>
+                        <td><?php echo $row['admin']; ?></td>
                         
                         <td></td>
         
@@ -244,7 +245,7 @@ if (isset($_SESSION['loggedin'])) {
         <div class="container">
             <h3>Address</h3>
             <div class="table_wrapper col-12">
-                <table class="table table-striped">
+                <table  class="table table-hover align-middle">
                 <thead>
                     <tr>
                     <th scope="col">userID</th>
@@ -293,7 +294,7 @@ if (isset($_SESSION['loggedin'])) {
 <div class="container">
             <h3>Discount Items</h3>
             <div class="table_wrapper col-12">
-                <table class="table table-striped">
+                <table  class="table table-hover align-middle">
                 <thead>
                     <tr>
                     <th scope="col">discountID</th>
@@ -340,7 +341,7 @@ if (isset($_SESSION['loggedin'])) {
 <div class="container">
             <h3>items In Users ShoppingCart</h3>
             <div class="table_wrapper col-12">
-                <table class="table table-striped">
+                <table  class="table table-hover align-middle">
                 <thead>
                     <tr>
                     <th scope="col">itemID</th>
