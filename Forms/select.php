@@ -1,57 +1,7 @@
 <?php
 require '../DB_Operations/dbconnect.php';
 
-if(isset($_POST['select_table'])){
-$tableName =  mysqli_real_escape_string( $conn,$_POST["tableName"]); 
-$attribute = mysqli_real_escape_string( $conn,$_POST[$tableName]); 
-$value =  mysqli_real_escape_string( $conn,$_POST["value"]);
- echo "tableName: ".$tableName."</br>";
- echo "attribute: ".$attribute."</br>";
- echo "value: ".$value."</br>";
 
-$query = "SELECT * FROM $tableName WHERE $attribute = '$value' ";
-
-
-    $result = mysqli_query($conn, $query);
-               // making HTML table
-               echo "<div class='container' > 
-               <h3>$tableName</h3>
-               <div class='table_wrapper'>
-                   <table class='table table-striped'>
-                       <thead>
-                       <tr>";
-               $rows = [];
-               $firstRow=[];
-               if(mysqli_num_rows($result) > 0){
-                   $rows = $result->fetch_all(MYSQLI_ASSOC);
-       
-                   if(!empty($rows)){
-                       $firstRow =  $rows[0] ;
-                       foreach($firstRow as $head => $value){
-       
-                               if($head != "password"){
-                                       echo "<th scope='col'>$head</th>";
-                                       }
-                           }
-       
-                       foreach($rows as $row){
-                           echo"<tr>";
-                           foreach($row as $head => $value){
-       
-                               if ($head != "password"){
-                               echo "<td>$value</td>";
-                           }
-       
-                       }
-                    
-                    }
-                }
-            }
-    else {
-    echo "No Recordes were found  ";
-
-    }
-}
 ?>
 <!DOCTYPE html>
 <head>
@@ -75,10 +25,7 @@ $query = "SELECT * FROM $tableName WHERE $attribute = '$value' ";
   <body>
   
     <?php
-    //class="form-select"
-    //class="form-control mb-2" action="../DB_Operations/selectTable.php"  
-     include './nav_admin.php';
-    //require '../DB_Operations/dbConnect.php';
+    include './nav_admin.php';
      ?>
         <div class="container col-12">
         <p> Display 
@@ -87,10 +34,18 @@ $query = "SELECT * FROM $tableName WHERE $attribute = '$value' ";
             <select name="tableName" id="table" onchange="enableBrand(this)"  aria-label="Default select example">
                 <option selected>Select a Table</option>
                 <option value="user">Users</option>
-                <option value="store">Stores</option>
-                <option value="truck">Trucks</option>
+                <option value="address">address</option>
+                <option value="store">store</option>
+                <option value="item">item</option>
+                <option value="truck">truck</option>
+                <option value="orders">orders</option>
+                <option value="truckToGo">truckToGo</option>
+                <option value="discount">discount</option>
+                <option value="review">review</option>
             </select>
-            with
+
+            With
+
             <select name="user" id="user" class="non_show " aria-label="Default select example">
                 <option selected>Select</option>
                 <option value="userID">ID</option>
@@ -99,11 +54,28 @@ $query = "SELECT * FROM $tableName WHERE $attribute = '$value' ";
                 <option value="email">email</option>
                 <option value="phone">phone</option>
             </select>
+            <select name="address" id="address" class="non_show " aria-label="Default select example">
+                <option selected>Select</option>
+                <option value="userID">userID</option>
+                <option value="postalCode">postalCode</option>
+                <option value="streetName">streetName</option>
+                <option value="city">city</option>
+                <option value="province">province</option>
+            </select>
             <select name="store" id="store" class="non_show " aria-label="Default select example">
                 <option selected>Select</option>
                 <option value="depCode">ID</option>
                 <option value="location">location</option>
                 <option value="city">city</option>
+                <option value="postalCode">postalCode</option>
+            </select>
+            <select name="item" id="item" class="non_show " aria-label="Default select example">
+                <option selected>Select</option>
+                <option value="itemID">ID</option>
+                <option value="itemName">Name</option>
+                <option value="quantity">quantity</option>
+                <option value="price">price</option>
+                <option value="depCode">Departmetn Code</option>
             </select>
             <select name="truck" id="truck" class="non_show " aria-label="Default select example">
                 <option selected>Select</option>
@@ -111,9 +83,35 @@ $query = "SELECT * FROM $tableName WHERE $attribute = '$value' ";
                 <option value="driverFirstName">Name</option>
                 <option value="driverLastName">Lastname</option>
                 <option value="PlateNum">plateNum</option>
-                <option value="availabilityCode">availability</option>
-
             </select>
+            <select name="truckToGo" id="truckToGo" class="non_show " aria-label="Default select example">
+                <option selected>Select</option>
+                <option value="truckID">ID</option>
+                <option value="Monday">Monday</option>
+                <option value="Tuesday">Tuesday</option>
+                <option value="Wednesday">Wednesday</option>
+                <option value="Thursday">Thursday</option>
+                <option value="Friday">Friday</option>
+                <option value="Saturday">Saturday</option>
+                <option value="Sunday">Sunday</option>
+            </select>
+            <select name="review" id="review" class="non_show " aria-label="Default select example">
+                <option selected>Select</option>
+                <option value="userID">userID</option>
+                <option value="userName">Name</option>
+                <option value="itemID">itemID</option>
+                <option value="userRN">userRN</option>
+                <option value="userReview">userReview</option>
+            </select>
+            <select name="orders" id="orders" class="non_show " aria-label="Default select example">
+                <option selected>Select</option>
+                <option value="orderID">orderID</option>
+                <option value="totalPrice">totalPrice</option>
+                <option value="paymentmethod">paymentmethod</option>
+                <option value="userID">userID</option>
+                <option value="receiptID">receiptID</option>
+            </select>
+
             equal to 
                  <input  name="value" type="text" id="inlineFormInput"  required>
 
@@ -125,6 +123,72 @@ $query = "SELECT * FROM $tableName WHERE $attribute = '$value' ";
                 
     </form>
         </div>
+        <div class="container">
+
+            <?php
+            
+            if(isset($_POST['select_table'])){
+                    $tableName =  mysqli_real_escape_string( $conn,$_POST["tableName"]); 
+                    $attribute = mysqli_real_escape_string( $conn,$_POST[$tableName]); 
+                    $value =  mysqli_real_escape_string( $conn,$_POST["value"]);
+
+                    $query = "SELECT * FROM $tableName WHERE $attribute = '$value' ";
+
+
+                        $result = mysqli_query($conn, $query);
+ // making HTML table
+?>
+                          
+                          <div class='container' > 
+                           <div class='table_wrapper'>
+                               <table class='table table-hover align-middle'>
+                                   <thead>
+                                   <tr>
+
+                                    <?php
+                           $rows = [];
+                           $firstRow=[];
+                           if($result){
+                               $rows = $result->fetch_all(MYSQLI_ASSOC);
+                   
+                               if(!empty($rows)){
+                                   $firstRow =  $rows[0] ;
+                                   foreach($firstRow as $head => $value){
+                   
+                                           if($head != "password"){
+                                                   echo "<th scope='col'>$head</th>";
+                                                   }
+                                       }
+                   
+                                   foreach($rows as $row){
+                                       echo"<tr>";
+                                       foreach($row as $head => $value){
+                   
+                                           if ($head != "password"){
+                                            if($head == "itemPic"){
+                                                echo "<td>
+                                                <picture>
+                                                        <img alt=' $value' style='width: 30%; height: 10%;' src='$value' />
+                                                    </picture>
+                                                </td>";
+                                            }else{
+                                                echo "<td>$value</td>";
+                                            }
+                                           
+                                       }
+                   
+                                   }
+                                
+                                }
+                            }
+                        }
+                else {
+                echo "No Recordes were found  ";
+            
+                }
+            }
+            ?>
+    </div>
 
 
         <script type="text/javascript">
@@ -135,6 +199,11 @@ $query = "SELECT * FROM $tableName WHERE $attribute = '$value' ";
                }else{
                 document.getElementById('user').classList.add('non_show');
                }
+               if(answer.value == "address"){
+                document.getElementById('address').classList.remove('non_show');
+               }else{
+                document.getElementById('address').classList.add('non_show');
+               }
                if(answer.value == "store"){
                 document.getElementById('store').classList.remove('non_show');
                }else{
@@ -144,6 +213,28 @@ $query = "SELECT * FROM $tableName WHERE $attribute = '$value' ";
                 document.getElementById('truck').classList.remove('non_show');
                }else{
                 document.getElementById('truck').classList.add('non_show');
+               }
+               if(answer.value == "truckToGo"){
+                document.getElementById('truckToGo').classList.remove('non_show');
+               }else{
+                document.getElementById('truckToGo').classList.add('non_show');
+               }
+  
+               if(answer.value == "item"){
+                document.getElementById('item').classList.remove('non_show');
+               }else{
+                document.getElementById('item').classList.add('non_show');
+               }
+      
+               if(answer.value == "review"){
+                document.getElementById('review').classList.remove('non_show');
+               }else{
+                document.getElementById('review').classList.add('non_show');
+               }
+               if(answer.value == "orders"){
+                document.getElementById('orders').classList.remove('non_show');
+               }else{
+                document.getElementById('orders').classList.add('non_show');
                }
             };
            

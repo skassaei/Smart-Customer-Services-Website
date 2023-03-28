@@ -1,5 +1,4 @@
 **************(make sure to use the last version!!)*************
-
 Iteration 1&2:
 incomplete:
 #### Select (drag and drop) items into shapping cart => 
