@@ -64,3 +64,14 @@ Iteration 4:
 2) Need a system logo
 
 3) Technical Report
+
+
+
+  elseif($tableName =="truckToGo"){
+    $truck_rows=[];
+    $truck_query = "SELECT * FROM truck WHERE truckID = $PKValue ";
+    $toGo_query = "SELECT * FROM truckToGo WHERE truckID = $PKValue ";
+    $truck_run= mysqli_query($conn,$truck_query);
+    $toGo_run= mysqli_query($conn,$toGo_query);
+    $toGo_row = mysqli_fetch_assoc($toGo_run);
+    $truck_rows = $truck_run->fetch_all(MYSQLI_ASSOC);  

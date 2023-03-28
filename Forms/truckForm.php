@@ -22,7 +22,7 @@
     include './nav_admin.php';
 
     ?>
-    <div lass="container">
+    <div class="container">
         <?php include('message.php')?>
             <h3>Truck</h3>
             <form name="storeForm"  class="row g-3" action="../DB_Operations/insert.php"   method= POST>
@@ -42,7 +42,7 @@
 
                  <div class="form-group col-12">
                     <label class="form-check-label" for="form-check">
-                        When Is the Truck avalable?
+                        When Is the Truck available?
                         </label>
                         <div class="form-group col-12">
                         <input class="form-check-input" type="checkbox" id="autoSizingCheck2"  name="Monday" value="1">
