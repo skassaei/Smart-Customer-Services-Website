@@ -21,11 +21,11 @@
 	$tableNames[1] = "address";
 	$tableNames[2] = "store";
 	$tableNames[3] = "item";
-//	$tableNames[4] = "shopping_cart";
+	$tableNames[4] = "discount";
 	$tableNames[5] = "truck";
-//	$tableNames[6] = "itemsInShoppingCart";
-	$tableNames[7] = "trip";
-//	$tableNames[8] = "orders";
+	$tableNames[6] = "truckToGo";
+	$tableNames[7] = "reviewID";
+	$tableNames[8] = "orders";
 	foreach ($tableNames as $tn){
 		$tableObj = new Table($tn,$conn);
 		$tableObj->display_all_rows_delete();
