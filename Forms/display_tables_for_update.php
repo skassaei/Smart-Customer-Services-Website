@@ -14,7 +14,7 @@
 
     <body>
         
-		<?php include '../DB_Operations/tableClass.php' ?>
+		<?php include '../DB_Operations/display_Table_Class.php' ?>
 		<?php include './nav_admin.php' ?> 
 <?php
 	$tableNames = array();
