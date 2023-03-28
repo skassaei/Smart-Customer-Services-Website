@@ -45,7 +45,7 @@
 
 
             <div class="col-3">
-            <a class="btn btn-secondary" href="./chose_Table_for_insert.php">Back</a>
+            <a class="btn btn-secondary" href="./display_tables_for_insert.php">Back</a>
             </div>
             <div class="col-9">
                 <button type="submit" name="Save_store" class="btn btn-primary">Insert</button>

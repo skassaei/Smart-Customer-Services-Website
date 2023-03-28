@@ -31,7 +31,6 @@
                     <th scope="col">Driver's Name</th>
                     <th scope="col">Driver's Last Name</th>
                     <th scope="col">Plate Number</th>
-                    <th scope="col">Availability</th>
                     <th scope="col">
                     <a class="btn btn-secondary" href="truckForm.php">Insert</a>
                     </th>
@@ -61,7 +60,6 @@
                             <td><?php echo $row['driverFirstName']; ?></td>
                             <td><?php echo $row['driverLastName']; ?></td>
                             <td><?php echo $row['PlateNum']; ?></td>
-                            <td><?php echo $row['availabilityCode']; ?></td>
                             <td></td>
    
             
@@ -87,6 +85,7 @@
                     <th scope="col">Department Cod</th>
                     <th scope="col">Street</th>
                     <th scope="col">City</th>
+                    <th scope="col">postalCode</th>
                     <th scope="col">
                     <a class="btn btn-secondary" href="storeForm.php">Insert</a>
                     </th>
@@ -112,6 +111,7 @@
                         <td><?php echo $row['depCode']; ?></td>
                         <td><?php echo $row['location']; ?></td>
                         <td><?php echo $row['city']; ?></td>
+                        <td><?php echo $row['postalCode']; ?></td>
                         <td></td>
 
                     </tr>

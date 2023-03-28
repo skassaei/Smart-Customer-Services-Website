@@ -11,13 +11,17 @@ include 'DB_Operations/login.php'
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="./CSS/nav.css?v=<?php echo time(); ?>">
-  <link rel="stylesheet" href="./CSS/home2.css?v=<?php echo time(); ?>">
+  <link rel="stylesheet" href="./CSS/discount.css?v=<?php echo time(); ?>">
   <script src="https://code.angularjs.org/1.5.0/angular.min.js"></script>
 <html>
 
 <body>
-  <?php include 'nav.php' ?>
+  <?php include 'nav_offer.php' ?>
   <div class="container-fluid pb-5 mb-5">
+    <div class="d-flex justify-content-around col-7 pt-5">
+      <h1 class="pb-0">Time Limitted offers</h1>
+      <h1 id="demo2"></h1>
+    </div>
     <div class="row col-12 justify-content-center">
       <div id="mainP" class="col-lg-8 mt-lg-5 col-md-12 col-sm-12 order-2 order-md-2 rounded justify-content-center d-flex flex-wrap align-self-center">
         <?php
@@ -27,46 +31,34 @@ include 'DB_Operations/login.php'
           $query_run = mysqli_query($conn, $query);
           if ($query_run->num_rows > 0) {
             foreach ($query_run as $row) {
-
-              $Find_itemID = "SELECT itemID FROM discount WHERE itemID= '{$row['itemID']}'";
-            $itemID_run= mysqli_query($conn, $Find_itemID);
-            if ($itemID= mysqli_fetch_row($itemID_run)){
-            ?>
+        ?>
               <div class="grid-item p-2 align-self-center"  id="cardholder">
-                <div class="card " style="border:1px solid indigo; background-color:#f1f1f1; border-radius:5px;  width:33vh; cursor:move" align="center">
+                <div class="card " style="border:1px solid rgb(166, 0, 55); background-color:#f1f1f1; border-radius:5px;  width:33vh; cursor:move" align="center">
                   <img src="<?php echo $row["itemPic"]; ?>" data-id="<?php echo $row['itemID']; ?>" data-name="<?php echo $row['itemName']; ?>" data-price="<?php echo $row['price']; ?>" data-quantity="<?php echo $row['quantity']; ?>" class="img-responsive product_drag" />
                   <div class="card-body">
                     <h5 class="card-title" style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;"><?php echo $row['itemName']; ?></h5>
                     <p class="card-text" style="color:#aaa">Color Code: <?php echo $row['madeIn'] ?></p>
                   </div>
-                  <ul class="list-group list-group-flush pb-0 mb-0">
-                    <li class="list-group-item" style=" color:indigo"><b>price: </b><s style=" color:grey">$<?php echo number_format($row['price'], 2); ?></s><b> $<?php echo number_format($row['price']*0.93, 2); ?></b></li>
-                  </ul>
-                </div>
-              </div>
-            <?php }
-            else{?>
-              <div class="grid-item p-2 align-self-center"  id="cardholder">
-                <div class="card " style="border:1px solid #333; background-color:#f1f1f1; border-radius:5px;  width:33vh; cursor:move" align="center">
-                  <img src="<?php echo $row["itemPic"]; ?>" data-id="<?php echo $row['itemID']; ?>" data-name="<?php echo $row['itemName']; ?>" data-price="<?php echo $row['price']; ?>" data-quantity="<?php echo $row['quantity']; ?>" class="img-responsive product_drag" />
-                  <div class="card-body">
-                    <h5 class="card-title" style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;"><?php echo $row['itemName']; ?></h5>
-                     <p class="card-text" style="color:#aaa">Color Code: <?php echo $row['madeIn'] ?></p>
-                  </div>
                   <ul class="list-group list-group-flush">
-                    <li class="list-group-item">price: $<?php echo number_format($row['price'], 2); ?></li>
+                    <li class="list-group-item" style="color:crimson">original price: $<?php echo number_format($row['price'], 2); ?></li>
+                  </ul>
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item">discounted price: $<?php echo number_format($row['price']*0.93, 2); ?></li>
                   </ul>
                 </div>
               </div>
-              <?php
-            }
+            <?php
             }
           } else {
             echo "<p>No Record Found</p>";
           }
         } else {
-          $sql = "SELECT * FROM item";
-          $result = ($conn->query($sql));
+
+          $Find_itemID = "SELECT itemID FROM discount";
+          $itemID_run= mysqli_query($conn, $Find_itemID);
+          while ($itemID= mysqli_fetch_row($itemID_run)){
+            $sql = "SELECT * FROM item WHERE itemID = $itemID[0]";
+            $result = ($conn->query($sql));
           $rows = [];
           if ($result->num_rows > 0) {
             // fetch all data from db into array 
@@ -74,11 +66,8 @@ include 'DB_Operations/login.php'
           }
           if (!empty($rows)) {
             foreach ($rows as $row) {
-            $Find_itemID = "SELECT itemID FROM discount WHERE itemID= '{$row['itemID']}'";
-            $itemID_run= mysqli_query($conn, $Find_itemID);
-            if ($itemID= mysqli_fetch_row($itemID_run)){
             ?>
-              <div class="grid-item p-2 align-self-center"  id="cardholder">
+            <div class="grid-item p-2 align-self-center"  id="cardholder">
                 <div class="card " style="border:1px solid indigo; background-color:#f1f1f1; border-radius:5px;  width:33vh; cursor:move" align="center">
                   <img src="<?php echo $row["itemPic"]; ?>" data-id="<?php echo $row['itemID']; ?>" data-name="<?php echo $row['itemName']; ?>" data-price="<?php echo $row['price']; ?>" data-quantity="<?php echo $row['quantity']; ?>" class="img-responsive product_drag" />
                   <div class="card-body">
@@ -87,38 +76,14 @@ include 'DB_Operations/login.php'
                   </div>
                   <ul class="list-group list-group-flush pb-0 mb-0">
                     <li class="list-group-item" style=" color:indigo"><b>price: </b><s style=" color:grey">$<?php echo number_format($row['price'], 2); ?></s><b> $<?php echo number_format($row['price']*0.93, 2); ?></b></li>
-                    <li class="list-group-item">
-                      <a class='btn btn-light my-3'  href='./reviews.php?itemName=<?php echo $row['itemName']?>&itemID=<?php echo $row['itemID']?>'>
-                          Reviews</a>
-                    </li>
                   </ul>
                 </div>
               </div>
             <?php }
-            else{?>
-              <div class="grid-item p-2 align-self-center"  id="cardholder">
-                <div class="card " style="border:1px solid #333; background-color:#f1f1f1; border-radius:5px;  width:33vh; cursor:move" align="center">
-                  <img src="<?php echo $row["itemPic"]; ?>" data-id="<?php echo $row['itemID']; ?>" data-name="<?php echo $row['itemName']; ?>" data-price="<?php echo $row['price']; ?>" data-quantity="<?php echo $row['quantity']; ?>" class="img-responsive product_drag" />
-                  <div class="card-body">
-                    <h5 class="card-title" style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;"><?php echo $row['itemName']; ?></h5>
-                     <p class="card-text" style="color:#aaa">Color Code: <?php echo $row['madeIn'] ?></p>
-                  </div>
-                  <ul class="list-group list-group-flush">
-                    <li class="list-group-item">price: $<?php echo number_format($row['price'], 2); ?></li>
-                    <li class="list-group-item">
-                      <a class='btn btn-light my-3'  href='./reviews.php?itemName=<?php echo $row['itemName']?>&itemID=<?php echo $row['itemID']?>'>
-                          Reviews</a>
-                    </li>
-                  </ul>
-                  <!-- <form action="reviews.php" method="post">
-                        <input class="visually-hidden" name="itemID_v" value="<?php echo $row['itemID'] ?>">
-                        <input style="background-color:white; color: rgb(33, 17, 55);" value="Reviews" type="submit" class="col-12  bg-darkk shadow-lg rounded total">
-                      </form>   -->
-                </div>
-              </div>
-              <?php
-            }}
-          } ?>
+          }
+
+          }
+           ?>
             <div class="shopping cart">
             </div>
           <?php } ?>
@@ -216,5 +181,34 @@ include 'DB_Operations/login.php'
     });
   });
 </script>
+<script>
 
+var div=document.getElementById("demo");
+var div2=document.getElementById("demo2");
+
+setInterval(function(){ 
+
+  var toDate=new Date();
+  var tomorrow=new Date();
+  tomorrow.setHours(24,0,0,0);
+
+  var diffMS=tomorrow.getTime()/1000-toDate.getTime()/1000;
+  var diffHr=Math.floor(diffMS/3600);
+
+  diffMS=diffMS-diffHr*3600;
+  var diffMi=Math.floor(diffMS/60);
+
+  diffMS=diffMS-diffMi*60;
+  var diffS=Math.floor(diffMS);
+
+  var result=((diffHr<10)?"0"+diffHr:diffHr);
+  result+=":"+((diffMi<10)?"0"+diffMi:diffMi);
+  result+=":"+((diffS<10)?"0"+diffS:diffS);
+
+  div.innerHTML=result;
+  div2.innerHTML=result;
+  
+},1000);
+
+</script>
 </html>
