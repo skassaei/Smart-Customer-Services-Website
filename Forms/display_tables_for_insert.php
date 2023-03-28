@@ -1,4 +1,10 @@
+<?php
+require '../DB_Operations/dbConnect.php';
+include '../DB_Operations/login.php';
 
+if (isset($_SESSION['loggedin'])) {
+	
+?>
 <!DOCTYPE html>
 <head>
     <title>CPS630 Project</title>
@@ -17,7 +23,7 @@
   
     <?php
     include './nav_admin.php';
-    require '../DB_Operations/dbConnect.php';
+
      ?> 
 
  <!-----1) Truck----->
@@ -277,6 +283,98 @@
                     <td></td>
     
                 </tr>
+                    <?php }}            ?>
+                </tbody>
+                </table>
+                
+            </div>
+        </div>
+<!-------------------6) discount TABLE ----------------------->
+<div class="container">
+            <h3>Discount Items</h3>
+            <div class="table_wrapper col-12">
+                <table class="table table-striped">
+                <thead>
+                    <tr>
+                    <th scope="col">discountID</th>
+                    <th scope="col">itemID</th>
+
+                    <th scope="col">
+                    <a class="btn btn-secondary" href="addressForm.php">Insert</a>
+                    </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    $sql= "SELECT * FROM discount";
+                    $result = ($conn->query($sql));
+                    //declare array to store the data of database
+                    $rows = []; 
+    
+                    if ($result->num_rows > 0) 
+                        {
+                            // fetch all data from db into array 
+                            $rows = $result->fetch_all(MYSQLI_ASSOC);  
+                        }
+            
+                    if(!empty($rows)){
+                        foreach($rows as $row){
+                ?>
+                <tr>
+    
+                    <td><?php echo $row['discountID']; ?></td>
+                    <td><?php echo $row['itemID']; ?></td>
+                    <td></td>
+    
+                </tr>
+                    <?php }}            ?>
+                </tbody>
+                </table>
+                
+            </div>
+        </div>
+
+
+<!-------------------7) itemsInShoppingCart TABLE ----------------------->
+
+<div class="container">
+            <h3>items In Users ShoppingCart</h3>
+            <div class="table_wrapper col-12">
+                <table class="table table-striped">
+                <thead>
+                    <tr>
+                    <th scope="col">itemID</th>
+                    <th scope="col">receiptID</th>
+                    <th scope="col">quantity</th>
+                    <th scope="col">
+                    <a class="btn btn-secondary" href="itemsInShoppingCartForm.php">INSERT</a>
+                    </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    $sql= "SELECT * FROM itemsInShoppingCart";
+                    $result = ($conn->query($sql));
+                    //declare array to store the data of database
+                    $rows = []; 
+    
+                    if ($result->num_rows > 0) 
+                        {
+                            // fetch all data from db into array 
+                            $rows = $result->fetch_all(MYSQLI_ASSOC);  
+                        }
+            
+                    if(!empty($rows)){
+                        foreach($rows as $row){
+                ?>
+                <tr>
+    
+                    <td><?php echo $row['itemID']; ?></td>
+                    <td><?php echo $row['receiptID']; ?></td>
+                    <td><?php echo $row['quantity']; ?></td>
+                    <td></td>
+    
+                </tr>
                     <?php }}
                     $conn -> close(); ?>
                 </tbody>
@@ -285,5 +383,15 @@
             </div>
         </div>
 
+
+
+
     </body>
 </html>
+<?php
+
+	}	
+	else{
+		header("Location: ../login.html");
+	}
+    ?>

@@ -26,9 +26,9 @@
               Maintain DB
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="./Forms/chose_Table_for_insert.php">Insert</a></li>
-              <li><a class="dropdown-item" href="./Forms/update.php">Update</a></li>
-              <li><a class="dropdown-item" href="./Forms/delete.php">Delete</a></li>
+              <li><a class="dropdown-item" href="./Forms/display_tables_for_insert.php">Insert</a></li>
+              <li><a class="dropdown-item" href="./Forms/display_tables_for_update.php">Update</a></li>
+              <li><a class="dropdown-item" href="./Forms/display_tables_for_delete.php">Delete</a></li>
               <li><a class="dropdown-item" href="./Forms/select.php">Select</a></li>
             </ul>
           </li>

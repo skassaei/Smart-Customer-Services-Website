@@ -1,6 +1,11 @@
 <?php
 require 'dbconnect.php';
 
+include './login.php'; 
+if (isset($_SESSION['loggedin'])) {
+			
+		
+
 if(isset($_POST['Save_item'])){
 $tableName =  mysqli_real_escape_string( $conn,$_POST["tableName"]); 
 $attribute = mysqli_real_escape_string( $conn,$_POST[$tableName]); 
@@ -53,3 +58,10 @@ $query = "SELECT * FROM $tableName WHERE $attribute = '$value' ";
     }
 }
 ?>
+<?php
+
+	}	
+	else{
+		header("Location: ../login.html");
+	}
+    ?>

@@ -3,6 +3,8 @@
       confirm("Are you sure to delete the record");
     }
 </script>
+
+
 <?php
 	require 'dbconnect.php';
 class Table {
@@ -23,6 +25,8 @@ class Table {
            // "trip" => "tripID",
             "orders" => "orderID"];
         }
+
+// ===========================UPDATE===========================
     function display_all_rows_update(){
 
         $qry = "SELECT * FROM $this->tableName";
@@ -83,12 +87,13 @@ class Table {
         }
     }
 
-    // ------delete---:
+    // ===========================Delete===========================:
     function display_all_rows_delete(){
 
         $qry = "SELECT * FROM $this->tableName";
 
         $result = mysqli_query($this->connection,$qry);
+        
                 // making HTML table
                 echo "<div class='container' >
         <h4>$this->tableName</h4>
@@ -148,6 +153,71 @@ class Table {
 
         }
     }
+
+//===================INSERT====**USELESSSSSS***===========================:
+      function display_all_rows_insert(){
+
+        $qry = "SELECT * FROM $this->tableName";
+
+        $result = mysqli_query($this->connection,$qry);
+                // making HTML table
+                echo "<div class='container' >
+        <h4>$this->tableName</h4>
+        <div class='table_wrapper'>
+            <table class='table table-striped'>
+                <thead>
+                <tr>";
+        $rows = [];
+        $firstRow=[];
+        if(mysqli_num_rows($result) > 0){
+            $tn = $this->tableName;	
+            $tpk = $this->pk[$tn];
+            $rows = $result->fetch_all(MYSQLI_ASSOC);
+
+            if(!empty($rows)){
+                $firstRow =  $rows[0] ;
+                foreach($firstRow as $head => $value){
+
+                        if($head != "password"){
+                                echo "<th scope='col'>$head</th>";
+                                }
+                    }
+                    echo "<th scope='col'>
+                    <a class='btn btn-danger my-3' href='../DB_Operations/insert.php'>
+                    INSERT</a>
+                    </th></thead><tbody>";
+
+
+                foreach($rows as $row){
+                    echo"<tr>";
+                    foreach($row as $head => $value){
+
+                        if ($head != "password"){
+                            
+                        echo "<td>$value</td>";
+                    }
+
+                }
+
+            }
+
+
+            }
+            echo"<tbody></table>
+            </div>
+            </div>";
+
+   
+
+
+        }else{
+            echo"No Record was Found</th></thead>";
+
+        }
+    }
+
+
+
 
 
 

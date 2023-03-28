@@ -20,6 +20,7 @@
     <body>
     <?php 
     include './nav_admin.php';
+
     ?>
     <div lass="container">
         <?php include('message.php')?>
@@ -37,26 +38,65 @@
                 <div class="form-group col-12">
                     <label  for="inlineFormInput">Plate Num:</label>
                     <input name="PlateNum" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Plate Number" required>
-                </div>
-                    <div class="form-group col-12">
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="autoSizingCheck2"  name="availabilityCode" value="1">
-                        <label class="form-check-label" for="autoSizingCheck2">
-                        Is the truck available?
+    
+
+                 <div class="form-group col-12">
+                    <label class="form-check-label" for="form-check">
+                        When Is the Truck avalable?
                         </label>
+                        <div class="form-group col-12">
+                        <input class="form-check-input" type="checkbox" id="autoSizingCheck2"  name="Monday" value="1">
+                        <label class="form-check-label" for="autoSizingCheck2">
+                        Monday
+                        </label>
+
+                        <input class="form-check-input" type="checkbox" id="autoSizingCheck2"  name="Tuesday" value="1">
+                        <label class="form-check-label" for="autoSizingCheck2">
+                        Tuesday
+                        </label>
+
+                        <input class="form-check-input" type="checkbox" id="autoSizingCheck2"  name="Wednesday" value="1">
+                        <label class="form-check-label" for="autoSizingCheck2">
+                        Wednesday
+                        </label>
+
+                        <input class="form-check-input" type="checkbox" id="autoSizingCheck2"  name="Thursday" value="1">
+                        <label class="form-check-label" for="autoSizingCheck2">
+                        Thursday
+                        </label>
+                        </div>
+                        <div class="form-group col-12">
+                    
+                        <input class="form-check-input" type="checkbox" id="autoSizingCheck2"  name="Friday" value="1">
+                        <label class="form-check-label" for="autoSizingCheck2">
+                        Friday
+                        </label>
+                        
+                        
+                        <input class="form-check-input" type="checkbox" id="autoSizingCheck2"  name="Saturday" value="1">
+                        <label class="form-check-label" for="autoSizingCheck2">
+                        Saturday 
+                        </label>
+
+                    
+                        <input class="form-check-input" type="checkbox" id="autoSizingCheck2"  name="Sunday" value="1">
+                        <label class="form-check-label" for="autoSizingCheck2">
+                        Sunday 
+                        </label></div>
+
+
                     </div>
-                </div>  
+                </div>
             
                 <div class="col-3">
-                <a class="btn btn-secondary" href="./chose_Table_for_insert.php">Back</a>
-            </div>
+                    <a class="btn btn-secondary" href="./display_tables_for_insert.php">Back</a>
+                </div>
                 <div class="col-9">
                     <button type="submit" name="Save_truck" class="btn btn-primary">Insert</button>
                 </div>
             
                 
             </form>
-
 
     </div>
 	

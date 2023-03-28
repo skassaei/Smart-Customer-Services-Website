@@ -83,7 +83,7 @@ $sql[5] = "CREATE TABLE truck (
         truckID INT NOT NULL AUTO_INCREMENT,
         driverFirstName VARCHAR(25) NOT NULL,
         driverLastName VARCHAR(25) NOT NULL,
-        PlateNum VARCHAR(25) NOT NULL, 
+        PlateNum VARCHAR(25) NOT NULL UNIQUE, 
         PRIMARY KEY(truckID)
     )";
 
@@ -95,7 +95,7 @@ $sql[6] = "CREATE TABLE orders(
     totalPrice INT,
     paymentmethod VARCHAR(25),
     userID INT NOT NULL,
-    FOREIGN KEY (userID) REFERENCES user(userID),
+    FOREIGN KEY (userID) REFERENCES user(userID) ON DELETE CASCADE,
     receiptID INT NOT NULL,
     FOREIGN KEY (receiptID) REFERENCES shopping_cart(receiptID)
  )";
@@ -105,8 +105,8 @@ $sql[7] = "CREATE TABLE itemsInShoppingCart (
     itemID INT NOT NULL,
     receiptID INT NOT NULL,
     quantity INT,
-    FOREIGN KEY (itemID) REFERENCES item(itemID),
-    FOREIGN KEY (receiptID) REFERENCES shopping_cart(receiptID),
+    FOREIGN KEY (itemID) REFERENCES item(itemID) ,
+    FOREIGN KEY (receiptID) REFERENCES shopping_cart(receiptID) ON DELETE CASCADE,
 	itemsInShoppingCartID INT NOT NULL AUTO_INCREMENT,
 	PRIMARY KEY(itemsInShoppingCartID)
     )";
@@ -115,7 +115,7 @@ $sql[8] = "CREATE TABLE trip(
     tripID INT NOT NULL AUTO_INCREMENT,
     PRIMARY KEY(tripID),
     truckID INT NOT NULL,
-    FOREIGN KEY (truckID) REFERENCES truck(truckID),    
+    FOREIGN KEY (truckID) REFERENCES truck(truckID) ON DELETE CASCADE,    
     orderID INT NOT NULL,
     FOREIGN KEY (orderID) REFERENCES orders(orderID)
  )";
