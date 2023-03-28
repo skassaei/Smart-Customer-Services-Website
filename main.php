@@ -89,6 +89,13 @@ app.config(function($routeProvider) {
 	.when("/contactus", {
         templateUrl : "contactus.php"
     })
+	
+	
+	
+	
+	.when("/discount", {
+        templateUrl : "discount.php"
+    })
     .otherwise({redirectTo: '/'});
 });
     </script>

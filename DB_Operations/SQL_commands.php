@@ -30,6 +30,14 @@ echo " You are Connected to the database<br>";
 // sql to create table
 $sql =array();
 
+$hash = password_hash("password", 
+									PASSWORD_DEFAULT);
+				
+				
+	// Password Hashing is used here. 
+$sql[0] = "INSERT INTO `user` (`firstName`, `lastName`, `userID`, `email`, `admin`, `password`, `phone`) VALUES ('ad', 'ad', '1', 'ad@gmail.com', '2', '$hash', '1234567890')"; 
+
+/*
 $sql[0] = "CREATE TABLE user (
     firstName VARCHAR(25) NOT NULL,
     lastName VARCHAR(25) NOT NULL,
@@ -140,7 +148,7 @@ $sql[10] = "CREATE TABLE discount(
     itemID INT NOT NULL,
     FOREIGN KEY (itemID) REFERENCES item(itemID) ON DELETE CASCADE
  )";
-
+*/
 
      
     foreach($sql as $sql){
