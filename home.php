@@ -19,7 +19,7 @@ if (isset($_SESSION['loggedin'])) {
 <html>
 
 <body>
-  <?php include 'nav.php' ?>
+  <?php include 'navHome.php' ?>
   <div class="container-fluid pb-5 mb-5">
     <div class="row col-12 justify-content-center">
       <div id="mainP" class="col-lg-8 mt-lg-5 col-md-12 col-sm-12 order-2 order-md-2 rounded justify-content-center d-flex flex-wrap align-self-center">

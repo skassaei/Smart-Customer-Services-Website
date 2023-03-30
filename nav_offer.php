@@ -1,6 +1,6 @@
  <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-darkk">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">SystemLogoHolder</a>
+      <a class="navbar-brand" href="main.php#!aboutus">SystemLogoHolder</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -10,10 +10,10 @@
             <a class="nav-link active" aria-current="page" href="home.php">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="aboutus.php">About Us</a>
+            <a class="nav-link active" aria-current="page" href="main.php#!aboutus">About Us</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" href="contactus.php">Contact Us</a>
+            <a class="nav-link active" href="main.php#!contactus">Contact Us</a>
           </li>
           <li class="nav-item pl-3">
           <p id="demo" style="color:white; font-size:3vh; padding:0%; margin:0%; padding-left:2vh;padding-right:2vh;"></p>
