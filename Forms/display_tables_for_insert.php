@@ -242,55 +242,7 @@ if (isset($_SESSION['loggedin']) and isset($_SESSION['isAdmin'])) {
                 
         </div>
     </div>
-<!-------------------5) Address TABLE ----------------------->
-        <div class="container">
-            <h3>Address</h3>
-            <div class="table_wrapper col-12">
-                <table  class="table table-hover align-middle">
-                <thead>
-                    <tr>
-                    <th scope="col">userID</th>
-                    <th scope="col">postalCode</th>
-                    <th scope="col">streetName</th>
-                    <th scope="col">City</th>
-                    <th scope="col">province</th>
-                    <th scope="col">
-                    <a class="btn btn-secondary" href="addressForm.php">Insert</a>
-                    </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                    $sql= "SELECT * FROM address";
-                    $result = ($conn->query($sql));
-                    //declare array to store the data of database
-                    $rows = []; 
-    
-                    if ($result->num_rows > 0) 
-                        {
-                            // fetch all data from db into array 
-                            $rows = $result->fetch_all(MYSQLI_ASSOC);  
-                        }
-            
-                    if(!empty($rows)){
-                        foreach($rows as $row){
-                ?>
-                <tr>
-    
-                    <td><?php echo $row['userID']; ?></td>
-                    <td><?php echo $row['postalCode']; ?></td>
-                    <td><?php echo $row['streetName']; ?></td>
-                    <td><?php echo $row['city']; ?></td>
-                    <td><?php echo $row['province']; ?></td>
-                    <td></td>
-    
-                </tr>
-                    <?php }}            ?>
-                </tbody>
-                </table>
-                
-            </div>
-        </div>
+
 <!-------------------6) discount TABLE ----------------------->
 <div class="container">
             <h3>Discount Items</h3>
@@ -302,7 +254,7 @@ if (isset($_SESSION['loggedin']) and isset($_SESSION['isAdmin'])) {
                     <th scope="col">itemID</th>
 
                     <th scope="col">
-                    <a class="btn btn-secondary" href="addressForm.php">Insert</a>
+                    <a class="btn btn-secondary" href="discountForm.php">Insert</a>
                     </th>
                     </tr>
                 </thead>

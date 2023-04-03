@@ -134,7 +134,23 @@ if (isset($_SESSION['loggedin'])) {
       </div>
     </div>
     <footer class="fixed-bottom bg-darkk shadow-lg" >
-          <div class="d-none d-lg-flex row m-2  d-flex justify-content-evenly">
+          <?php
+         function brdetect( )
+         {
+               $res = $_SERVER['HTTP_USER_AGENT'];
+                   echo $res;
+               if ( strpos ($res, "Chrome") == true)
+                  echo "Browser: Google Chrome";
+               else if ( strpos ($res, "Firefox") == true)
+                          echo "Browser: Firefox";
+                       else if ( strpos ($res, "Edge") == true)
+           echo "Browser: Microsoft Edge";
+                               else  echo "Browser: unkown";
+          }
+
+          brdetect( );
+  ?>
+		  <div class="d-none d-lg-flex row m-2  d-flex justify-content-evenly">
             <div class=" col-5 social d-flex justify-content-around">
               <a class="m-1" href="#">Instagram</a>
               <a class="m-1" href="#">Snapchat</a>
