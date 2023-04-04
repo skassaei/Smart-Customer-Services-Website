@@ -129,9 +129,8 @@
 				echo $sql;
 				$result = mysqli_query($this->conn, $sql);
 				if ($result){
-					return true;
-				}
-				return false;
+///##################check here if it is working###########
+				}else return false;
 			}
 		}
 	}
