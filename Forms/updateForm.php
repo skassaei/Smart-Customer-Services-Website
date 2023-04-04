@@ -182,6 +182,7 @@ if ($tableName =="user"){
     $query = "SELECT * FROM item WHERE itemID = $PKValue ";
     $query_run= mysqli_query($conn,$query);
     $row = mysqli_fetch_assoc($query_run);
+
     $store_query = "SELECT depCode FROM store";
     $store_run= mysqli_query($conn,$store_query);
     $store_rows = $store_run->fetch_all(MYSQLI_ASSOC);
@@ -196,12 +197,14 @@ if ($tableName =="user"){
                 <input value="<?php echo $row["itemName"]?>"   name="itemName" type="text" class="form-control" id="Name" required>
                 </div>
             </div>
+
 			<div class="form-group col-12">
                 <label for="Picurl"  >Pic url</label>
                 <div class="col-sm-10">
                 <input  value="<?php echo $row["itemPic"]?>"  name="itemPic" type="url" class="form-control" id="Picurl" required>
                 </div>
             </div>
+
             <div class="form-group col-6">
                 <label for="madeIn" >madeIn</label>
                 <div class="col-sm-10">
@@ -216,7 +219,7 @@ if ($tableName =="user"){
                 </div>
             </div>
 
-            <div class="input-group mb-3">
+            <div class="input-group col-6">
                 <div class="input-group-prepend">
                     <label class="input-group-text" for="inputGroupSelect01">Department Code</label>
                   </div>
@@ -238,17 +241,18 @@ if ($tableName =="user"){
                 <input value="<?php echo $row["quantity"]?>"  name="quantity" type="number" class="form-control"  id="availableNum"  min="1" placeholder="Quantity" required>
                 </div>
             </div>
+
             <div hidden  class="form-group col-12">
                  <input value="<?php echo $PKValue?>"  type="text"  name="itemID" required>
             </div>
-                <div class="col-3">
+
+                <div class="form-group col-6">
                     <a class="btn btn-secondary" href="./display_tables_for_update.php">Back</a>
                 </div>
 
-            <div class="col-9">
+            <div class="form-group col-6">
                     <button type="submit" name="update_item" class="btn btn-primary">Update</button>
                 </div>
-
 
             </form>
         </div>
@@ -297,10 +301,6 @@ if ($tableName =="user"){
 // ---------------updating truckToGo------------------------------
   elseif($tableName =="truckToGo"){
 
-    $toGo_query = "SELECT * FROM truckToGo WHERE truckID = $PKValue ";
-    $toGo_run= mysqli_query($conn,$toGo_query);
-    $toGo_row = mysqli_fetch_assoc($toGo_run);
-
 ?>
 
   <div class="container">
@@ -312,42 +312,44 @@ if ($tableName =="user"){
                         When Is this Truck available?
                         </label>
                         <div class="form-group col-12">
-                        <input class="form-check-input" type="checkbox" id="autoSizingCheck2"  name="Monday" value="1">
-                        <label class="form-check-label" for="autoSizingCheck2">
+
+                        <input class="form-check-input" type="checkbox" id="autoSizingCheck1"  name="Monday" value="1">
+                        <label class="form-check-label" for="autoSizingCheck1">
                         Monday
                         </label>
+
 
                         <input class="form-check-input" type="checkbox" id="autoSizingCheck2"  name="Tuesday" value="1">
                         <label class="form-check-label" for="autoSizingCheck2">
                         Tuesday
                         </label>
 
-                        <input class="form-check-input" type="checkbox" id="autoSizingCheck2"  name="Wednesday" value="1">
-                        <label class="form-check-label" for="autoSizingCheck2">
+                        <input class="form-check-input" type="checkbox" id="autoSizingCheck3"  name="Wednesday" value="1">
+                        <label class="form-check-label" for="autoSizingCheck3">
                         Wednesday
                         </label>
 
-                        <input class="form-check-input" type="checkbox" id="autoSizingCheck2"  name="Thursday" value="1">
-                        <label class="form-check-label" for="autoSizingCheck2">
+                        <input class="form-check-input" type="checkbox" id="autoSizingCheck4"  name="Thursday" value="1">
+                        <label class="form-check-label" for="autoSizingCheck4">
                         Thursday
                         </label>
                         </div>
                         <div class="form-group col-12">
                     
-                        <input class="form-check-input" type="checkbox" id="autoSizingCheck2"  name="Friday" value="1">
-                        <label class="form-check-label" for="autoSizingCheck2">
+                        <input class="form-check-input" type="checkbox" id="autoSizingCheck5"  name="Friday" value="1">
+                        <label class="form-check-label" for="autoSizingCheck5">
                         Friday
                         </label>
                         
                         
-                        <input class="form-check-input" type="checkbox" id="autoSizingCheck2"  name="Saturday" value="1">
-                        <label class="form-check-label" for="autoSizingCheck2">
+                        <input class="form-check-input" type="checkbox" id="autoSizingCheck6"  name="Saturday" value="1">
+                        <label class="form-check-label" for="autoSizingCheck6">
                         Saturday 
                         </label>
 
                     
-                        <input class="form-check-input" type="checkbox" id="autoSizingCheck2"  name="Sunday" value="1">
-                        <label class="form-check-label" for="autoSizingCheck2">
+                        <input class="form-check-input" type="checkbox" id="autoSizingCheck7"  name="Sunday" value="1">
+                        <label class="form-check-label" for="autoSizingCheck7">
                         Sunday 
                         </label></div>
 
@@ -371,23 +373,76 @@ if ($tableName =="user"){
     </div>
 
 
-<?php
+    <?php
   }
-// ---------------updating ORDER------------------------------
-  elseif($tableName =="orders"){
-    $query = "SELECT * FROM orders WHERE orderID = $PKValue ";
-    $query_run= mysqli_query($conn,$query);
-    $row = mysqli_fetch_assoc($query_run);
-?>
+
+// ---------------updating DISCOUNT------------------------------
+elseif($tableName =="discount"){
+  $item_rows=[];
+  $item_query = "SELECT itemID FROM item";
+  $item_run= mysqli_query($conn,$item_query);
+  $item_rows = $item_run->fetch_all(MYSQLI_ASSOC);
 
 
-<?php 
-  }
+  $discount_query = "SELECT * FROM discount WHERE discountID = $PKValue ";
+  $discount_run= mysqli_query($conn,$discount_query);
+  $discount_row = mysqli_fetch_assoc($discount_run);
 ?>
+
+<div class="container" >
+        <?php include('message.php')?>
+            <form  action="../DB_Operations/updateSingleRow.php"  class="row g-3" method= POST>
+            <h3> Discount: <br></h3>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <label class="input-group-text" for="inputGroupSelect07">Item ID </label>
+                  </div>
+
+                  <select  name='itemID' class="custom-select" id="inputGroupSelect07">
+                    <option selected  name='itemID'  value='<?php echo $discount_row["itemID"]?>'  > <?php echo $discount_row["itemID"]?></option>
+                    <?php
+                      foreach($item_rows as $item){
+                    ?>
+                    <option name='itemID' value='<?php echo $item["itemID"] ?>' >  <?php echo $item["itemID"]  ?> </option>
+                
+                <?php
+                          }
+                    ?>
+
+                  </select>
+              </div>
+
+
+            <div hidden  class="form-group col-12">
+                 <input value="<?php echo $PKValue?>"  type="text"  name="discountID" required>
+               </div>
+            
+
+                <div class="col-3">
+                    <a class="btn btn-secondary" href="./display_tables_for_update.php">Back</a>
+                </div>
+                <div class="col-9">
+                        <button type="submit" name="update_discount" class="btn btn-primary">Update</button>
+                    </div>
+            
+          
+            </form>
+        </div>
 <?php
 
 }	
+?>
+    </body>
+</html>
+
+
+
+
+<?php
+}
 else{
   header("Location: ../login.html");
 }
-  ?>
+  
+?>

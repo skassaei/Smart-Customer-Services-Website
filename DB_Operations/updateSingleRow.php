@@ -1,6 +1,7 @@
 <?php
     session_start();
     require 'dbConnect.php';
+    include './classes.php' ;
 
 if(isset($_POST['update_user'])){
     $userID = mysqli_real_escape_string( $conn,$_POST["userID"]);
@@ -9,9 +10,10 @@ if(isset($_POST['update_user'])){
     $email = mysqli_real_escape_string( $conn,$_POST["email"]);
     $phone = mysqli_real_escape_string( $conn,$_POST["phone"]);
     $admin = mysqli_real_escape_string( $conn,$_POST["admin"]);
-    $query = "UPDATE user SET firstName = '$firstName', lastName = '$lastName', email='$email' , phone='$phone', admin='$admin'   WHERE userID= $userID ";
-    $query_run= mysqli_query($conn,$query);
-    if($query_run){
+	$userTable = new User($conn);
+	$userTable -> update($userID, array("firstName", "lastName", "email", "phone", "admin"), array($firstName ,$lastName ,$email ,$phone ,$admin));
+	
+    if($userTable){
         //echo "Updated";
         $_SESSION['message'] ="Recorde Was Successfully Updated" ;
         header("Location: ../Forms/display_tables_for_update.php");
@@ -27,7 +29,7 @@ if(isset($_POST['update_user'])){
 
 }
 
-// Address
+//// Address
 elseif(isset($_POST['update_address'])){
 
     $userID = mysqli_real_escape_string( $conn,$_POST["userID"]);
@@ -36,33 +38,36 @@ elseif(isset($_POST['update_address'])){
     $city = mysqli_real_escape_string( $conn,$_POST["city"]);
     $province = mysqli_real_escape_string( $conn,$_POST["province"]);
 
-    $query = "UPDATE address SET postalCode = '$postalCode', streetName = '$streetName', city='$city' , province='$province'   WHERE userID= $userID ";
-    $query_run= mysqli_query($conn,$query);
-    if($query_run){
-        //echo "Updated";
+	$addressTable = new Address($conn);
+	$addressTable -> update($userID, array("postalCode", "streetName", "city", "province"), array($postalCode ,$streetName ,$city ,$province));
+	
+    if($addressTable){
         $_SESSION['message'] ="Recorde Was Successfully Updated" ;
         header("Location: ../Forms/display_tables_for_update.php");
         exit(0);
 
     }
     else{ 
-        echo "NOT Updated";
-        // $_SESSION['message'] ="NOT Updated. Please Try Again" ;
-        // header("Location: ../Forms/display_tables_for_update.php");
-        // exit(0);
+        $_SESSION['message'] ="NOT Updated. Please Try Again" ;
+        header("Location: ../Forms/display_tables_for_update.php");
+        exit(0);
     }
 
     }
-//store
+
+
+/////store
 elseif(isset($_POST['update_store'])){
     $depCode = mysqli_real_escape_string( $conn,$_POST["depCode"]);
+
     $location = mysqli_real_escape_string( $conn,$_POST["location"]);
     $city = mysqli_real_escape_string( $conn,$_POST["city"]);
     $postalCode = mysqli_real_escape_string( $conn,$_POST["postalCode"]);
-   
-    $query = "UPDATE store SET location = '$location', city = '$city',postalCode='$postalCode' WHERE depCode= $depCode ";
-    $query_run= mysqli_query($conn,$query);
-    if($query_run){
+
+	$storeTable = new Store($conn);
+	$storeTable -> update($depCode, array("location", "city", "postalCode"), array($location ,$city ,$postalCode));
+	
+    if($storeTable){
         //echo "Updated";
         $_SESSION['message'] ="store Was Successfully Updated" ;
         header("Location: ../Forms/display_tables_for_update.php");
@@ -85,11 +90,10 @@ elseif(isset($_POST['update_item'])){
     $quantity = mysqli_real_escape_string( $conn,$_POST["quantity"]);
     $price = mysqli_real_escape_string( $conn,$_POST["price"]);
     $depCode = mysqli_real_escape_string( $conn,$_POST["depCode"]);
-
-    $query = "UPDATE item SET itemName = '$itemName', itemPic = '$itemPic',madeIn='$madeIn', quantity='$quantity' , price='$price', depCode='$depCode'   WHERE itemID= $itemID ";
-    $query_run= mysqli_query($conn,$query);
-    if($query_run){
-        //echo "Updated";
+	$itemTable = new Item($conn);
+	$itemTable -> update($itemID, array("itemName", "madeIn", "itemPic", "quantity", "price", "depCode"), array($itemName ,$madeIn ,$itemPic ,$quantity ,$price ,$depCode ));
+	
+    if($itemTable){
         $_SESSION['message'] ="Recorde Was Successfully Updated" ;
         header("Location: ../Forms/display_tables_for_update.php");
         exit(0);
@@ -103,6 +107,29 @@ elseif(isset($_POST['update_item'])){
     }
 
     }
+//// discount
+elseif(isset($_POST['update_discount'])){
+
+    $discountID = mysqli_real_escape_string( $conn,$_POST["discountID"]);
+    $itemID = mysqli_real_escape_string( $conn,$_POST["itemID"]);
+
+	$discountTable = new Discount($conn);
+	$discountTable -> update($discountID, array("itemID"), array($itemID));
+	
+    if($discountTable){
+        $_SESSION['message'] ="Recorde Was Successfully Updated" ;
+        header("Location: ../Forms/display_tables_for_update.php");
+        exit(0);
+
+    }
+    else{ 
+        $_SESSION['message'] ="NOT Updated. Please Try Again" ;
+        header("Location: ../Forms/display_tables_for_update.php");
+        exit(0);
+    }
+
+    }
+
 
 
 //////truck/////
@@ -111,10 +138,10 @@ elseif(isset($_POST['update_truck'])){
     $driverFirstName = mysqli_real_escape_string( $conn,$_POST["driverFirstName"]);
     $driverLastName = mysqli_real_escape_string( $conn,$_POST["driverLastName"]);
     $PlateNum = mysqli_real_escape_string( $conn,$_POST["PlateNum"]);
-    
-    $query = "UPDATE truck SET driverFirstName = '$driverFirstName', driverLastName = '$driverLastName',PlateNum='$PlateNum' WHERE truckID= $truckID ";
-    $query_run= mysqli_query($conn,$query);
-    if($query_run){
+    $truckTable = new Truck($conn);
+	$truckTable -> update($truckID, array("driverFirstName", "driverLastName", "PlateNum"), array($driverFirstName ,$driverLastName ,$PlateNum));
+	  
+    if($truckTable){
         //echo "Updated";
         $_SESSION['message'] ="truck Was Successfully Updated" ;
         header("Location: ../Forms/display_tables_for_update.php");
@@ -134,28 +161,31 @@ elseif(isset($_POST['update_truck'])){
 
   elseif(isset($_POST['update_truckToGo'])){
     $truckID = mysqli_real_escape_string( $conn,$_POST["truckID"]);
-    $Monday = mysqli_real_escape_string( $conn,$_POST["Monday"]);
-    $Tuesday = mysqli_real_escape_string( $conn,$_POST["Tuesday"]);
-    $Wednesday = mysqli_real_escape_string( $conn,$_POST["Wednesday"]);
-    $Thursday = mysqli_real_escape_string( $conn,$_POST["Thursday"]);
-    $Friday = mysqli_real_escape_string( $conn,$_POST["Friday"]);
-    $Saturday = mysqli_real_escape_string( $conn,$_POST["Saturday"]);
-    $Sunday = mysqli_real_escape_string( $conn,$_POST["Sunday"]);
 
-    $query = "UPDATE truckToGo SET Monday = '$Monday', Tuesday = '$Tuesday',Wednesday='$Wednesday',Thursday='$Thursday',Friday='$Friday', Saturday='$Saturday',Sunday='$Sunday'  WHERE truckID= $truckID ";
-    $query_run= mysqli_query($conn,$query);
-    if($query_run){
-        //echo "Updated";
+        //if 1 => available, 0 => Not available
+        $Monday = isset($_POST["Monday"]) ? $_POST["Monday"] : 0; 
+        $Tuesday = isset($_POST["Tuesday"]) ? $_POST["Tuesday"] : 0;
+        $Wednesday = isset($_POST["Wednesday"]) ? $_POST["Wednesday"] : 0;
+        $Thursday = isset($_POST["Thursday"]) ? $_POST["Thursday"] : 0;
+        $Friday = isset($_POST["Friday"]) ? $_POST["Friday"] : 0;
+        $Saturday = isset($_POST["Saturday"]) ? $_POST["Saturday"] : 0;
+        $Sunday = isset($_POST["Sunday"]) ? $_POST["Sunday"] : 0;
+
+
+
+    $truckTable = new Truck($conn);
+	$truckTable -> update_truck_schedule($truckID, array("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"), array($Monday ,$Tuesday ,$Wednesday ,$Thursday , $Friday, $Saturday ,$Sunday));
+
+    if($truckTable){
         $_SESSION['message'] ="truckToGo Was Successfully Updated" ;
         header("Location: ../Forms/display_tables_for_update.php");
         exit(0);
 
     }
     else{ 
-        echo " truckToGo NOT Updated";
-        // $_SESSION['message'] ="truck was NOT Updated. Please Try Again" ;
-        // header("Location: ../Forms/display_tables_for_update.php");
-        // exit(0);
+        $_SESSION['message'] ="Truck Schedule was NOT Updated. Please Try Again" ;
+        header("Location: ../Forms/display_tables_for_update.php");
+        exit(0);
     }
 
   }

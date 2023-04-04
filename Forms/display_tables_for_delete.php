@@ -23,14 +23,12 @@ if (isset($_SESSION['loggedin']) and isset($_SESSION['isAdmin'])) {
 <?php
 	$tableNames = array();
 	$tableNames[0] = "user";
-	$tableNames[1] = "address";
-	$tableNames[2] = "store";
-	$tableNames[3] = "item";
-	$tableNames[4] = "discount";
-	$tableNames[5] = "truck";
-	$tableNames[6] = "truckToGo";
-	$tableNames[7] = "review";
-	$tableNames[8] = "orders";
+	$tableNames[1] = "store";
+	$tableNames[2] = "item";
+	$tableNames[3] = "discount";
+	$tableNames[4] = "truck";
+	$tableNames[5] = "review";
+	$tableNames[6] = "orders";
 	include('message.php');
 	foreach ($tableNames as $tn){
 		$tableObj = new Table($tn,$conn);

@@ -144,6 +144,7 @@ $sql[10] = "CREATE TABLE discount(
     reviewID INT NOT NULL AUTO_INCREMENT,
     PRIMARY KEY(reviewID),
     userID INT NOT NULL ,
+    FOREIGN KEY (userID) REFERENCES user(userID),
     userName  VARCHAR(300),
     itemID INT NOT NULL,
     FOREIGN KEY (itemID) REFERENCES item(itemID),

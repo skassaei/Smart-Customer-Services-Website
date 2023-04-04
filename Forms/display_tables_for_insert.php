@@ -24,7 +24,7 @@ if (isset($_SESSION['loggedin']) and isset($_SESSION['isAdmin'])) {
   
     <?php
     include './nav_admin.php';
-
+	include('message.php');
      ?> 
 
  <!-----1) Truck----->

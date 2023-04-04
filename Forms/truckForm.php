@@ -39,7 +39,55 @@
                 <div class="form-group col-12">
                     <label  for="inlineFormInput">Plate Num:</label>
                     <input name="PlateNum" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Plate Number" required>
-				</div>
+    
+
+                 <div class="form-group col-12">
+                    <label class="form-check-label" for="form-check">
+                        When Is the Truck avalable?
+                        </label>
+                        <div class="form-group col-12">
+                        <input class="form-check-input" type="checkbox" id="autoSizingCheck1"  name="Monday" value="1">
+                        <label class="form-check-label" for="autoSizingCheck1">
+                        Monday
+                        </label>
+
+                        <input class="form-check-input" type="checkbox" id="autoSizingCheck2"  name="Tuesday" value="1">
+                        <label class="form-check-label" for="autoSizingCheck2">
+                        Tuesday
+                        </label>
+
+                        <input class="form-check-input" type="checkbox" id="autoSizingCheck3"  name="Wednesday" value="1">
+                        <label class="form-check-label" for="autoSizingCheck3">
+                        Wednesday
+                        </label>
+
+                        <input class="form-check-input" type="checkbox" id="autoSizingCheck4"  name="Thursday" value="1">
+                        <label class="form-check-label" for="autoSizingCheck4">
+                        Thursday
+                        </label>
+                        </div>
+                        <div class="form-group col-12">
+                    
+                        <input class="form-check-input" type="checkbox" id="autoSizingCheck5"  name="Friday" value="1">
+                        <label class="form-check-label" for="autoSizingCheck5">
+                        Friday
+                        </label>
+                        
+                        
+                        <input class="form-check-input" type="checkbox" id="autoSizingCheck6"  name="Saturday" value="1">
+                        <label class="form-check-label" for="autoSizingCheck6">
+                        Saturday 
+                        </label>
+
+                    
+                        <input class="form-check-input" type="checkbox" id="autoSizingCheck7"  name="Sunday" value="1">
+                        <label class="form-check-label" for="autoSizingCheck7">
+                        Sunday 
+                        </label></div>
+
+
+                    </div>
+                </div>
             
                 <div class="col-3">
                     <a class="btn btn-secondary" href="./display_tables_for_insert.php">Back</a>

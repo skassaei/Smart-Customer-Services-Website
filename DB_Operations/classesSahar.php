@@ -18,7 +18,7 @@
 			$first_name = $values[1];
 			$last_name = $values[2];
 			$email = $values[3]; 
-			// $admin= $values[4];
+			$admin= $values[4];
 			$phone = $values[5];
 			
 			
@@ -43,6 +43,29 @@
 				}
 			}
 		}
+
+		function does_email_exist($email){
+
+			$Find_userID = "SELECT userID FROM user WHERE email = '$email'";
+			$Find_userID_run= mysqli_query($this->conn, $Find_userID);
+
+			if (mysqli_num_rows($Find_userID_run) > 0){
+				return true;
+			}else return false;
+		}
+
+		function find_by_email($email){
+
+               $Find_userID = "SELECT userID FROM user WHERE email = '$email'";
+
+               $userID_run= mysqli_query($this->conn, $Find_userID);
+               $userID= mysqli_fetch_row($userID_run);
+			if ($userID[0]){
+				return $userID[0];
+
+			}else return;
+		}
+
 	}
 	
 	// $userTable = new User($conn);
@@ -99,7 +122,7 @@
 			
 			$sql = "INSERT INTO `discount` ( `itemID`)
 						VALUES ('$itemID')";
-			echo $sql;
+			//echo $sql;
 			$result = mysqli_query($this->conn, $sql);
 			if ($result){
 				echo "added successfully";
@@ -111,7 +134,7 @@
 			
 			for($i=0; $i<count($fields); $i++) {
 				$sql = "UPDATE discount SET $fields[$i] = $values[$i] WHERE discountID = $id";
-				echo $sql;
+				//echo $sql;
 				$result = mysqli_query($this->conn, $sql);
 				if ($result){
 					echo "updated successfully";
@@ -122,8 +145,6 @@
 	
 	//////////////////////////
 	//Items
-	///////////////////////////////
-	//ADDRESS
 	
 	class Item extends Table{
 		
@@ -138,23 +159,24 @@
 			
 			$sql = "INSERT INTO `item` ( `itemName`, `madeIn`, `itemPic`, `quantity`, `price`, `depCode`)
 						VALUES ('$itemName', '$madeIn', '$itemPic', '$quantity', '$price', '$depCode')";
-			echo $sql;
+			//echo $sql;
 			$result = mysqli_query($this->conn, $sql);
 			if ($result){
-				echo "added successfully";
+				//echo "added successfully";
+				return true;
+			}else{
+				return false;
 			}
 		}
 		
 		
 		function update($id, array $fields, array $values){
 			
-			for($i=0; $i<count($fields); $i++) {
+			for( $i = 0; $i<count($fields); $i++ ) {
 				$sql = "UPDATE item SET $fields[$i] = '$values[$i]' WHERE itemID = $id";
-				echo $sql;
+				//echo $sql;
 				$result = mysqli_query($this->conn, $sql);
-				if ($result){
-					echo "updated successfully";
-				}
+
 			}
 		}
 	}
@@ -354,6 +376,17 @@
 				echo "schedule added successfully";
 			}
 		}
+		function update_truck_schedule($truckID, array $fields,array $values){
+
+			for($i=0; $i<count($fields); $i++) {
+				$sql = "UPDATE truckToGo SET $fields[$i] = '$values[$i]' WHERE truckID = $truckID";
+				echo $sql;
+				$result = mysqli_query($this->conn, $sql);
+				if ($result){
+					echo "truck updated successfully";
+				}
+			}
+		}
 
 	}
 
@@ -394,6 +427,7 @@
 			if ($result){
 				echo " review added successfully";
 			}
+			return false;
 		}
 		
 		
@@ -409,6 +443,7 @@
 			}
 		}
 	}
+
 
 	
 ?>

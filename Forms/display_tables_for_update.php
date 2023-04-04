@@ -34,8 +34,8 @@ if (isset($_SESSION['loggedin']) and isset($_SESSION['isAdmin'])) {
 	$tableNames[4] = "discount";
 	$tableNames[5] = "truck";
 	$tableNames[6] = "truckToGo";
-	$tableNames[7] = "review";
-	$tableNames[8] = "orders";
+	//$tableNames[7] = "review";
+	//$tableNames[8] = "orders";
 	include('message.php');
 	foreach ($tableNames as $tn){
 		$tableObj = new Table($tn,$conn);
