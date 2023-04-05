@@ -443,8 +443,8 @@
 	$review = new Review($conn);
 	//$userTable -> insert(array("sinapassword","Sina", "Pahlavan", "sinapah333@gmail.com",123456,0));
 	//$userTable -> insert(array("felixpassword","felix","lee","flee@gmail.com",0,123456));
-	//$hash = password_hash("admin", PASSWORD_DEFAULT);
-	//$userTable -> insert(array($hash,"admin","admin","admin@gmail.com",123456789,1));
+	$hash = password_hash("admin", PASSWORD_DEFAULT);
+	$userTable -> insert(array($hash,"admin","admin","admin@gmail.com",123456789,1));
 	//$addressTable -> insert(array(5, "1L1L1L", "Sina ST", "Vaughan", "Ontario"));
 	//$addressTable -> update(5, array("postalCode", "streetName"), array ("L1L1L1","Sina Ave"));
 	//$discountTable -> insert(array(2));
