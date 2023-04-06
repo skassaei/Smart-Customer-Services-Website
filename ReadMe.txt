@@ -8,7 +8,7 @@ Payment page =>
 Saving every thing in the Order Table and sent a message to the customer with the truck ID assigned to thier order.
 
 
-1) shopingcart should be added automaticly for each user at sign up time (Alex)
+1) shopingcart should be added automaticly for each user at sign up time (Alex)[Done]
 
 2) drag and drop the items into the shopping cart(database) (Alex, Done)
 
@@ -16,17 +16,17 @@ Saving every thing in the Order Table and sent a message to the customer with th
 
 4) go to payment page (the form is ready) (Parmida) [Done]
 
-4.2) add every thing with a truck ID to the order Table (Parmida)
+4.2) add every thing with a truck ID to the order Table (Parmida)[Done]
 
-5) Select, Update pages (Sahar)
+5) Select, Update pages (Sahar)[Done]
 
-6) The alrt message does not close (Sahar)
+6) The alrt message does not close (Sina)[Done]
 
 7) The code for displaying  the tables skips the firs row (Sahar)
 
-8) The userNme at sign up and insert page should be unique 
+8) The userNme at sign up and insert page should be unique [Done]
 
-9) Search the order (Sahar)
+9) Search the order (parmida)[Done]
 
 The new Changes (Parmida):
 - signup.html is changed. "username" is deleted and the DB and the other files are changed to match it.
@@ -49,14 +49,14 @@ Iteration 3:
 
 1) SPA (Alex)
 
-2) User should be able to write a short review and rank Items and Services (Sahar or Alex)
+2) User should be able to write a short review and rank Items and Services (Sahar or Alex)[Done]
 
-3) Impeliment a new Service for short amout of time (Parmida)
+3) Impeliment a new Service for short amout of time (Parmida)[Done]
 
 Deadine for Parmida & Sahar: Sunday Night
 Deadline for the whole thing: Monday Night
 
-4) Browser detecting : website should work on at least 3 browsers
+4) Browser detecting : website should work on at least 3 browsers[Done]
 
 Iteration 4:
 
