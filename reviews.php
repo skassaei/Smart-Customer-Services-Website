@@ -41,10 +41,7 @@ $itemID = mysqli_real_escape_string( $conn , $_GET["itemID"]);
     $ReviewTable = new Review($conn);
     $ItemTable = new Item($conn);
     $item_rows = $ItemTable -> getItemById($itemID);
-// $query = "SELECT * FROM item WHERE itemID = $itemID ";
-//     $result = mysqli_query($conn, $query);
-//  $review_q = "SELECT * FROM review WHERE itemID = $itemID ";   
-//     $review_result = mysqli_query($conn, $review_q);
+
  
     if (count($item_rows) >0){
         foreach($item_rows as $row){
@@ -98,13 +95,7 @@ $itemID = mysqli_real_escape_string( $conn , $_GET["itemID"]);
                             <a style="text-decoration:none; color: rgb(33, 17, 55); background-color:white; " class=" btn col-12 bg-darkk shadow-lg rounded total " href="./home.php" > Back </a>  
                            
                         </div>
-                        
-                        
-                            <!-- <button style="background-color:white; color: rgb(33, 17, 55);" class="col-12  bg-darkk shadow-lg rounded total" >
-                            </button>  
-                        <a style="text-decoration: none; background-color:white; color: rgb(33, 17, 55);" class="btn col-12 " href="./home.php" > Back </a>    -->
-
-                            
+                         
                 </form>
             </div>
 
@@ -119,10 +110,6 @@ $itemID = mysqli_real_escape_string( $conn , $_GET["itemID"]);
         <h2>Reviews</h2>
         <div class="d-flex flex-wrap ">
         <?php
-
-        // if ($review_result->num_rows > 0){
-        //     $review_rows = $review_result->fetch_all(MYSQLI_ASSOC);
-
         $review_rows = $ReviewTable -> diplayItemReview($itemID);
         if (count($review_rows) > 0){
             foreach($review_rows as $review){
@@ -147,11 +134,6 @@ $itemID = mysqli_real_escape_string( $conn , $_GET["itemID"]);
             </div>
         </div>
         
-
-
-
-    
-
 
 
 
