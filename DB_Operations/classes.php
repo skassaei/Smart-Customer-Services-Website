@@ -375,6 +375,18 @@
 			}
 			return false;
 		}
+		function update_truck_schedule($truckID, array $fields,array $values){
+
+			for($i=0; $i<count($fields); $i++) {
+				$sql = "UPDATE truckToGo SET $fields[$i] = '$values[$i]' WHERE truckID = $truckID";
+				echo $sql;
+				$result = mysqli_query($this->conn, $sql);
+				if ($result){
+					echo "truck updated successfully";
+				}
+			}
+		}
+
 
 	}
 
