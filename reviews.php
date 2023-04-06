@@ -38,16 +38,16 @@ $rows = [];
 $review_rows= [];
 $itemID = mysqli_real_escape_string( $conn , $_GET["itemID"]); 
 
-$query = "SELECT * FROM item WHERE itemID = $itemID ";
-    $result = mysqli_query($conn, $query);
-
-
- $review_q = "SELECT * FROM review WHERE itemID = $itemID ";   
-    $review_result = mysqli_query($conn, $review_q);
+    $ReviewTable = new Review($conn);
+    $ItemTable = new Item($conn);
+    $item_rows = $ItemTable -> getItemById($itemID);
+// $query = "SELECT * FROM item WHERE itemID = $itemID ";
+//     $result = mysqli_query($conn, $query);
+//  $review_q = "SELECT * FROM review WHERE itemID = $itemID ";   
+//     $review_result = mysqli_query($conn, $review_q);
  
-    if ($result->num_rows > 0){
-        $rows = $result->fetch_all(MYSQLI_ASSOC);
-        foreach($rows as $row){
+    if (count($item_rows) >0){
+        foreach($item_rows as $row){
          
 ?>
     <div class="container mr-4 mt-1 mb-4 ml-5 mt-5">
@@ -61,53 +61,60 @@ $query = "SELECT * FROM item WHERE itemID = $itemID ";
                 </div>
             </div>
             <div class="card col-6 p-4 bg-darkk shadow-lg rounded">
-            <h3>Write a review</h3> 
-            <form name="reviewForm"  class="row g-3" action="./submitRating.php"  method= POST>
-                
-                <div class="form-group col-12">
-                        <div class="form-group col-12 ">
-                            <label for="inlineFormInput">Your Name:</label>
-                            <input name="userName" type="text" class="form-control mb-2" id="inlineFormInput" required>
-                        </div>
-                            <select class=" p-1" id="inlineFormInput2" type="number" name="userRN" required>
-                                 <option value=0 disabled selected >Rating</option>
-                                 <option value=1>1 Stars</option>
-                                 <option value=2>2 Stars</option>
-                                 <option value=3>3 Stars</option>
-                                 <option value=4>4 Stars</option>
-                                 <option value=5>5 Stars</option>
-                            </select>
-
-
-                        <div hidden class="form-group col-12">
-                                <label  for="inlineFormInput">userID:</label>
-                                <input value="<?php echo $userID ?>" name="userID" type="text" class="form-control mb-2" id="inlineFormInput" required>
-                            </div>
-                            <div hidden class="form-group col-6">
-                                <label  for="inlineFormInput">itemID:</label>
-                                <input value="<?php echo $itemID ?>" name="itemID" type="text" class="form-control mb-2" id="inlineFormInput" required>
-                            </div>
-                        <div class="form-group col-12">
-                            <label  for="inlineFormInput">Review:</label>
-                            <textarea name="userReview"  class="form-control mb-2" id="inlineFormInput" required></textarea>
-                </div>
-
-                    <div>
-                        <input style="background-color:white; color: rgb(33, 17, 55);" type="submit" class="col-12  bg-darkk shadow-lg rounded total" name="Save_review">
-                    </div>
-                    <div>
-                        <button style="background-color:white; color: rgb(33, 17, 55);" class="col-12  bg-darkk shadow-lg rounded total"  type="submit" name="Save_payment" >
-                        <a style="text-decoration: none; color: rgb(33, 17, 55);" href="./home.php">Back</a>
-                        </button>   
-                    </div>
+                <h3>Write a review</h3> 
+                <div class="card-body">
+                <form name="reviewForm"  class="row g-3" action="./submitRating.php"  method= POST>
                     
+                    <div class="form-group col-12">
+                            <div class="form-group col-12 ">
+                                <label for="inlineFormInput">Your Name:</label>
+                                <input name="userName" type="text" class="form-control mb-2" id="inlineFormInput" required>
+                            </div>
+                                <select class=" p-1" id="inlineFormInput2" type="number" name="userRN" required>
+                                    <option value=0 disabled selected >Rating</option>
+                                    <option value=1>1 Stars</option>
+                                    <option value=2>2 Stars</option>
+                                    <option value=3>3 Stars</option>
+                                    <option value=4>4 Stars</option>
+                                    <option value=5>5 Stars</option>
+                                </select>
 
+                                <div hidden class="form-group col-12">
+                                        <label  for="inlineFormInput">userID:</label>
+                                        <input value="<?php echo $userID ?>" name="userID" type="text" class="form-control mb-2" id="inlineFormInput" required>
+                                    </div>
+                                <div hidden class="form-group col-6">
+                                    <label  for="inlineFormInput">itemID:</label>
+                                    <input value="<?php echo $itemID ?>" name="itemID" type="text" class="form-control mb-2" id="inlineFormInput" required>
+                                </div>
+                            <div class="form-group col-12">
+                                <label  for="inlineFormInput">Review:</label>
+                                <textarea name="userReview"  class="form-control mb-2" id="inlineFormInput" required></textarea>
+                            </div>
+
+                        <div>
+                            <input style="background-color:white; color: rgb(33, 17, 55);" type="submit" class="col-12  bg-darkk shadow-lg rounded total" name="Save_review">
+                           
+                            <a style="text-decoration:none; color: rgb(33, 17, 55); background-color:white; " class=" btn col-12 bg-darkk shadow-lg rounded total " href="./home.php" > Back </a>  
+                           
+                        </div>
                         
-            </form>
+                        
+                            <!-- <button style="background-color:white; color: rgb(33, 17, 55);" class="col-12  bg-darkk shadow-lg rounded total" >
+                            </button>  
+                        <a style="text-decoration: none; background-color:white; color: rgb(33, 17, 55);" class="btn col-12 " href="./home.php" > Back </a>    -->
 
+                            
+                </form>
             </div>
 
+
+            </div>
+            
         </div>
+
+        </div>
+        
         <hr class="rounded mt-3" style="color:rgb(33, 17, 55); border-width:3">
         <h2>Reviews</h2>
         <div class="d-flex flex-wrap ">
@@ -115,9 +122,9 @@ $query = "SELECT * FROM item WHERE itemID = $itemID ";
 
         // if ($review_result->num_rows > 0){
         //     $review_rows = $review_result->fetch_all(MYSQLI_ASSOC);
-        $ReviewTable = new Review($conn);
+
         $review_rows = $ReviewTable -> diplayItemReview($itemID);
-        if ($review_result->num_rows > 0){
+        if (count($review_rows) > 0){
             foreach($review_rows as $review){
 ?>
                     <div class="card m-3" style="border:1px solid indigo; background-color:#fdf4fc; border-radius:5px;  width:110em; cursor:move" >

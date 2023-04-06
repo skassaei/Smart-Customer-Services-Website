@@ -170,6 +170,14 @@
 				}
 			}
 		}
+		function getItemById( $itemID){
+			$rows = [];
+			$query = "SELECT * FROM item WHERE itemID = $itemID ";
+			$result = mysqli_query($this->conn, $query);
+			$rows = $result->fetch_all(MYSQLI_ASSOC);
+			return $rows;
+		}
+
 	}
 	
 	/////////////////////////
