@@ -69,7 +69,7 @@ class Table {
                         if ($head != "password"){
                         if ($head == $tpk) $PKValue = $value;
                             
-                        echo "<td>$value</td>";
+                        echo "<td>".htmlspecialchars($value)."</td>";
                     }
 
                 }
@@ -140,7 +140,7 @@ class Table {
                         if ($head != "password"){
                         if ($head == $tpk) $PKValue = $value;
                             
-                        echo "<td>$value</td>";
+                        echo "<td>".htmlspecialchars($value)."</td>";
                     }
 
                 }
