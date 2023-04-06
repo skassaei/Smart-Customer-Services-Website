@@ -137,9 +137,6 @@
 	
 	//////////////////////////
 	//Items
-	///////////////////////////////
-	//ADDRESS
-	
 	class Item extends Table{
 		
 		function insert(array $values){
@@ -442,6 +439,20 @@
 				}
 			}
 		}
+		function diplayItemReview($itemID){		
+			$review_rows= [];
+			$review_q = "SELECT * FROM review WHERE itemID = $itemID ";  
+			$review_result = mysqli_query($this->conn, $review_q);
+			if ($review_result->num_rows > 0){
+					
+				$review_rows = $review_result->fetch_all(MYSQLI_ASSOC);
+				return $review_rows;
+			}else{
+				return $review_rows;
+			}
+			
+		}
+		
 	}
 	
 	$userTable = new User($conn);

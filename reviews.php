@@ -2,6 +2,7 @@
 <?php
 session_start();
 require './DB_Operations/dbconnect.php';
+include './DB_Operations/classes.php' ;
 
 if (isset($_SESSION['loggedin'])) {
 	
@@ -47,7 +48,7 @@ $query = "SELECT * FROM item WHERE itemID = $itemID ";
     if ($result->num_rows > 0){
         $rows = $result->fetch_all(MYSQLI_ASSOC);
         foreach($rows as $row){
-        
+         
 ?>
     <div class="container mr-4 mt-1 mb-4 ml-5 mt-5">
         <div class="row mb-3 justify-content-evenly">
@@ -103,7 +104,7 @@ $query = "SELECT * FROM item WHERE itemID = $itemID ";
 
                         
             </form>
-            <?php include('./Forms/message.php')?>
+
             </div>
 
         </div>
@@ -112,18 +113,21 @@ $query = "SELECT * FROM item WHERE itemID = $itemID ";
         <div class="d-flex flex-wrap ">
         <?php
 
+        // if ($review_result->num_rows > 0){
+        //     $review_rows = $review_result->fetch_all(MYSQLI_ASSOC);
+        $ReviewTable = new Review($conn);
+        $review_rows = $ReviewTable -> diplayItemReview($itemID);
         if ($review_result->num_rows > 0){
-            $review_rows = $review_result->fetch_all(MYSQLI_ASSOC);
             foreach($review_rows as $review){
 ?>
                     <div class="card m-3" style="border:1px solid indigo; background-color:#fdf4fc; border-radius:5px;  width:110em; cursor:move" >
-                        <h4 class="card-title p-2 pt-2 pb-2 mb-0 bg-darkk shadow-lg" >userName: <b> <?php echo $review['userName']; ?></b></h4>
-                        <p class="card-text p-2 pb-0 pt-0 m-0"><?php echo $review['userRN']; ?>/5 Stars</p>
+                        <h4 class="card-title p-2 pt-2 pb-2 mb-0 bg-darkk shadow-lg" >userName: <b> <?php echo htmlspecialchars( $review['userName'] ); ?></b></h4>
+                        <p class="card-text p-2 pb-0 pt-0 m-0"><?php echo htmlspecialchars( $review['userRN'] ); ?>/5 Stars</p>
                         
                         <div class="card p-3 rounded">
-                            <p class="card-text p-0 m-0"><?php echo $review['userReview']; ?></p>
+                            <p class="card-text p-0 m-0"><?php echo htmlspecialchars( $review['userReview'] ); ?></p>
                         </div>
-                        <p class="card-text p-0 m-0" align="right"><?php echo $review['reviewTime']; ?></p>
+                        <p class="card-text p-0 m-0" align="right"><?php echo  $review['reviewTime']; ?></p>
                     </div>
 
                     <?php
