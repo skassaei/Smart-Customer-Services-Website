@@ -86,7 +86,7 @@
             </div>
             <div class="form-group col-4">
                     <label for="postalCode">Postal Code:</label>
-                    <input type="text" class="form-control" id="postalCode" name="postalCode" required>
+                    <input type="text" class="form-control" id="postalCode" name="postalCode" placeholder="A1B 2F3" pattern="[A-Za-z]{1}[0-9]{1}[A-Za-z]{1} [0-9]{1}[A-Za-z]{1}[0-9]{1}" required>
             </div>
             <div class="form-group col-8">
                     <label for="province">Province:</label>
