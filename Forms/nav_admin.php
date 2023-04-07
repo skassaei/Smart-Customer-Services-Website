@@ -1,5 +1,3 @@
-<!DOCTYPE html>
-
 <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-darkk">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">SystemLogoHolder</a>
@@ -18,7 +16,7 @@
           <a class="nav-link active" href="../contactus.php">Contact Us</a>
         </li>
         <li class="nav-item dropdown">
-			<a class="nav-link active" href="discount.php">Special Offers</a>
+			<a class="nav-link active" href="../discount.php">Special Offers</a>
 		  </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
