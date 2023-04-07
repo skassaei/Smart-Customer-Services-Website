@@ -87,18 +87,12 @@ $userID = $_SESSION["ID"];
             $userID = mysqli_real_escape_string( $conn,$_POST["userID"]);
             $orderID = mysqli_real_escape_string( $conn,$_POST["orderID"]);
 
-            // $Find_order = "SELECT orderID FROM orders WHERE userID = $userID";
-            // $order_run= mysqli_query($conn, $Find_order);
-            // $orderID = ($order= mysqli_fetch_row($order_run));
             $_SESSION["first_name"];
             $_SESSION["last_name"];
             $_SESSION["totalAmount"];
             $orderDate = date("Y-m-d");
             $method = "Debit/Credit";
 
-            // $Find_truck = "SELECT truckID FROM truck WHERE availabilityCode > 0";
-            // $truck_run= mysqli_query($conn, $Find_truck);
-            // $truck= mysqli_fetch_row($truck_run);
 
             $Find_userPC = "SELECT postalCode FROM address WHERE userID = '{$_SESSION["ID"]}'";
             $userPC_run= mysqli_query($conn, $Find_userPC);
@@ -112,13 +106,13 @@ $userID = $_SESSION["ID"];
             $userCity_run= mysqli_query($conn, $Find_userCity);
             $userCity= mysqli_fetch_row($userCity_run); 
 
-            $Find_branchStreet = "SELECT location FROM store WHERE postalCode = '{$_SESSION["branch_PC"]}'";
-            $branchStreet_run= mysqli_query($conn, $Find_branchStreet);
-            $branchStreet= mysqli_fetch_row($branchStreet_run);
+            // $Find_branchStreet = "SELECT location FROM store WHERE postalCode = '{$_SESSION["branch_PC"]}'";
+            // $branchStreet_run= mysqli_query($conn, $Find_branchStreet);
+            // $branchStreet= mysqli_fetch_row($branchStreet_run);
 
-            $Find_branchCity = "SELECT city FROM store WHERE postalCode = '{$_SESSION["branch_PC"]}'";
-            $branchCity_run= mysqli_query($conn, $Find_branchCity);
-            $branchCity= mysqli_fetch_row($branchCity_run);
+            // $Find_branchCity = "SELECT city FROM store WHERE postalCode = '{$_SESSION["branch_PC"]}'";
+            // $branchCity_run= mysqli_query($conn, $Find_branchCity);
+            // $branchCity= mysqli_fetch_row($branchCity_run);
 
 
             $Find_rcptID = "SELECT receiptID FROM orders WHERE orderID = $orderID";
@@ -127,13 +121,13 @@ $userID = $_SESSION["ID"];
             
             ?>
             <div class="card-body">
-                <h2>Branch information</h2>
+                <!-- <h2>Branch information</h2>
                 <hr class="rounded m-0">
-                <h4 class="card-title branchName"><?php echo $branchCity[0] ?>'s Branch</h4>
-                <p class="card-text "><b>Address: </b><?php echo $branchStreet[0].", ".$branchCity[0]; ?></p>
-                <p class="card-text "><b>Postal Code: </b><?php echo $_SESSION["branch_PC"]; ?></p>
-                <p class="card-text "><b>Truck ID: </b><?php echo '#'.$_SESSION['truck_togo']; ?></p>
-                <hr class="rounded m-0 mt-3">
+                <h4 class="card-title branchName"><?php //echo $branchCity[0] ?>'s Branch</h4>
+                <p class="card-text "><b>Address: </b><?php // echo $branchStreet[0].", ".$branchCity[0]; ?></p>
+                <p class="card-text "><b>Postal Code: </b><?php  // echo $_SESSION["branch_PC"]; ?></p>
+                <p class="card-text "><b>Truck ID: </b><?php // echo '#'.$_SESSION['truck_togo']; ?></p>
+                <hr class="rounded m-0 mt-3"> -->
                 <h2>Recipient Delivery Information</h2>
                 <hr class="rounded m-0">
                 
@@ -157,13 +151,6 @@ $userID = $_SESSION["ID"];
                     </tr>
                     <?php
   
-           
-
-                            // if($itemID)
-
-                            
-                            
-                            
                             
                             $Find_itemID = "SELECT itemID FROM itemsInShoppingCart WHERE receiptID = $RcptID[0]";
                             $itemID_run= mysqli_query($conn, $Find_itemID);
@@ -224,22 +211,8 @@ $userID = $_SESSION["ID"];
                 <hr class="rounded m-0 mt-3 d-none d-md-block d-lg-block">
                 <?php   
 
-                // if (){
-                //     $total = 0;
-                //     foreach ($_SESSION["shopping_cart"] as $keys => $values) {
-                //     $Find_discountItemID = "SELECT itemID FROM discount WHERE itemID='{$values["item_id"]}'";
-                //     $discountItemID_run= mysqli_query($conn, $Find_discountItemID);
-                //     if($discountItemID=mysqli_fetch_row($discountItemID_run)){
-                //         $thePrice=$values["item_price"]*0.93;
-                //         $total = $total + (((int)($values["item_quantity"]) * $thePrice));
-                //     } else{ 
-                //     $thePrice=$values["item_price"];
-                //     $total = $total + (((int)($values["item_quantity"]) * $thePrice));
-                //     }
                     $t_tax=$total*0.13;
 
-                // }  
-                // } 
                 $_SESSION["totalAmount"] = ($total+$t_tax+7+0.91+2.5);
                    echo '                
                 <P class="m-1">Total: $'. $total.'</P>
