@@ -19,14 +19,14 @@ if(isset($_POST['Save_review']))
     $query_run= mysqli_query($conn,$query);
     if($query_run){
 
-        $_SESSION['message'] ="The New Store Was Added Successfully" ;
+        $_SESSION['message'] ="Thank you for your review." ;
         header("Location: ./reviews.php?itemID=$itemID");
         exit(0);
 
 
     }
     else{ 
-        $_SESSION['message'] ="Store Was NOT Added Please Try Again" ;
+        $_SESSION['message'] ="Can Not submit,Please Try Again." ;
         header("Location: ./reviews.php?itemID=$itemID");
         exit(0);
     }

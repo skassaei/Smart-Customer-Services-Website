@@ -35,7 +35,7 @@
         <button class="btn btn-outline-light" type="submit">Search</button>
       </form>
       <ul class="nav navbar-nav navbar-right light">
-      <li><a href="findOrder.php" style="text-decoration:none; color:white;">ORDERS</a>
+      <li><a href="../findOrder.php" style="text-decoration:none; color:white;">ORDERS</a>
 
 </li>
       <li><a href="../shoppingcart.php"><svg width="30px" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

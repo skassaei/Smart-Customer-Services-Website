@@ -18,6 +18,8 @@
           <li class="nav-item dropdown">
 			<a class="nav-link active" href="discount.php">Special Offers</a>
 		  </li>
+      <li><a href="findOrder.php" style="text-decoration:none; color:white;">ORDERS</a>
+
 		  <?php 
 			if(isset($_SESSION['isAdmin'])) {
 				?>
