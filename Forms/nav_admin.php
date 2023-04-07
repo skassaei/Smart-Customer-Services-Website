@@ -18,13 +18,8 @@
           <a class="nav-link active" href="../contactus.php">Contact Us</a>
         </li>
         <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Special Offers
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="discount.php">Discounts</a></li>
-            </ul>
-          </li>
+			<a class="nav-link active" href="discount.php">Special Offers</a>
+		  </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Maintain DB
