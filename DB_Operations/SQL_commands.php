@@ -189,7 +189,12 @@ $sql[10] = "CREATE TABLE discount(
     ('Pearl Crown Cake', 'Pink', 'https://img.ltwebstatic.com/images3_pi/2021/08/19/1629370399d40fbec401d56413fff146e29fbfa741_thumbnail_900x.webp', 9, 2, 75, 1)";
     
     
-
+    $sql[15]="INSERT INTO `discount` (`discountID`, `itemID`) VALUES
+    (2, 2),
+    (4, 4),
+    (5, 5),
+    (3, 6),
+    (1, 9)";
 
     foreach($sql as $sql){
     if ($conn->query($sql)) {
