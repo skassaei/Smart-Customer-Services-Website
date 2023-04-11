@@ -176,7 +176,7 @@
 	</script>
 
 	<script
-	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh2dqXcuimTN834D5gv8p8sPxOxLMMTXc&callback=initMap&v=weekly"
+	src="https://maps.googleapis.com/maps/api/js?key=?"
 	defer
 	></script>
   </body>
