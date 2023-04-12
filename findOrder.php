@@ -26,7 +26,7 @@ if (isset($_SESSION['loggedin'])) {
 
 
 <?php
-include 'nav.php';
+include 'navHome.php';
 
 
 

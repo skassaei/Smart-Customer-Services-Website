@@ -18,7 +18,8 @@ if (isset($_SESSION['loggedin'])) {
 
 </head>
 <html>
-<?php include 'nav.php' ?>
+<?php include 'navHome.php'; ?>
+
 
 <body>
   <div class="container mr-4 mt-1 mb-4 ml-5">
