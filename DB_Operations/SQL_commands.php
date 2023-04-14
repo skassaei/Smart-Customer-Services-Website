@@ -124,7 +124,7 @@ $sql[9] = "CREATE TABLE truckToGo (
     toGoID INT NOT NULL AUTO_INCREMENT,
     PRIMARY KEY(toGoID),
     truckID INT NOT NULL,
-    FOREIGN KEY (truckID) REFERENCES truck(truckID),  
+    FOREIGN KEY (truckID) REFERENCES truck(truckID) ON DELETE CASCADE,  
     Monday BOOLEAN DEFAULT 1, 
     Tuesday BOOLEAN DEFAULT 1,
     Wednesday BOOLEAN DEFAULT 1,
