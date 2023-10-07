@@ -1,3 +1,6 @@
+An online cakeshop website
+
+
 **************(make sure to use the last version!!)*************
 
 Iteration 1&2:
@@ -46,9 +49,9 @@ Iteration 3:
 
 1) SPA (Alex)
 
-2) User should be able to write a short review and rank Items and Services (Sahar or Alex)
+2) User should be able to write a short review and rank Items and Services (Sahar or Alex) (done)
 
-3) Impeliment a new Service for short amout of time (Parmida)
+3) Impeliment a new Service for short amout of time (Parmida) (done)
 
 Deadine for Parmida & Sahar: Sunday Night
 Deadline for the whole thing: Monday Night
@@ -57,9 +60,9 @@ Deadline for the whole thing: Monday Night
 
 Iteration 4:
 
-1) Apply security on password, user balance, credit card number
+1) Apply security on password, user balance, credit card number (done)
 
-2) Need a system logo
+2) Need a system logo (done)
 
-3) Technical Report
+3) Technical Report (done)
 
