@@ -1,3 +1,14 @@
+
+ 
+ 
+*you need Xampp to run this project*
+
+    For loging into the website you can use the following information:
+   **Please see the difference between an Admin and RegularUser
+    (RegularUser, 'User', 'RegularUser@gmail.com', '0','RegularUser11','6476837294'),
+    (RegularUser2, 'User2', 'RegularUser2@gmail.com', '0','RegularUser2','6476837292'),
+    (AdminUser1, 'Admin', 'AdminUser1@gmail.com', '0','AdminUser1','64768374592')
+
 **************(make sure to use the last version!!)*************
 
 Iteration 1&2:

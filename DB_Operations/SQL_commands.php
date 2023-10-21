@@ -196,6 +196,14 @@ $sql[10] = "CREATE TABLE discount(
     (3, 6),
     (1, 9)";
 
+    $sql[16]="INSERT INTO `user` (`firstName`, `lastName`, `email`,`admin`, `password`,`phone`) VALUES
+    (RegularUser, 'User', 'RegularUser@gmail.com', '0','RegularUser11','6476837294'),
+    (RegularUser2, 'User2', 'RegularUser2@gmail.com', '0','RegularUser2','6476837292'),
+    (AdminUser1, 'Admin', 'AdminUser1@gmail.com', '0','AdminUser1','64768374592')";
+
+
+
+
     foreach($sql as $sql){
     if ($conn->query($sql)) {
         echo "Table Records created successfully";
