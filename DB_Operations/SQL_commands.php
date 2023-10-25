@@ -104,7 +104,7 @@ $sql[7] = "CREATE TABLE itemsInShoppingCart (
     itemID INT NOT NULL,
     receiptID INT NOT NULL,
     quantity INT,
-    FOREIGN KEY (itemID) REFERENCES item(itemID) ,
+    FOREIGN KEY (itemID) REFERENCES item(itemID)  ON DELETE CASCADE,
     FOREIGN KEY (receiptID) REFERENCES shopping_cart(receiptID) ON DELETE CASCADE,
 	itemsInShoppingCartID INT NOT NULL AUTO_INCREMENT,
 	PRIMARY KEY(itemsInShoppingCartID)
@@ -116,7 +116,7 @@ $sql[8] = "CREATE TABLE trip(
     truckID INT NOT NULL,
     FOREIGN KEY (truckID) REFERENCES truck(truckID) ON DELETE CASCADE,    
     orderID INT NOT NULL,
-    FOREIGN KEY (orderID) REFERENCES orders(orderID)
+    FOREIGN KEY (orderID) REFERENCES orders(orderID) ON DELETE CASCADE
  )";
 
 $sql[9] = "CREATE TABLE truckToGo (
@@ -138,7 +138,7 @@ $sql[10] = "CREATE TABLE discount(
     PRIMARY KEY(discountID),
     itemID INT NOT NULL,
     FOREIGN KEY (itemID) REFERENCES item(itemID) ON DELETE CASCADE
- )";
+    )";
 
 $sql[11] = "CREATE TABLE review(
     reviewID INT NOT NULL AUTO_INCREMENT,
@@ -147,7 +147,7 @@ $sql[11] = "CREATE TABLE review(
     FOREIGN KEY (userID) REFERENCES user(userID),
     userName  VARCHAR(300),
     itemID INT NOT NULL,
-    FOREIGN KEY (itemID) REFERENCES item(itemID),
+    FOREIGN KEY (itemID) REFERENCES item(itemID) ON DELETE CASCADE,
     userRN INT(1) NOT NULL  ,
     reviewTime DATETIME NOT NULL,
     userReview VARCHAR(300)
@@ -178,37 +178,45 @@ $sql[14]="INSERT INTO `store` (`location`, `city`, `postalCode`, `depCode`) VALU
     ('1422 Gerrard St E', 'Toronto', 'M4L 1Z6', 6),
     ('2681 Danforth Ave', 'Toronto', 'M4C 1L4', 7)";
 
-$sql[15]="INSERT INTO `item` (`itemName`, `madeIn`, `itemPic`, `itemID`, `quantity`, `price`, `depCode`) VALUES
-('Blue-Gold Paint Cake', 'Blue', 'https://img.ltwebstatic.com/images3_pi/2022/10/09/1665298032ac95d0cf86ee7d5047e4e55a8700752e_thumbnail_900x.webp', 2, 12, 60, 3),
-('Pastel Balloons Cake', 'Pink ', 'https://img.ltwebstatic.com/images3_pi/2022/03/08/164671221468f8b0c6dae874cd2cc89a30daad7f2a_thumbnail_900x.webp', 3, 6, 87, 3),
-('Mermaid Tail Cake', 'Yellow', 'https://img.ltwebstatic.com/images3_pi/2022/09/06/166245183706fe96793373d924ea00129fbe6c58b4_thumbnail_900x.webp', 4, 2, 94, 1),
-('Under The Sea Cupcake (5p', 'Purple', 'https://img.ltwebstatic.com/images3_pi/2022/05/18/1652858929ea4ef56e54b36403b040226960d2485c_thumbnail_900x.webp', 5, 5, 75, 1),
-('Teddy Bear Cake', 'Brown, White', 'https://img.ltwebstatic.com/images3_pi/2023/02/02/167530179665b010fde6777e1599552f4a3de85830_thumbnail_900x.webp', 6, 3, 85, 2),
-('Black Pearl Cake', 'Black', 'https://img.ltwebstatic.com/images3_pi/2023/01/08/1673148933cb78c2db0ac6c29073b49a377812f6ce_thumbnail_900x.webp', 7, 2, 120, 5),
-('Little Animals Cake', 'Orange', 'https://img.ltwebstatic.com/images3_pi/2021/11/04/1635996040e84771fe7bc06d050492150308fe49fb_thumbnail_900x.webp', 8, 5, 65, 2),
-('Pearl Crown Cake', 'Pink', 'https://img.ltwebstatic.com/images3_pi/2021/08/19/1629370399d40fbec401d56413fff146e29fbfa741_thumbnail_900x.webp', 9, 2, 75, 1)";
+$sql[15]="INSERT INTO `item` (`itemName`, `madeIn`,  `itemID`, `quantity`, `price`, `depCode`,`itemPic`) VALUES
+   
+    ('Pastel Balloons Cake',    'Pink ',        3, 6, 87, 3,    'https://img.ltwebstatic.com/images3_pi/2022/03/08/164671221468f8b0c6dae874cd2cc89a30daad7f2a_thumbnail_900x.webp'),
+    ('Mermaid Tail Cake',       'Yellow',       5, 5, 75, 1,    'https://img.ltwebstatic.com/images3_pi/2022/09/06/166245183706fe96793373d924ea00129fbe6c58b4_thumbnail_900x.webp'),
+    ('Under The Sea Cupcake 5p','Purple',       6, 3, 85, 2,    'https://img.ltwebstatic.com/images3_pi/2022/05/18/1652858929ea4ef56e54b36403b040226960d2485c_thumbnail_900x.webp'),
+    ('Teddy Bear Cake',         'Brown_ White', 7, 2, 120, 5,   'https://img.ltwebstatic.com/images3_pi/2023/02/02/167530179665b010fde6777e1599552f4a3de85830_thumbnail_900x.webp'),
+    ('Black Pearl Cake',        'Black',        8, 5, 65, 2,    'https://img.ltwebstatic.com/images3_pi/2023/01/08/1673148933cb78c2db0ac6c29073b49a377812f6ce_thumbnail_900x.webp'),
+    ('Little Animals Cake',      'Orange',      9, 2, 75, 1,    'https://img.ltwebstatic.com/images3_pi/2021/11/04/1635996040e84771fe7bc06d050492150308fe49fb_thumbnail_900x.webp'),
+    ('Blue-Gold Paint Cake',    'Blue',         2, 12, 60, 3,   'https://img.ltwebstatic.com/images3_pi/2022/10/09/1665298032ac95d0cf86ee7d5047e4e55a8700752e_thumbnail_900x.webp'),
+    ('Pearl Crown Cake',        'Pink',         1, 5, 75, 1,     'https://img.ltwebstatic.com/images3_pi/2021/08/19/1629370399d40fbec401d56413fff146e29fbfa741_thumbnail_900x.webp') 
+    ";
 
+
+// 
 
     $sql[15]="INSERT INTO `discount` (`discountID`, `itemID`) VALUES
+    (1, 9),
     (2, 2),
-    (4, 4),
+    (4, 7),
     (5, 5),
-    (3, 6),
-    (1, 9)";
+    (3, 6)
+    ";
 
-$sql[16]="INSERT INTO `user` (`firstName`, `lastName`,`userID` `email`,`admin`, `password`,`phone`) VALUES
-    ('RegularUser',  'User' , '1',   'RegularUser@gmail.com', '0',  'RegularUser11','6476837294'),
-    ('RegularUser2', 'User2', '2',   'RegularUser2@gmail.com', '0', 'RegularUser2','6476837292'),
-    ('AdminUser1',   'Admin', '3',   'AdminUser1@gmail.com', '0',   'AdminUser1','64768374592')";
+// $sql[16]="INSERT INTO `user` (`firstName`, `lastName`,`userID` ,`email`,`admin`, `password`,`phone`) VALUES
+//     ('RegularUser',  'User' , 1,   'RegularUser@gmail.com', 0,  'RegularUser11','6476837294'),
+//     ('RegularUser2', 'User2', 2,   'RegularUser2@gmail.com', 0, 'RegularUser2','6476837292'),
+//     ('AdminUser1',   'Admin', 3,   'AdminUser1@gmail.com', 1,   'AdminUser1','64768374592')";
 
 
 
 
     foreach($sql as $sql){
     if ($conn->query($sql)) {
+        echo "\n";
         echo "Table Records created successfully";
     } else {
+        echo "\n";
         echo "Error creating table: " . $conn->error;
+        echo "\n";
     }
 }
     $conn -> close();

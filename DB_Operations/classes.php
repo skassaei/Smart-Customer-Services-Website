@@ -249,6 +249,17 @@
 				}
 			}
 		}
+
+
+		function getUserOrders($userID){
+			$sql= "SELECT orderID FROM orders WHERE userID = $userID";
+			$result =mysqli_query($this->conn, $sql);
+			$rows = $result->fetch_all(MYSQLI_ASSOC);
+			if ($result){
+				return $rows;
+			}
+			return $rows;
+		}
 	}
 	
 	/////////////////

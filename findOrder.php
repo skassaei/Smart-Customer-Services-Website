@@ -2,6 +2,7 @@
 <?php
 session_start();
 require './DB_Operations/dbconnect.php';
+include './DB_Operations/classes.php' ;
 
 if (isset($_SESSION['loggedin'])) {
 	
@@ -32,7 +33,10 @@ include 'navHome.php';
 
 
 $userID = $_SESSION["ID"];
-
+$rows = [];
+$order_rows= [];
+$orderTable = new Orders($conn);
+$order_rows = $orderTable -> getUserOrders($userID);
 
        
 ?>
@@ -49,27 +53,35 @@ $userID = $_SESSION["ID"];
                             <select class=" p-1" id="inlineFormInput2" type="number" name="orderID" required>
                                  <option value=0 disabled selected >Order#</option>
                                  <?php
-                                $Find_order = "SELECT orderID FROM orders WHERE userID = $userID";
-                                $order_run= mysqli_query($conn, $Find_order);
-                                while($order= mysqli_fetch_row($order_run)){
-                                    echo "<option value='".$order[0]."'>".$order[0]."</option>";
-                                }
-                                 ?>
 
-                            </select>
-                        </div>
+                                if(count($order_rows) > 0){
+                                    foreach($order_rows as $row){
+                                        echo "<option value='".$row['orderID']."'>".$order['orderID']."</option>";
+                                    }
+                                     ?>
+                                        </select>
+                                    </div>
+    
+                                    <div class="mt-2">
+                                        <button style="background-color:white; color: rgb(33, 17, 55);" type="submit" value="Display Order" name="Find_Order"  class="col-12  bg-darkk shadow-lg rounded total">Display Order</button> 
+                                    </div>
 
-                        <div hidden class="form-group col-12">
-                                <label  for="inlineFormInput">userID:</label>
-                                <input value="<?php echo $userID ?>" name="userID" type="text" class="form-control mb-2" id="inlineFormInput" required>
+                                <?php    
+                                    } else{
+                                    echo'<div class="mt-2">
+                                   <p> You have not tried our cakes yet!</p>
+                                    </div>';
+                                    }
+                                    ?>
+
+                            <div hidden class="form-group col-12">
+                                <input  value="<?php echo $userID ?>" name="userID" type="text" class="form-control mb-2" id="inlineFormInput" required disabled hidden>
                             </div>
                         
+<br>
 
-                    <div class="mt-2">
-                        <input style="background-color:white; color: rgb(33, 17, 55);" type="submit" value="Display Order" name="Find_Order"  class="col-12  bg-darkk shadow-lg rounded total">
-                    </div>
                     <div>
-                        <button style="background-color:white; color: rgb(33, 17, 55);" class="col-12  bg-darkk shadow-lg rounded total"  type="submit"  >
+                        <button type="button" style="background-color:white; color: rgb(33, 17, 55);" class="col-12  bg-darkk shadow-lg rounded total"    >
                         <a style="text-decoration: none; color: rgb(33, 17, 55);" href="./home.php">Back</a>
                         </button>   
                     </div>

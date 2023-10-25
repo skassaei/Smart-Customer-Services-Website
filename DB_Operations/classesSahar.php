@@ -68,12 +68,15 @@
 
 	}
 	
-	// $userTable = new User($conn);
-	//$userTable -> insert(array("sinapassword","Sina", "Pahlavan", "sinapah333@gmail.com",123456,0));
-	//$userTable -> insert(array("janepassword","Jane", "Doe", "janedoe@gmail.com",1234567,0));
-	//$userTable -> update(5, array("firstName", "lastName"), array("Sinaaaa", "Pahli"))
-	//$userTable -> update(6, array("email"), array("janedoe@gmail.com"))
-	//$userTable -> insert(array("felixpassword","felix","lee","flee@gmail.com",0,123456));
+	$userTable = new User($conn);
+
+	$userTable -> insert(array("RegularUser11","RegularUser", "User", "RegularUser@gmail.com",6476837294,0));
+	$userTable -> insert(array("RegularUser2","RegularUser2", "User2", "RegularUser2@gmail.com",6476837292,0));
+	$userTable -> insert(array("AdminUser1","AdminUser1", "Admin", "AdminUser1@gmail.com",64768374592,1));
+
+	// $userTable -> update(5, array("firstName", "lastName"), array("Sinaaaa", "Pahli"));
+	// $userTable -> update(6, array("email"), array("janedoe@gmail.com"));
+	// $userTable -> insert(array("felixpassword","felix","lee","flee@gmail.com",0,123456));
 
 	
 		///////////////////////////////
