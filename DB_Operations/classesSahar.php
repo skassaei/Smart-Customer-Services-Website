@@ -73,7 +73,7 @@
 	//$userTable -> insert(array("janepassword","Jane", "Doe", "janedoe@gmail.com",1234567,0));
 	//$userTable -> update(5, array("firstName", "lastName"), array("Sinaaaa", "Pahli"))
 	//$userTable -> update(6, array("email"), array("janedoe@gmail.com"))
-	// $userTable -> insert(array("felixpassword","felix","lee","flee@gmail.com",0,123456));
+	//$userTable -> insert(array("felixpassword","felix","lee","flee@gmail.com",0,123456));
 
 	
 		///////////////////////////////
